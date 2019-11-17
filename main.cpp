@@ -85,8 +85,14 @@ int main(int argc, char** argv)
     // Set the box density to be non-zero, so it will be dynamic.
     fixtureDef.density = 1.0f;
 
+    // Set the box restitution to be non-zero, so it will bounce. higher number = more bounce
+    fixtureDef.restitution = 1.0f;
+
     // Override the default friction.
     fixtureDef.friction = 0.3f;
+
+    float impulse = body->GetMass() * 5;
+    body->ApplyLinearImpulse(b2Vec2(impulse, 0), body->GetWorldCenter(), 1);
 
     // Add the shape to the body.
     body->CreateFixture(&fixtureDef);

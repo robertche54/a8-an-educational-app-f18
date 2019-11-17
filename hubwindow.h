@@ -15,6 +15,13 @@ public:
     HubWindow(QWidget *parent = nullptr);
     ~HubWindow();
 
+public slots:
+    void metoriteClicked();
+    void volcanoClicked();
+    void mammalsClicked();
+
+signals:
+
 private:
     Ui::HubWindow *ui;
 };
