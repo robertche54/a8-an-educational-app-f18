@@ -1,6 +1,5 @@
 #include "hubwindow.h"
 #include "ui_hubwindow.h"
-#include <QImage>
 
 HubWindow::HubWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -12,8 +11,8 @@ HubWindow::HubWindow(QWidget *parent)
     sprite_texture.loadFromFile("/home/jonwarner/CS3505/A9/DinoTitle.png");
     sprite.setTexture(sprite_texture);
 
-    sprite.setOrigin(ui->label->x(),ui->label->y());
-    sprite.setPosition(ui->label->x(),ui->label->y());
+    sprite.setOrigin(ui->titleLabel->x(),ui->titleLabel->y());
+    sprite.setPosition(ui->titleLabel->x(),ui->titleLabel->y());
     texture.draw(sprite);
     texture.display();
 
@@ -22,7 +21,12 @@ HubWindow::HubWindow(QWidget *parent)
     const uint8_t *pp = irt.getPixelsPtr();
     QImage q(pp, 320, 180,QImage::Format_ARGB32);
     q = q.rgbSwapped();
-    ui->label->setPixmap(QPixmap::fromImage(q));
+    ui->titleLabel->setPixmap(QPixmap::fromImage(q));
+
+    connect(ui->metoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);
+    connect(ui->volcanoButton, &QPushButton::pressed, this, &HubWindow::volcanoClicked);
+    connect(ui->mammalButton, &QPushButton::pressed, this, &HubWindow::mammalsClicked);
+
 }
 
 HubWindow::~HubWindow()
@@ -31,4 +35,20 @@ HubWindow::~HubWindow()
 }
 
 
+
+void HubWindow::metoriteClicked() {
+    // EXECUTE METORITE WINDOW
+}
+
+void HubWindow::volcanoClicked() {
+    // EXECUTE VOLCANO WINDOW
+}
+
+void HubWindow::mammalsClicked() {
+    // EXECUTE MAMMAL WINDOW
+}
+
+sf::Sprite HubWindow::getSprite(std::string file, int x, int y){
+
+}
 

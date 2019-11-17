@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 #include <SFML/Graphics.hpp>
+#include <string>
+#include <QImage>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class HubWindow; }
@@ -15,6 +17,13 @@ class HubWindow : public QMainWindow
 public:
     HubWindow(QWidget *parent = nullptr);
     ~HubWindow();
+    sf::Sprite getSprite(std::string, int, int);
+public slots:
+    void metoriteClicked();
+    void volcanoClicked();
+    void mammalsClicked();
+
+signals:
 private:
     Ui::HubWindow *ui;
     sf::RenderTexture texture;

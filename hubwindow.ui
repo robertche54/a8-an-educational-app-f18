@@ -14,13 +14,52 @@
    <string>HubWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLabel" name="label">
+   <widget class="QPushButton" name="metoriteButton">
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>30</y>
-      <width>601</width>
-      <height>501</height>
+      <y>280</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Metorite</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="volcanoButton">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>280</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Volcano</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="mammalButton">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>280</y>
+      <width>89</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Mammals</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="titleLabel">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>20</y>
+      <width>381</width>
+      <height>201</height>
      </rect>
     </property>
     <property name="text">
