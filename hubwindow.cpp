@@ -10,6 +10,14 @@ HubWindow::HubWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    Sprite sprite("/home/jonwarner/CS3505/A9/DinoTitle.png",320,180,ui->titleLabel->x(),ui->titleLabel->y());
+    sf::Texture rt = sprite.texture.getTexture();
+    sf::Image irt = rt.copyToImage();
+    const uint8_t *pp = irt.getPixelsPtr();
+    QImage q(pp, 320, 180,QImage::Format_ARGB32);
+    q = q.rgbSwapped();
+    ui->titleLabel->setPixmap(QPixmap::fromImage(q));
+
     connect(ui->metoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);
     connect(ui->volcanoButton, &QPushButton::pressed, this, &HubWindow::volcanoClicked);
     connect(ui->mammalButton, &QPushButton::pressed, this, &HubWindow::mammalsClicked);

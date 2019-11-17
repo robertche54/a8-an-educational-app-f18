@@ -7,4 +7,6 @@ Sprite::Sprite(std::string file, int x, int y, int locationX, int locationY){
     sprite.setTexture(sprite_texture);
     sprite.setOrigin(locationX, locationY);
     sprite.setPosition(locationX, locationY);
+    texture.draw(sprite);
+    texture.display();
 }

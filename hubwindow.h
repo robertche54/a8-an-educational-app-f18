@@ -8,9 +8,9 @@
 #include "meteorite.h"
 #include "mammals.h"
 #include "volcano.h"
+#include "sprite.h"
 
 namespace Ui { class HubWindow; }
-
 class HubWindow : public QMainWindow
 {
     Q_OBJECT
@@ -18,7 +18,7 @@ class HubWindow : public QMainWindow
 public:
     HubWindow(QWidget *parent = nullptr);
     ~HubWindow();
-    sf::Sprite getSprite(std::string, int, int);
+    sf::Sprite setSprite(std::string, int, int);
 public slots:
     void metoriteClicked();
     void volcanoClicked();
@@ -27,9 +27,6 @@ public slots:
 signals:
 private:
     Ui::HubWindow *ui;
-    sf::RenderTexture texture;
-    sf::Texture sprite_texture;
-    sf::Sprite sprite;
     Meteorite meteoritePopup;
     Volcano volcanoPopup;
     Mammals mammalsPopup;
