@@ -2,6 +2,7 @@
 #define HUBWINDOW_H
 
 #include <QMainWindow>
+#include <SFML/Graphics.hpp>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class HubWindow; }
@@ -14,8 +15,10 @@ class HubWindow : public QMainWindow
 public:
     HubWindow(QWidget *parent = nullptr);
     ~HubWindow();
-
 private:
     Ui::HubWindow *ui;
+    sf::RenderTexture texture;
+    sf::Texture sprite_texture;
+    sf::Sprite sprite;
 };
 #endif // HUBWINDOW_H
