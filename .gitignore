@@ -34,7 +34,6 @@ Thumbs.db
 *.rc
 /.qmake.cache
 /.qmake.stash
-/Box2D
 
 # qtcreator generated files
 *.pro.user*

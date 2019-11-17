@@ -118,6 +118,8 @@ HEADERS += \
 FORMS += \
     hubwindow.ui
 
+LIBS += -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system
+
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
