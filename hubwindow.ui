@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Metorite</string>
+     <string>Meteorite</string>
     </property>
    </widget>
    <widget class="QPushButton" name="volcanoButton">

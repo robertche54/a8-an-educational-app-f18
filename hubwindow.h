@@ -5,10 +5,11 @@
 #include <SFML/Graphics.hpp>
 #include <string>
 #include <QImage>
+#include "meteorite.h"
+#include "mammals.h"
+#include "volcano.h"
 
-QT_BEGIN_NAMESPACE
 namespace Ui { class HubWindow; }
-QT_END_NAMESPACE
 
 class HubWindow : public QMainWindow
 {
@@ -29,5 +30,8 @@ private:
     sf::RenderTexture texture;
     sf::Texture sprite_texture;
     sf::Sprite sprite;
+    Meteorite meteoritePopup;
+    Volcano volcanoPopup;
+    Mammals mammalsPopup;
 };
 #endif // HUBWINDOW_H
