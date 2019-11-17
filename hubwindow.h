@@ -9,6 +9,7 @@
 #include "mammals.h"
 #include "volcano.h"
 #include "sprite.h"
+#include <QTimer>
 
 namespace Ui { class HubWindow; }
 class HubWindow : public QMainWindow
@@ -23,6 +24,7 @@ public slots:
     void metoriteClicked();
     void volcanoClicked();
     void mammalsClicked();
+    void wiggleTitle(Sprite&,int);
 
 signals:
 private:

@@ -1,6 +1,6 @@
 #include "sprite.h"
 
-Sprite::Sprite(std::string file, int x, int y, int locationX, int locationY, b2World world)
+Sprite::Sprite(std::string file, int x, int y, int locationX, int locationY, b2World &world)
     : position(locationX, locationY)
 {
     texture.create(unsigned(x), unsigned(y));
@@ -15,6 +15,7 @@ Sprite::Sprite(std::string file, int x, int y, int locationX, int locationY, b2W
     createBody(world);
 }
 
+
 void Sprite::Update()
 {
     // Updates SFML sprite with b2Body position and rotation
@@ -22,7 +23,7 @@ void Sprite::Update()
     sprite.setRotation(body->GetAngle() * 180/b2_pi);
 }
 
-void Sprite::createBody(b2World world, bool dynamic)
+void Sprite::createBody(b2World &world, bool dynamic)
 {
     // Uses the b2World factory to create a new body
     b2BodyDef bodyDef;

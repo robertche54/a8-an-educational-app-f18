@@ -13,23 +13,20 @@ class Sprite
 {
 
 private:
+    b2Body* body;
+
+    const int scale = 1;
+
+    void createBody(b2World &world, bool dynamic = true);
+
+public:
     sf::Vector2f position;
     sf::RenderTexture texture;
     sf::Texture sprite_texture;
     sf::Sprite sprite;
 
-    QImage image;
-
-    b2Body* body;
-
-    const int scale = 1;
-
-    void createBody(b2World world, bool dynamic = true);
-
-public:
-    Sprite(string, int, int, int, int, b2World world);
+    Sprite(string, int, int, int, int, b2World &world);
     ~Sprite() { body->GetWorld()->DestroyBody(body); }
-
     sf::Sprite &getSprite() { return sprite; }
     void Update();
 };
