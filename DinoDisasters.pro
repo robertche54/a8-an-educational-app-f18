@@ -63,7 +63,10 @@ SOURCES += \
     Box2D/Dynamics/b2WorldCallbacks.cpp \
     Box2D/Rope/b2Rope.cpp \
     main.cpp \
-    hubwindow.cpp
+    hubwindow.cpp \
+    mammals.cpp \
+    meteorite.cpp \
+    volcano.cpp
 
 HEADERS += \
     Box2D/Box2D.h \
@@ -113,10 +116,16 @@ HEADERS += \
     Box2D/Dynamics/b2World.h \
     Box2D/Dynamics/b2WorldCallbacks.h \
     Box2D/Rope/b2Rope.h \
-    hubwindow.h
+    hubwindow.h \
+    mammals.h \
+    meteorite.h \
+    volcano.h
 
 FORMS += \
-    hubwindow.ui
+    hubwindow.ui \
+    mammals.ui \
+    meteorite.ui \
+    volcano.ui
 
 LIBS += -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system
 

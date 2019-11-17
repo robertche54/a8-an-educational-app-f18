@@ -1,5 +1,8 @@
 #include "hubwindow.h"
 #include "ui_hubwindow.h"
+#include "mammals.h"
+#include "volcano.h"
+#include "meteorite.h"
 
 HubWindow::HubWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -18,13 +21,13 @@ HubWindow::~HubWindow()
 }
 
 void HubWindow::metoriteClicked() {
-    // EXECUTE METORITE WINDOW
+    meteoritePopup.exec();
 }
 
 void HubWindow::volcanoClicked() {
-    // EXECUTE VOLCANO WINDOW
+    volcanoPopup.exec();
 }
 
 void HubWindow::mammalsClicked() {
-    // EXECUTE MAMMAL WINDOW
+    mammalsPopup.exec();
 }

@@ -2,10 +2,11 @@
 #define HUBWINDOW_H
 
 #include <QMainWindow>
+#include "meteorite.h"
+#include "mammals.h"
+#include "volcano.h"
 
-QT_BEGIN_NAMESPACE
 namespace Ui { class HubWindow; }
-QT_END_NAMESPACE
 
 class HubWindow : public QMainWindow
 {
@@ -24,5 +25,8 @@ signals:
 
 private:
     Ui::HubWindow *ui;
+    Meteorite meteoritePopup;
+    Volcano volcanoPopup;
+    Mammals mammalsPopup;
 };
 #endif // HUBWINDOW_H
