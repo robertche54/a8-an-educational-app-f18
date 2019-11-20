@@ -9,7 +9,7 @@
 
 using namespace std;
 
-class Sprite
+class Mob
 {
 
 private:
@@ -22,13 +22,14 @@ private:
 public:
     sf::Vector2f position;
     sf::Vector2f origin;
+    sf::Vector2f size;
    // sf::RenderTexture texture; // belongs to window
     sf::Texture sprite_image;
     sf::Sprite sprite;
 
-    Sprite(string, int, int, b2World &world);
-    ~Sprite() { body->GetWorld()->DestroyBody(body); }
-    sf::Sprite &getSprite() { return sprite; }
+    Mob(string, int, int, b2World &world);
+    ~Mob();
+    sf::Sprite &getSprite();
     void Update();
 };
 

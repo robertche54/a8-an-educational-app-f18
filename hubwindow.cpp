@@ -16,10 +16,10 @@ HubWindow::HubWindow(QWidget *parent)
 
     b2Vec2 gravity(0.0, -9.81f);
     b2World world(gravity);
-    Sprite* titleSprite = new Sprite("../A9/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
-    sprites.push_back(titleSprite);
-    Sprite* titleSprite2 = new Sprite("../A9/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
-    sprites.push_back(titleSprite2);
+    Mob* titleSprite = new Mob("../A9/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
+    mobs.push_back(titleSprite);
+    Mob* titleSprite2 = new Mob("../A9/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
+    mobs.push_back(titleSprite2);
 
     QTimer *timer;
     timer = new QTimer(this);
@@ -35,8 +35,8 @@ HubWindow::HubWindow(QWidget *parent)
 void HubWindow::wiggleTitle(){
     canvas.clear();
 
-    sprites[0]->getSprite().rotate(1.0);
-    for (Sprite* s : sprites) {
+    mobs[0]->getSprite().rotate(1.0);
+    for (Mob* s : mobs) {
         canvas.draw(s->getSprite());
 
     }
@@ -53,7 +53,7 @@ void HubWindow::wiggleTitle(){
 
 HubWindow::~HubWindow()
 {
-    for (Sprite* s : sprites) {
+    for (Mob* s : mobs) {
         delete s;
     }
 

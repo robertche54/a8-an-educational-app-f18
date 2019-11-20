@@ -1,6 +1,6 @@
-#include "sprite.h"
+#include "mob.h"
 
-Sprite::Sprite(std::string file, int locationX, int locationY, b2World &world)
+Mob::Mob(std::string file, int locationX, int locationY, b2World &world)
     : position(locationX, locationY), origin(locationX, locationY)
 {
     sprite_image.loadFromFile(file);
@@ -13,14 +13,14 @@ Sprite::Sprite(std::string file, int locationX, int locationY, b2World &world)
 }
 
 
-void Sprite::Update()
+void Mob::Update()
 {
     // Updates SFML sprite with b2Body position and rotation
     sprite.setPosition(body->GetPosition().x * scale, body->GetPosition().y * scale);
     sprite.setRotation(body->GetAngle() * 180/b2_pi);
 }
 
-void Sprite::createBody(b2World &world, bool dynamic)
+void Mob::createBody(b2World &world, bool dynamic)
 {
     // Uses the b2World factory to create a new body
     b2BodyDef bodyDef;

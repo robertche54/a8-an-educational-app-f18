@@ -8,7 +8,7 @@
 #include "meteorite.h"
 #include "mammals.h"
 #include "volcano.h"
-#include "sprite.h"
+#include "mob.h"
 #include <QTimer>
 
 namespace Ui { class HubWindow; }
@@ -33,7 +33,7 @@ private:
     Volcano volcanoPopup;
     Mammals mammalsPopup;
     sf::RenderTexture canvas;
-    vector<Sprite*> sprites;
+    vector<Mob*> mobs;
     int count = 1;
 };
 #endif // HUBWINDOW_H

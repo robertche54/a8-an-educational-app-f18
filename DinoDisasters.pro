@@ -66,7 +66,7 @@ SOURCES += \
     hubwindow.cpp \
     mammals.cpp \
     meteorite.cpp \
-    sprite.cpp \
+    mob.cpp \
     volcano.cpp
 
 HEADERS += \
@@ -120,7 +120,7 @@ HEADERS += \
     hubwindow.h \
     mammals.h \
     meteorite.h \
-    sprite.h \
+    mob.h \
     volcano.h
 
 FORMS += \
