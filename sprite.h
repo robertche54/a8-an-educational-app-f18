@@ -21,11 +21,12 @@ private:
 
 public:
     sf::Vector2f position;
-    sf::RenderTexture texture;
-    sf::Texture sprite_texture;
+    sf::Vector2f origin;
+   // sf::RenderTexture texture; // belongs to window
+    sf::Texture sprite_image;
     sf::Sprite sprite;
 
-    Sprite(string, int, int, int, int, b2World &world);
+    Sprite(string, int, int, b2World &world);
     ~Sprite() { body->GetWorld()->DestroyBody(body); }
     sf::Sprite &getSprite() { return sprite; }
     void Update();

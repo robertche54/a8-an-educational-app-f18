@@ -24,7 +24,7 @@ public slots:
     void metoriteClicked();
     void volcanoClicked();
     void mammalsClicked();
-    void wiggleTitle(Sprite&,int);
+    void wiggleTitle();
 
 signals:
 private:
@@ -32,5 +32,8 @@ private:
     Meteorite meteoritePopup;
     Volcano volcanoPopup;
     Mammals mammalsPopup;
+    sf::RenderTexture canvas;
+    vector<Sprite> sprites;
+    int count = 1;
 };
 #endif // HUBWINDOW_H
