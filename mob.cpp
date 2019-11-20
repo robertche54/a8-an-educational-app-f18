@@ -1,29 +1,26 @@
-#include "sprite.h"
+#include "mob.h"
 
-Sprite::Sprite(std::string file, int x, int y, int locationX, int locationY, b2World &world)
-    : position(locationX, locationY)
+Mob::Mob(std::string file, int locationX, int locationY, b2World &world)
+    : position(locationX, locationY), origin(locationX, locationY)
 {
-    texture.create(unsigned(x), unsigned(y));
-    sprite_texture.loadFromFile(file);
-    sprite_texture.setSmooth(true);
-    sprite.setTexture(sprite_texture);
-    sprite.setOrigin(position);
+    sprite_image.loadFromFile(file);
+    sprite_image.setSmooth(true);
+    sprite.setTexture(sprite_image);
+    sprite.setOrigin(origin);
     sprite.setPosition(position);
-    texture.draw(sprite);
-    texture.display();
 
     createBody(world);
 }
 
 
-void Sprite::Update()
+void Mob::Update()
 {
     // Updates SFML sprite with b2Body position and rotation
     sprite.setPosition(body->GetPosition().x * scale, body->GetPosition().y * scale);
     sprite.setRotation(body->GetAngle() * 180/b2_pi);
 }
 
-void Sprite::createBody(b2World &world, bool dynamic)
+void Mob::createBody(b2World &world, bool dynamic)
 {
     // Uses the b2World factory to create a new body
     b2BodyDef bodyDef;
