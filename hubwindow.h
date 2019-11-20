@@ -33,7 +33,7 @@ private:
     Volcano volcanoPopup;
     Mammals mammalsPopup;
     sf::RenderTexture canvas;
-    vector<Sprite> sprites;
+    vector<Sprite*> sprites;
     int count = 1;
 };
 #endif // HUBWINDOW_H
