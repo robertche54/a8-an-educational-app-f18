@@ -27,6 +27,7 @@ public slots:
     void wiggleTitle();
 
 signals:
+
 private:
     Ui::HubWindow *ui;
     Meteorite meteoritePopup;
@@ -35,5 +36,8 @@ private:
     sf::RenderTexture canvas;
     vector<Mob*> mobs;
     int count = 1;
+
+    b2Vec2 gravity = b2Vec2(0.0, 9.81f);
+    b2World world = b2World(gravity);
 };
 #endif // HUBWINDOW_H

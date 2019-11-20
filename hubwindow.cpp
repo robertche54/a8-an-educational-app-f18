@@ -13,12 +13,9 @@ HubWindow::HubWindow(QWidget *parent)
     ui->setupUi(this); 
 
     canvas.create(320, 180);
-
-    b2Vec2 gravity(0.0, -9.81f);
-    b2World world(gravity);
-    Mob* titleSprite = new Mob("../A9/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
+    Mob* titleSprite = new Mob("/home/kaithyl/CS 3505/a8-an-educational-app-f18-LandonRoundy/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
     mobs.push_back(titleSprite);
-    Mob* titleSprite2 = new Mob("../A9/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
+    Mob* titleSprite2 = new Mob("/home/kaithyl/CS 3505/a8-an-educational-app-f18-LandonRoundy/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
     mobs.push_back(titleSprite2);
 
     QTimer *timer;
@@ -35,10 +32,11 @@ HubWindow::HubWindow(QWidget *parent)
 void HubWindow::wiggleTitle(){
     canvas.clear();
 
-    mobs[0]->getSprite().rotate(1.0);
-    for (Mob* s : mobs) {
-        canvas.draw(s->getSprite());
+    world.Step(1 / 60.0f, 8, 3);
 
+    for(Mob* s : mobs) {
+        s->Update();
+        canvas.draw(s->getSprite());
     }
 
     canvas.display();
@@ -59,8 +57,6 @@ HubWindow::~HubWindow()
 
     delete ui;
 }
-
-
 
 void HubWindow::metoriteClicked() {
     meteoritePopup.exec();

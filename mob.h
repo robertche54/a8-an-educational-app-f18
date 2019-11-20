@@ -8,6 +8,7 @@
 #include "SFML/Graphics.hpp"
 
 using namespace std;
+using namespace sf;
 
 class Mob
 {
@@ -20,16 +21,16 @@ private:
     void createBody(b2World &world, bool dynamic = true);
 
 public:
-    sf::Vector2f position;
-    sf::Vector2f origin;
-    sf::Vector2f size;
+    Vector2f position;
+    Vector2f origin;
+    Vector2f size;
    // sf::RenderTexture texture; // belongs to window
-    sf::Texture sprite_image;
-    sf::Sprite sprite;
+    Texture sprite_image;
+    Sprite sprite;
 
     Mob(string, int, int, b2World &world);
-    ~Mob();
-    sf::Sprite &getSprite();
+    ~Mob() { body->GetWorld()->DestroyBody(body); }
+    Sprite &getSprite() { return sprite; }
     void Update();
 };
 
