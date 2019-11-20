@@ -12,11 +12,21 @@ HubWindow::HubWindow(QWidget *parent)
 {
     ui->setupUi(this); 
 
-    canvas.create(320, 180);
-    Mob* titleSprite = new Mob("/home/kaithyl/CS 3505/a8-an-educational-app-f18-LandonRoundy/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
+    b2BodyDef groundBodyDef;
+    groundBodyDef.position.Set(500.0f, 400.0f);
+    b2Body* groundBody = world.CreateBody(&groundBodyDef);
+    b2PolygonShape groundBox;
+    groundBox.SetAsBox(5000.0f, 15.0f);
+    groundBody->CreateFixture(&groundBox, 0.0f);
+
+
+    b2EdgeShape leftEdge;
+    leftEdge.Set(b2Vec2(0.0f,-1000.0f), b2Vec2(0.0f,1000.0f));
+
+    canvas.create(500, 500);
+    Mob* titleSprite = new Mob("../A9/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
     mobs.push_back(titleSprite);
-    Mob* titleSprite2 = new Mob("/home/kaithyl/CS 3505/a8-an-educational-app-f18-LandonRoundy/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
-    mobs.push_back(titleSprite2);
+//    titleSprite->body->SetAngularVelocity(0.5);
 
     QTimer *timer;
     timer = new QTimer(this);
@@ -44,7 +54,7 @@ void HubWindow::wiggleTitle(){
     sf::Texture rt = canvas.getTexture();
     sf::Image irt = rt.copyToImage();
     const uint8_t *pp = irt.getPixelsPtr();
-    QImage q(pp, 320, 180,QImage::Format_ARGB32);
+    QImage q(pp, 500, 500,QImage::Format_ARGB32);
     q = q.rgbSwapped();
     ui->titleLabel->setPixmap(QPixmap::fromImage(q));
 }

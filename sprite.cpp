@@ -1,26 +1,29 @@
-#include "mob.h"
+#include "sprite.h"
 
-Mob::Mob(std::string file, int locationX, int locationY, b2World &world)
-    : position(locationX, locationY), origin(locationX, locationY)
+Sprite::Sprite(std::string file, int x, int y, int locationX, int locationY, b2World &world)
+    : position(locationX, locationY)
 {
-    sprite_image.loadFromFile(file);
-    sprite_image.setSmooth(true);
-    sprite.setTexture(sprite_image);
-    sprite.setOrigin(origin);
+    texture.create(unsigned(x), unsigned(y));
+    sprite_texture.loadFromFile(file);
+    sprite_texture.setSmooth(true);
+    sprite.setTexture(sprite_texture);
+    sprite.setOrigin(position);
     sprite.setPosition(position);
+    texture.draw(sprite);
+    texture.display();
 
     createBody(world);
 }
 
 
-void Mob::Update()
+void Sprite::Update()
 {
     // Updates SFML sprite with b2Body position and rotation
     sprite.setPosition(body->GetPosition().x * scale, body->GetPosition().y * scale);
     sprite.setRotation(body->GetAngle() * 180/b2_pi);
 }
 
-void Mob::createBody(b2World &world, bool dynamic)
+void Sprite::createBody(b2World &world, bool dynamic)
 {
     // Uses the b2World factory to create a new body
     b2BodyDef bodyDef;
@@ -36,6 +39,5 @@ void Mob::createBody(b2World &world, bool dynamic)
     fixtureDef.shape = &polygonShape;
     fixtureDef.density = dynamic;
     fixtureDef.friction = 0.3f;
-    fixtureDef.restitution = 0.25f;
     body->CreateFixture(&fixtureDef);
 }
