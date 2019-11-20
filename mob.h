@@ -16,7 +16,7 @@ class Mob
 private:
     b2Body* body;
 
-    const int scale = 1;
+    const float scale = 1;
 
     void createBody(b2World &world, bool dynamic = true);
 
