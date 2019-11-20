@@ -54,7 +54,7 @@ void HubWindow::wiggleTitle(){
 HubWindow::~HubWindow()
 {
     for (Mob* s : mobs) {
-        delete s;
+        //delete s;
     }
 
     delete ui;

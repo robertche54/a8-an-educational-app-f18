@@ -38,3 +38,11 @@ void Mob::createBody(b2World &world, bool dynamic)
     fixtureDef.friction = 0.3f;
     body->CreateFixture(&fixtureDef);
 }
+
+sf::Sprite& Mob::getSprite() {
+    return sprite;
+}
+
+Mob::~Mob() {
+    body->GetWorld()->DestroyBody(body);
+}
