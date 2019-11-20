@@ -12,7 +12,7 @@ HubWindow::HubWindow(QWidget *parent)
     ui->setupUi(this);
     b2Vec2 gravity(0.0, -9.81f);
     b2World world(gravity);
-    Sprite titleSprite("../A9/DinoTitle.png",320,180,ui->titleLabel->x(),ui->titleLabel->y(),world);
+    Sprite titleSprite("../DinoDisasters/DinoTitle.png",320,180,ui->titleLabel->x(),ui->titleLabel->y(),world);
     sf::Texture rt = titleSprite.texture.getTexture();
     sf::Image irt = rt.copyToImage();
     const uint8_t *pp = irt.getPixelsPtr();
