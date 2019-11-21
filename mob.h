@@ -3,6 +3,7 @@
 
 #include <string>
 #include <QImage>
+#include "windowtransform.h"
 
 #include "Box2D/Box2D.h"
 #include "SFML/Graphics.hpp"
@@ -15,8 +16,7 @@ class Mob
 
 private:
     b2Body* body;
-
-    const int scale = 1;
+    b2FixtureDef fixtureDef;
 
     void createBody(b2World &world, bool dynamic = true);
 
@@ -29,9 +29,9 @@ public:
     Sprite sprite;
 
     Mob(string, int, int, b2World &world);
-    ~Mob() { body->GetWorld()->DestroyBody(body); }
-    Sprite &getSprite() { return sprite; }
-    void Update();
+    ~Mob();
+    Sprite &getSprite();
+    void Update(windowTransform);
 };
 
 #endif // SPRITE_H

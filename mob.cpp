@@ -13,11 +13,13 @@ Mob::Mob(std::string file, int locationX, int locationY, b2World &world)
 }
 
 
-void Mob::Update()
+void Mob::Update(windowTransform transform)
 {
     // Updates SFML sprite with b2Body position and rotation
-    sprite.setPosition(body->GetPosition().x * scale, body->GetPosition().y * scale);
-    sprite.setRotation(body->GetAngle() * 180/b2_pi);
+    sprite.setPosition(transform.transformX(body->GetPosition().x), transform.transformY(body->GetPosition().y));
+    sprite.setRotation(transform.transformAngle(body->GetAngle()));
+    auto bounds = sprite.getLocalBounds();
+    sprite.setScale(transform.transformWidth(size.x) / bounds.width, transform.transformHeight(size.y) / bounds.height);
 }
 
 void Mob::createBody(b2World &world, bool dynamic)
@@ -25,16 +27,23 @@ void Mob::createBody(b2World &world, bool dynamic)
     // Uses the b2World factory to create a new body
     b2BodyDef bodyDef;
     if(dynamic) bodyDef.type = b2_dynamicBody;
-    bodyDef.position.Set(position.x/scale, position.y/scale);
+    bodyDef.position.Set(position.x, position.y);
     body = world.CreateBody(&bodyDef);
 
     // Sets body data
     b2PolygonShape polygonShape;
-    polygonShape.SetAsBox(sprite.getLocalBounds().width/2/scale, sprite.getLocalBounds().height/2/scale);
+    polygonShape.SetAsBox(size.x, size.y);
 
-    b2FixtureDef fixtureDef;
     fixtureDef.shape = &polygonShape;
     fixtureDef.density = dynamic;
     fixtureDef.friction = 0.3f;
     body->CreateFixture(&fixtureDef);
+}
+
+Mob::~Mob() {
+    body->GetWorld()->DestroyBody(body);
+}
+
+Sprite& Mob::getSprite() {
+    return sprite;
 }
