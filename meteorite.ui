@@ -13,6 +13,32 @@
   <property name="windowTitle">
    <string>Meteorite</string>
   </property>
+  <widget class="QPushButton" name="OceanButton">
+   <property name="geometry">
+    <rect>
+     <x>228</x>
+     <y>250</y>
+     <width>131</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ocean Impact</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="GroundButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>250</y>
+     <width>131</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ground Impact</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
