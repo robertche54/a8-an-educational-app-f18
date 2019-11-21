@@ -67,7 +67,8 @@ SOURCES += \
     mammals.cpp \
     meteorite.cpp \
     mob.cpp \
-    volcano.cpp
+    volcano.cpp \
+    windowtransform.cpp
 
 HEADERS += \
     Box2D/Box2D.h \
@@ -121,7 +122,8 @@ HEADERS += \
     mammals.h \
     meteorite.h \
     mob.h \
-    volcano.h
+    volcano.h \
+    windowtransform.h
 
 FORMS += \
     hubwindow.ui \
