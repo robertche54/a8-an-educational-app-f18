@@ -14,10 +14,21 @@ HubWindow::HubWindow(QWidget *parent)
 {
     ui->setupUi(this); 
 
-    canvas.create(320, 180);
-    Mob* titleSprite = new Mob("../A9/DinoTitle.png",0,10,20,10,world);
+    canvas.create(320, 320);
+    b2BodyDef myBodyDef;
+    b2FixtureDef myFixtureDef;
+
+    myBodyDef.type = b2_staticBody; //change body type
+    myBodyDef.position.Set(0,-20); //middle, bottom
+
+    b2EdgeShape edgeShape;
+    edgeShape.Set(b2Vec2(-100,0), b2Vec2(100,0));
+    myFixtureDef.shape = &edgeShape;
+    b2Body* staticBody = world.CreateBody(&myBodyDef);
+    staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
+    Mob* titleSprite = new Mob("../A9/missingtexture.png",0,10,20,20,world);
     mobs.push_back(titleSprite);
-    //Mob* titleSprite2 = new Mob("../A9/DinoTitle.png",0,2,2,2,world);
+    //Mob* titleSprite2 = new Mob("../A9/missingtexture.png",5,2,4,4,world);
     //mobs.push_back(titleSprite2);
 
     QTimer *timer;
