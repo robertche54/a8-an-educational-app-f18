@@ -8,7 +8,7 @@
 #include "meteorite.h"
 #include "mammals.h"
 #include "volcano.h"
-#include "mob.h"
+#include "simulation.h"
 #include <QTimer>
 
 namespace Ui { class HubWindow; }
@@ -20,6 +20,7 @@ public:
     HubWindow(QWidget *parent = nullptr);
     ~HubWindow();
     sf::Sprite setSprite(std::string, int, int);
+
 public slots:
     void metoriteClicked();
     void volcanoClicked();
@@ -33,11 +34,7 @@ private:
     Meteorite meteoritePopup;
     Volcano volcanoPopup;
     Mammals mammalsPopup;
-    sf::RenderTexture canvas;
-    vector<Mob*> mobs;
+    Simulation simulation;
     int count = 1;
-
-    b2Vec2 gravity = b2Vec2(0.0, 9.81f);
-    b2World world = b2World(gravity);
 };
 #endif // HUBWINDOW_H

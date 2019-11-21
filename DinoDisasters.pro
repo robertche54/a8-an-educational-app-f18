@@ -67,6 +67,7 @@ SOURCES += \
     mammals.cpp \
     meteorite.cpp \
     mob.cpp \
+    simulation.cpp \
     volcano.cpp \
     windowtransform.cpp
 
@@ -122,6 +123,7 @@ HEADERS += \
     mammals.h \
     meteorite.h \
     mob.h \
+    simulation.h \
     volcano.h \
     windowtransform.h
 

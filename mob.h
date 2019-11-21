@@ -24,7 +24,6 @@ public:
     Vector2f position;
     Vector2f origin;
     Vector2f size;
-   // sf::RenderTexture texture; // belongs to window
     Texture sprite_image;
     Sprite sprite;
 
