@@ -27,7 +27,7 @@ public:
     Texture sprite_image;
     Sprite sprite;
 
-    Mob(string, int, int, int, int, b2World &world);
+    Mob(string, float, float, float, float, b2World &world);
     ~Mob();
     Sprite &getSprite();
     void Update(windowTransform);

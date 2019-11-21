@@ -38,7 +38,6 @@ private:
     windowTransform tf;
     int count = 1;
 
-    b2Vec2 gravity = b2Vec2(0.0, 9.81f);
-    b2World world = b2World(gravity);
+    b2World world;
 };
 #endif // HUBWINDOW_H

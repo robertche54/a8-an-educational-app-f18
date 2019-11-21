@@ -9,20 +9,21 @@
 HubWindow::HubWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::HubWindow)
-    , tf(b2Vec2(-10,10),b2Vec2(-10,10),320,180)
+    , tf(b2Vec2(-10,10),b2Vec2(10,-10),320,180)
+    , world(b2Vec2(0, -9.81f))
 {
     ui->setupUi(this); 
 
     canvas.create(320, 180);
-    Mob* titleSprite = new Mob("../A9/DinoTitle.png",0,0,1,1,world);
+    Mob* titleSprite = new Mob("../A9/DinoTitle.png",0,10,20,10,world);
     mobs.push_back(titleSprite);
-    Mob* titleSprite2 = new Mob("../A9/DinoTitle.png",0,2,2,2,world);
-    mobs.push_back(titleSprite2);
+    //Mob* titleSprite2 = new Mob("../A9/DinoTitle.png",0,2,2,2,world);
+    //mobs.push_back(titleSprite2);
 
     QTimer *timer;
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &HubWindow::wiggleTitle);
-    timer->start(1);
+    timer->start(1000/60);
 
     connect(ui->metoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);
     connect(ui->volcanoButton, &QPushButton::pressed, this, &HubWindow::volcanoClicked);

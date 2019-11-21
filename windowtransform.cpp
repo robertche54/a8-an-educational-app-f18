@@ -21,18 +21,19 @@ void windowTransform::setWindowSize(int width, int height) {
 void windowTransform::updateTrueCorners() {
     trueTopLeftCorner = topLeftCorner;
     trueBottomRightCorner = bottomRightCorner;
+    printf("%f, %f; %f, %f\n", trueTopLeftCorner.x, trueTopLeftCorner.y, trueBottomRightCorner.x, trueBottomRightCorner.y);
 }
 int windowTransform::transformX(float x) {
-    return int(windowWidth * (x - trueTopLeftCorner.x) / (trueBottomRightCorner.x - trueTopLeftCorner.x));
+    return int((x - trueTopLeftCorner.x) / (trueBottomRightCorner.x - trueTopLeftCorner.x) * windowWidth);
 }
 int windowTransform::transformY(float y) {
-    return int(windowHeight * (y - trueTopLeftCorner.y) / (trueBottomRightCorner.y - trueTopLeftCorner.y));
+    return int((y - trueTopLeftCorner.y) / (trueBottomRightCorner.y - trueTopLeftCorner.y) * windowHeight);
 }
 int windowTransform::transformWidth(float width) {
     return int(windowWidth * (width) / (trueBottomRightCorner.x - trueTopLeftCorner.x));
 }
 int windowTransform::transformHeight(float height) {
-    return int(windowHeight * (height) / (trueBottomRightCorner.y - trueTopLeftCorner.y));
+    return -int(windowHeight * (height) / (trueBottomRightCorner.y - trueTopLeftCorner.y));
 }
 float windowTransform::transformAngle(float angle) {
     return angle * 180 / float(M_PI);
