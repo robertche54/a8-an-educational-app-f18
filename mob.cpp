@@ -1,12 +1,14 @@
 #include "mob.h"
 
-Mob::Mob(std::string file, int locationX, int locationY, b2World &world)
-    : position(locationX, locationY), origin(locationX, locationY)
+Mob::Mob(std::string file, int locationX, int locationY, int sizeX, int sizeY, b2World &world)
+    : position(locationX, locationY),
+      size(sizeX,sizeY)
 {
     sprite_image.loadFromFile(file);
     sprite_image.setSmooth(true);
     sprite.setTexture(sprite_image);
-    sprite.setOrigin(origin);
+    auto bounds = sprite.getLocalBounds();
+    sprite.setOrigin(Vector2f(bounds.width/2, bounds.height/2));
     sprite.setPosition(position);
 
     createBody(world);

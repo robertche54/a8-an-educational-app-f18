@@ -9,13 +9,14 @@
 HubWindow::HubWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::HubWindow)
+    , tf(b2Vec2(-10,10),b2Vec2(-10,10),320,180)
 {
     ui->setupUi(this); 
 
     canvas.create(320, 180);
-    Mob* titleSprite = new Mob("/home/kaithyl/CS 3505/a8-an-educational-app-f18-LandonRoundy/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
+    Mob* titleSprite = new Mob("../A9/DinoTitle.png",0,0,1,1,world);
     mobs.push_back(titleSprite);
-    Mob* titleSprite2 = new Mob("/home/kaithyl/CS 3505/a8-an-educational-app-f18-LandonRoundy/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
+    Mob* titleSprite2 = new Mob("../A9/DinoTitle.png",0,2,2,2,world);
     mobs.push_back(titleSprite2);
 
     QTimer *timer;
@@ -35,7 +36,7 @@ void HubWindow::wiggleTitle(){
     world.Step(1 / 60.0f, 8, 3);
 
     for(Mob* s : mobs) {
-        s->Update();
+        s->Update(tf);
         canvas.draw(s->getSprite());
     }
 
@@ -52,7 +53,7 @@ void HubWindow::wiggleTitle(){
 HubWindow::~HubWindow()
 {
     for (Mob* s : mobs) {
-        //delete s;
+        delete s;
     }
 
     delete ui;

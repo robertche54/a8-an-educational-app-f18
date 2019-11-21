@@ -22,13 +22,12 @@ private:
 
 public:
     Vector2f position;
-    Vector2f origin;
     Vector2f size;
    // sf::RenderTexture texture; // belongs to window
     Texture sprite_image;
     Sprite sprite;
 
-    Mob(string, int, int, b2World &world);
+    Mob(string, int, int, int, int, b2World &world);
     ~Mob();
     Sprite &getSprite();
     void Update(windowTransform);

@@ -35,6 +35,7 @@ private:
     Mammals mammalsPopup;
     sf::RenderTexture canvas;
     vector<Mob*> mobs;
+    windowTransform tf;
     int count = 1;
 
     b2Vec2 gravity = b2Vec2(0.0, 9.81f);
