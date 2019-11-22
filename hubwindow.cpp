@@ -9,13 +9,24 @@
 HubWindow::HubWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::HubWindow)
+    , tf(b2Vec2(-10,10),b2Vec2(10,-10),320,180)
 {
 
     ui->setupUi(this); 
 
-    simulation.createMob("../DinoDisasters/DinoTitle.png", ui->titleLabel->x(), ui->titleLabel->y());
-    //Mob* titleSprite2 = new Mob("/home/kaithyl/CS 3505/a8-an-educational-app-f18-LandonRoundy/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
-    //simulation.mobs.push_back(titleSprite2);
+    b2BodyDef myBodyDef;
+    b2FixtureDef myFixtureDef;
+
+    myBodyDef.type = b2_staticBody; //change body type
+    myBodyDef.position.Set(0,-10); //middle, bottom
+
+    b2EdgeShape edgeShape;
+    edgeShape.Set(b2Vec2(-100,0), b2Vec2(100,0));
+    myFixtureDef.shape = &edgeShape;
+    b2Body* staticBody = simulation.world.CreateBody(&myBodyDef);
+    staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
+    simulation.createMob("../DinoDisasters/DinoTitle.png", 0, 10, 15, 5);
+    simulation.createMob("../DinoDisasters/bricks.jpg", 5, 2, 4, 4);
 
     QTimer *timer;
     timer = new QTimer(this);

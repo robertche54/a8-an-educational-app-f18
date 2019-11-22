@@ -1,6 +1,6 @@
 #include "simulation.h"
 
-Simulation::Simulation() {
+Simulation::Simulation() : tf(b2Vec2(-10,10),b2Vec2(10,-10),320,180) {
     canvas.create(330, 250);
 }
 
@@ -18,13 +18,13 @@ void Simulation::setGravity(float x, float y) {
     world.SetGravity(b2Vec2(x, y));
 }
 
-void Simulation::createMob(string filePath, int x, int y) {
-    Mob* newMob = new Mob(filePath, x, y, world);
+void Simulation::createMob(string filePath, int posX, int posY, int sizeX, int sizeY) {
+    Mob* newMob = new Mob(filePath, posX, posY, sizeX, sizeY, world);
     genericMobs.push_back(newMob);
 }
 
-void Simulation::createMob(string filePath, int x, int y, string name) {
-    Mob* newMob = new Mob(filePath, x, y, world);
+void Simulation::createMob(string filePath, int posX, int posY, int sizeX, int sizeY, string name) {
+    Mob* newMob = new Mob(filePath, posX, posY, sizeX, sizeY, world);
     namedMobs.insert(pair<string, Mob*>(name, newMob));
 }
 
@@ -34,12 +34,12 @@ QImage Simulation::step() {
     world.Step(1 / 60.0f, 8, 3);
 
     for(pair<string, Mob*> namedMob : namedMobs) {
-        namedMob.second->Update();
+        namedMob.second->Update(tf);
         canvas.draw(namedMob.second->getSprite());
     }
 
     for(Mob* mob : genericMobs) {
-        mob->Update();
+        mob->Update(tf);
         canvas.draw(mob->getSprite());
     }
 

@@ -35,6 +35,6 @@ private:
     Volcano volcanoPopup;
     Mammals mammalsPopup;
     Simulation simulation;
-    int count = 1;
+    windowTransform tf;
 };
 #endif // HUBWINDOW_H

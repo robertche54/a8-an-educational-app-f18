@@ -19,21 +19,31 @@ void windowTransform::setWindowSize(int width, int height) {
     updateTrueCorners();
 }
 void windowTransform::updateTrueCorners() {
-    trueTopLeftCorner = topLeftCorner;
-    trueBottomRightCorner = bottomRightCorner;
+    b2Vec2 screenCenter = (topLeftCorner+bottomRightCorner);
+    screenCenter.x /=2;
+    screenCenter.y /=2;
+    b2Vec2 size = bottomRightCorner - screenCenter;
+    if (abs(windowWidth / size.x) > abs(windowHeight / size.y)) {
+        size.x *= abs(windowWidth / size.x) / abs(windowHeight / size.y);
+    } else {
+        size.y *= abs(windowHeight / size.y) / abs(windowWidth / size.x);
+    }
+    trueTopLeftCorner = screenCenter - size;
+    trueBottomRightCorner = screenCenter + size;
+    printf("%f, %f; %f, %f\n", trueTopLeftCorner.x, trueTopLeftCorner.y, trueBottomRightCorner.x, trueBottomRightCorner.y);
 }
 int windowTransform::transformX(float x) {
-    return int(windowWidth * (x - trueTopLeftCorner.x) / (trueBottomRightCorner.x - trueTopLeftCorner.x));
+    return int((x - trueTopLeftCorner.x) / (trueBottomRightCorner.x - trueTopLeftCorner.x) * windowWidth);
 }
 int windowTransform::transformY(float y) {
-    return int(windowHeight * (y - trueTopLeftCorner.y) / (trueBottomRightCorner.y - trueTopLeftCorner.y));
+    return int((y - trueTopLeftCorner.y) / (trueBottomRightCorner.y - trueTopLeftCorner.y) * windowHeight);
 }
 int windowTransform::transformWidth(float width) {
-    return int(windowWidth * (width) / (trueBottomRightCorner.x - trueTopLeftCorner.x));
+    return 2* int(windowWidth * (width) / (trueBottomRightCorner.x - trueTopLeftCorner.x));
 }
 int windowTransform::transformHeight(float height) {
-    return int(windowHeight * (height) / (trueBottomRightCorner.y - trueTopLeftCorner.y));
+    return 2*int(windowHeight * (height) / (trueTopLeftCorner.y - trueBottomRightCorner.y));
 }
 float windowTransform::transformAngle(float angle) {
-    return angle * 180 / float(M_PI);
+    return -angle * 180 / float(M_PI);
 }
