@@ -39,10 +39,10 @@ int windowTransform::transformY(float y) {
     return int((y - trueTopLeftCorner.y) / (trueBottomRightCorner.y - trueTopLeftCorner.y) * windowHeight);
 }
 int windowTransform::transformWidth(float width) {
-    return int(windowWidth * (width) / (trueBottomRightCorner.x - trueTopLeftCorner.x));
+    return 2* int(windowWidth * (width) / (trueBottomRightCorner.x - trueTopLeftCorner.x));
 }
 int windowTransform::transformHeight(float height) {
-    return int(windowHeight * (height) / (trueTopLeftCorner.y - trueBottomRightCorner.y));
+    return 2*int(windowHeight * (height) / (trueTopLeftCorner.y - trueBottomRightCorner.y));
 }
 float windowTransform::transformAngle(float angle) {
     return -angle * 180 / float(M_PI);
