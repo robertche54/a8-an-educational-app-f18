@@ -9,19 +9,32 @@
 HubWindow::HubWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::HubWindow)
+    , tf(b2Vec2(-10,10),b2Vec2(10,-10),320,180)
+    , world(b2Vec2(0, -9.81f))
 {
     ui->setupUi(this); 
 
     canvas.create(320, 180);
-    Mob* titleSprite = new Mob("/home/kaithyl/CS 3505/a8-an-educational-app-f18-LandonRoundy/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
+    b2BodyDef myBodyDef;
+    b2FixtureDef myFixtureDef;
+
+    myBodyDef.type = b2_staticBody; //change body type
+    myBodyDef.position.Set(0,-10); //middle, bottom
+
+    b2EdgeShape edgeShape;
+    edgeShape.Set(b2Vec2(-100,0), b2Vec2(100,0));
+    myFixtureDef.shape = &edgeShape;
+    b2Body* staticBody = world.CreateBody(&myBodyDef);
+    staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
+    Mob* titleSprite = new Mob("../A9/DinoTitle.png",0,10,15,5,world);
     mobs.push_back(titleSprite);
-    Mob* titleSprite2 = new Mob("/home/kaithyl/CS 3505/a8-an-educational-app-f18-LandonRoundy/DinoTitle.png",ui->titleLabel->x(),ui->titleLabel->y(),world);
+    Mob* titleSprite2 = new Mob("../A9/missingtexture.png",5,2,4,4,world);
     mobs.push_back(titleSprite2);
 
     QTimer *timer;
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &HubWindow::wiggleTitle);
-    timer->start(1);
+    timer->start(1000/60);
 
     connect(ui->metoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);
     connect(ui->volcanoButton, &QPushButton::pressed, this, &HubWindow::volcanoClicked);
@@ -35,7 +48,7 @@ void HubWindow::wiggleTitle(){
     world.Step(1 / 60.0f, 8, 3);
 
     for(Mob* s : mobs) {
-        s->Update();
+        s->Update(tf);
         canvas.draw(s->getSprite());
     }
 
@@ -52,7 +65,7 @@ void HubWindow::wiggleTitle(){
 HubWindow::~HubWindow()
 {
     for (Mob* s : mobs) {
-        //delete s;
+        delete s;
     }
 
     delete ui;
