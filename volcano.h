@@ -15,6 +15,11 @@ public:
     explicit Volcano(QWidget *parent = nullptr);
     ~Volcano();
 
+public slots:
+    void explode();
+
+signals :
+
 private:
     Ui::Volcano *ui;
 };

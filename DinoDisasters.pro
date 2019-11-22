@@ -69,6 +69,7 @@ SOURCES += \
     meteorslide1.cpp \
     meteorslide2.cpp \
     mob.cpp \
+    simulation.cpp \
     volcano.cpp \
     windowtransform.cpp
 
@@ -126,6 +127,7 @@ HEADERS += \
     meteorslide1.h \
     meteorslide2.h \
     mob.h \
+    simulation.h \
     volcano.h \
     windowtransform.h
 
