@@ -41,7 +41,7 @@ void Mob::createBody(b2World &world, bool dynamic)
     fixtureDef.shape = &polygonShape;
     fixtureDef.density = dynamic;
     fixtureDef.friction = 0.3f;
-    fixtureDef.restitution = 0.25f;
+    fixtureDef.restitution = 0.7f;
     body->CreateFixture(&fixtureDef);
 }
 

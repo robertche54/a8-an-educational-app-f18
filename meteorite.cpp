@@ -12,3 +12,13 @@ Meteorite::~Meteorite()
 {
     delete ui;
 }
+
+void Meteorite::on_OceanButton_clicked()
+{
+    slide1Popup.exec();
+}
+
+void Meteorite::on_GroundButton_clicked()
+{
+    slide2Popup.exec();
+}

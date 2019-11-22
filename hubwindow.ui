@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>572</width>
+    <height>434</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="metoriteButton">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>410</y>
+      <x>100</x>
+      <y>360</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -30,8 +30,8 @@
    <widget class="QPushButton" name="volcanoButton">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>410</y>
+      <x>260</x>
+      <y>360</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -43,8 +43,8 @@
    <widget class="QPushButton" name="mammalButton">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>410</y>
+      <x>410</x>
+      <y>360</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -56,10 +56,10 @@
    <widget class="QLabel" name="titleLabel">
     <property name="geometry">
      <rect>
-      <x>30</x>
-      <y>20</y>
-      <width>521</width>
-      <height>361</height>
+      <x>119</x>
+      <y>40</y>
+      <width>320</width>
+      <height>270</height>
      </rect>
     </property>
     <property name="text">
@@ -75,7 +75,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>572</width>
      <height>22</height>
     </rect>
    </property>

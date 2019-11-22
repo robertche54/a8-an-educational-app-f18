@@ -14,7 +14,6 @@ HubWindow::HubWindow(QWidget *parent)
 {
     ui->setupUi(this); 
 
-
     canvas.create(320, 180);
     b2BodyDef myBodyDef;
     b2FixtureDef myFixtureDef;
@@ -29,8 +28,9 @@ HubWindow::HubWindow(QWidget *parent)
     staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
     Mob* titleSprite = new Mob("../A9/DinoTitle.png",0,10,15,5,world);
     mobs.push_back(titleSprite);
-    Mob* titleSprite2 = new Mob("../A9/missingtexture.png",5,2,4,4,world);
-    mobs.push_back(titleSprite2);
+//    Mob* titleSprite2 = new Mob("../A9/missingtexture.png",5,2,4,4,world);
+//    mobs.push_back(titleSprite2);
+
 
 
     QTimer *timer;
@@ -59,7 +59,7 @@ void HubWindow::wiggleTitle(){
     sf::Texture rt = canvas.getTexture();
     sf::Image irt = rt.copyToImage();
     const uint8_t *pp = irt.getPixelsPtr();
-    QImage q(pp, 500, 500,QImage::Format_ARGB32);
+    QImage q(pp, 320, 180,QImage::Format_ARGB32);
     q = q.rgbSwapped();
     ui->titleLabel->setPixmap(QPixmap::fromImage(q));
 }

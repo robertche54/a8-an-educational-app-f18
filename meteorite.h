@@ -2,6 +2,8 @@
 #define METEORITE_H
 
 #include <QDialog>
+#include "meteorslide1.h"
+#include "meteorslide2.h"
 
 namespace Ui {
 class Meteorite;
@@ -15,8 +17,15 @@ public:
     explicit Meteorite(QWidget *parent = nullptr);
     ~Meteorite();
 
+private slots:
+    void on_OceanButton_clicked();
+
+    void on_GroundButton_clicked();
+
 private:
     Ui::Meteorite *ui;
+    MeteorSlide1 slide1Popup;
+    MeteorSlide2 slide2Popup;
 };
 
 #endif // METEORITE_H
