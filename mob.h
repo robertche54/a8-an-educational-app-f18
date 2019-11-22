@@ -3,6 +3,7 @@
 
 #include <string>
 #include <QImage>
+#include "windowtransform.h"
 
 #include "Box2D/Box2D.h"
 #include "SFML/Graphics.hpp"
@@ -14,25 +15,25 @@ class Mob
 {
 
 private:
-
-
     const int scale = 1;
+
+    b2Body* body;
+    b2FixtureDef fixtureDef;
+
 
     void createBody(b2World &world, bool dynamic = true);
 
 public:
     Vector2f position;
-    Vector2f origin;
     Vector2f size;
-    b2Body* body;
    // sf::RenderTexture texture; // belongs to window
     Texture sprite_image;
     Sprite sprite;
 
-    Mob(string, int, int, b2World &world);
-    ~Mob() { body->GetWorld()->DestroyBody(body); }
-    Sprite &getSprite() { return sprite; }
-    void Update();
+    Mob(string, float, float, float, float, b2World &world);
+    ~Mob();
+    Sprite &getSprite();
+    void Update(windowTransform);
 };
 
 #endif // SPRITE_H
