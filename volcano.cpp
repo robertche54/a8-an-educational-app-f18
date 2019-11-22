@@ -12,3 +12,7 @@ Volcano::~Volcano()
 {
     delete ui;
 }
+
+void Volcano::explode() {
+
+}
