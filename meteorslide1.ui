@@ -13,20 +13,20 @@
   <property name="windowTitle">
    <string>Ocean Impact</string>
   </property>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="NextButton">
    <property name="geometry">
     <rect>
      <x>600</x>
-     <y>430</y>
+     <y>390</y>
      <width>89</width>
      <height>25</height>
     </rect>
    </property>
    <property name="text">
-    <string>PushButton</string>
+    <string>Next</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="AnimationLabel">
    <property name="geometry">
     <rect>
      <x>410</x>
@@ -36,10 +36,10 @@
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string>Ocean Impact animation goes here</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="TextLabel">
    <property name="geometry">
     <rect>
      <x>20</x>
@@ -49,7 +49,23 @@
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="BackButton">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>430</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Back</string>
    </property>
   </widget>
  </widget>
