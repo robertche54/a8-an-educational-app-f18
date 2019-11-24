@@ -37,22 +37,11 @@ void Mob::createSprite(string file)
     sprite.setPosition(position);
 }
 
-void Mob::createBody(b2World &world, type type)
+void Mob::createBody(b2World &world, b2BodyType type)
 {
     // Uses the b2World factory to create a new body
     b2BodyDef bodyDef;
-    switch(type)
-    {
-        case staticBody:
-            bodyDef.type = b2_staticBody;
-        break;
-        case dynamicBody:
-            bodyDef.type = b2_dynamicBody;
-        break;
-        case kinematicBody:
-            bodyDef.type = b2_kinematicBody;
-        break;
-    }
+    bodyDef.type = type;
     bodyDef.position.Set(position.x, position.y);
     body = world.CreateBody(&bodyDef);
 
@@ -61,7 +50,7 @@ void Mob::createBody(b2World &world, type type)
     polygonShape.SetAsBox(size.x, size.y);
 
     fixtureDef.shape = &polygonShape;
-    fixtureDef.density = (type == dynamicBody) || (type == kinematicBody);
+    fixtureDef.density = (type == b2_dynamicBody) || (type == b2_kinematicBody);
     fixtureDef.friction = 0.3f;
     fixtureDef.restitution = 0.7f;
     body->CreateFixture(&fixtureDef);
