@@ -14,6 +14,8 @@ private:
     b2Vec2 gravity = b2Vec2(0.0, -9.81f);
     vector<Mob*> genericMobs;
 
+    bool isRunning = true;
+
 public:
     map<string, Mob*> namedMobs;
     b2World world = b2World(gravity);
@@ -24,6 +26,7 @@ public:
     void setGravity(float, float);
     void createMob(string, int, int, int, int);
     void createMob(string, int, int, int, int, string, b2BodyType);
+    void toggleRunning() { isRunning = !isRunning; }
     QImage step();
     void createExplosion(Mob*);
 };

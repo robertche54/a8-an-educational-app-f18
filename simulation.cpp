@@ -32,7 +32,8 @@ void Simulation::createMob(string filePath, int posX, int posY, int sizeX,
 QImage Simulation::step() {
     canvas.clear();
 
-    world.Step(1 / 60.0f, 8, 3);
+    if(isRunning)
+        world.Step(1 / 60.0f, 8, 3);
 
     for(pair<string, Mob*> namedMob : namedMobs) {
         namedMob.second->Update(tf);

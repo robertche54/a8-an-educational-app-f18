@@ -26,6 +26,7 @@ public slots:
     void volcanoClicked();
     void mammalsClicked();
     void wiggleTitle();
+    void togglePhysics() { simulation.toggleRunning(); }
 
 signals:
 

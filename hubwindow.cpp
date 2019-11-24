@@ -37,6 +37,7 @@ HubWindow::HubWindow(QWidget *parent)
     connect(ui->metoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);
     connect(ui->volcanoButton, &QPushButton::pressed, this, &HubWindow::volcanoClicked);
     connect(ui->mammalButton, &QPushButton::pressed, this, &HubWindow::mammalsClicked);
+    connect(ui->physicsButton, &QPushButton::pressed, this, &HubWindow::togglePhysics);
 
 }
 
