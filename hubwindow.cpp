@@ -25,8 +25,8 @@ HubWindow::HubWindow(QWidget *parent)
     myFixtureDef.shape = &edgeShape;
     b2Body* staticBody = simulation.world.CreateBody(&myBodyDef);
     staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
-    simulation.createMob("../DinoDisasters/DinoTitle.png", 0, 10, 15, 5);
-    simulation.createMob("../DinoDisasters/bricks.jpg", 5, 2, 4, 4);
+    simulation.createMob("../A9/DinoTitle.png", 0, 10, 15, 5);
+    simulation.createMob("../A9/bricks.jpg", 5, 2, 4, 4);
 
     QTimer *timer;
     timer = new QTimer(this);
