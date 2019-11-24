@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>572</width>
+    <height>434</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="QPushButton" name="metoriteButton">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>280</y>
+      <x>100</x>
+      <y>360</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -30,8 +30,8 @@
    <widget class="QPushButton" name="volcanoButton">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>280</y>
+      <x>260</x>
+      <y>360</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -43,8 +43,8 @@
    <widget class="QPushButton" name="mammalButton">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>280</y>
+      <x>410</x>
+      <y>360</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -66,7 +66,7 @@
      <string>TextLabel</string>
     </property>
     <property name="scaledContents">
-     <bool>true</bool>
+     <bool>false</bool>
     </property>
    </widget>
   </widget>
@@ -75,7 +75,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>572</width>
      <height>22</height>
     </rect>
    </property>

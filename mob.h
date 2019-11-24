@@ -15,6 +15,8 @@ class Mob
 {
 
 private:
+    const int scale = 1;
+
     b2Body* body;
     b2FixtureDef fixtureDef;
 
