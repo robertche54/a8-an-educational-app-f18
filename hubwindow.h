@@ -25,7 +25,6 @@ public slots:
     void metoriteClicked();
     void volcanoClicked();
     void mammalsClicked();
-    void wiggleTitle();
     void togglePhysics() { simulation.toggleRunning(); }
 
 signals:
@@ -37,5 +36,7 @@ private:
     Mammals mammalsPopup;
     Simulation simulation;
     windowTransform tf;
+
+    void paintEvent(QPaintEvent*);
 };
 #endif // HUBWINDOW_H

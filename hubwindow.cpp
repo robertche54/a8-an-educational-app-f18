@@ -29,11 +29,6 @@ HubWindow::HubWindow(QWidget *parent)
     simulation.createMob("../a8-an-educational-app-f18-LandonRoundy/DinoTitle.png", 0, 10, 15, 5);
     simulation.createMob("../a8-an-educational-app-f18-LandonRoundy/bricks.jpg", 5, 2, 4, 4, "", b2_staticBody);
 
-    QTimer *timer;
-    timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &HubWindow::wiggleTitle);
-    timer->start(1000/60);
-
     connect(ui->metoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);
     connect(ui->volcanoButton, &QPushButton::pressed, this, &HubWindow::volcanoClicked);
     connect(ui->mammalButton, &QPushButton::pressed, this, &HubWindow::mammalsClicked);
@@ -41,8 +36,8 @@ HubWindow::HubWindow(QWidget *parent)
 
 }
 
-void HubWindow::wiggleTitle(){
-
+void HubWindow::paintEvent(QPaintEvent*)
+{
     QImage newImage = simulation.step();
     ui->titleLabel->setPixmap(QPixmap::fromImage(newImage));
 }

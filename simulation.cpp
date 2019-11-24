@@ -33,7 +33,7 @@ QImage Simulation::step() {
     canvas.clear();
 
     if(isRunning)
-        world.Step(1 / 60.0f, 8, 3);
+        world.Step(1 / 240.0f, 8, 3);
 
     for(pair<string, Mob*> namedMob : namedMobs) {
         namedMob.second->Update(tf);
@@ -56,6 +56,12 @@ QImage Simulation::step() {
     return canvasQImage;
 }
 
-void Simulation::createExplosion(Mob* sourceMob) {
+void Simulation::createExplosion(int x, int y, int numRays) {
 
+    // Simulates the effect of an explosion by creating a number of
+    // particle rays that emit off a point
+    for(int i = 0; i < numRays; i++)
+    {
+
+    }
 }

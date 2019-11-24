@@ -28,7 +28,7 @@ public:
     void createMob(string, int, int, int, int, string, b2BodyType);
     void toggleRunning() { isRunning = !isRunning; }
     QImage step();
-    void createExplosion(Mob*);
+    void createExplosion(int x, int y, int numRays = 50);
 };
 
 #endif // SIMULATION_H
