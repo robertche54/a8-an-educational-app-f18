@@ -1,10 +1,5 @@
 #include "hubwindow.h"
 #include "ui_hubwindow.h"
-#include "mammals.h"
-#include "volcano.h"
-#include "meteorite.h"
-#include <QThread>
-#include <QTimer>
 
 HubWindow::HubWindow(QWidget *parent)
     : QMainWindow(parent)

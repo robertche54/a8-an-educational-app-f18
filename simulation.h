@@ -1,13 +1,17 @@
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
+#include <QTimer>
+#include <QVector>
 #include <map>
+
 #include "mob.h"
 
 using namespace std;
 
-class Simulation
+class Simulation : QObject
 {
+    Q_OBJECT
 
 private:
     sf::RenderTexture canvas;
@@ -28,7 +32,7 @@ public:
     void createMob(string, int, int, int, int, string, b2BodyType);
     void toggleRunning() { isRunning = !isRunning; }
     QImage step();
-    void createExplosion(int x, int y, int numRays = 50);
+    void createExplosion(int x, int y, int blastPower = 20, int numRays = 50);
 };
 
 #endif // SIMULATION_H

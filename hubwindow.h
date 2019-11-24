@@ -2,14 +2,15 @@
 #define HUBWINDOW_H
 
 #include <QMainWindow>
-#include <SFML/Graphics.hpp>
-#include <string>
 #include <QImage>
+#include <SFML/Graphics.hpp>
+
+#include <string>
+
 #include "meteorite.h"
 #include "mammals.h"
 #include "volcano.h"
 #include "simulation.h"
-#include <QTimer>
 
 namespace Ui { class HubWindow; }
 class HubWindow : public QMainWindow

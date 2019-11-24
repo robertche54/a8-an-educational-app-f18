@@ -11,8 +11,9 @@
 using namespace std;
 using namespace sf;
 
-class Mob
+class Mob : QObject
 {
+    Q_OBJECT
 
 private:
     const int scale = 1;
