@@ -14,9 +14,10 @@ using namespace sf;
 class Mob
 {
 
-private:
+protected:
     b2Body* body;
     b2FixtureDef fixtureDef;
+    b2World* world;
 
     void createBody(b2World &world, bool dynamic = true);
 

@@ -2,7 +2,8 @@
 
 Mob::Mob(std::string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world)
     : position(locationX, locationY),
-      size(sizeX,sizeY)
+      size(sizeX,sizeY),
+      world(&world)
 {
     sprite_image.loadFromFile(file);
     sprite_image.setSmooth(true);
