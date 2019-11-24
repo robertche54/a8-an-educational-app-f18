@@ -23,8 +23,9 @@ void Simulation::createMob(string filePath, int posX, int posY, int sizeX, int s
     genericMobs.push_back(newMob);
 }
 
-void Simulation::createMob(string filePath, int posX, int posY, int sizeX, int sizeY, string name) {
-    Mob* newMob = new Mob(filePath, posX, posY, sizeX, sizeY, world);
+void Simulation::createMob(string filePath, int posX, int posY, int sizeX,
+                           int sizeY, string name, b2BodyType type) {
+    Mob* newMob = new Mob(filePath, posX, posY, sizeX, sizeY, world, type);
     namedMobs.insert(pair<string, Mob*>(name, newMob));
 }
 

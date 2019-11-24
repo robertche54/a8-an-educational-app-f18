@@ -23,7 +23,7 @@ public:
     ~Simulation();
     void setGravity(float, float);
     void createMob(string, int, int, int, int);
-    void createMob(string, int, int, int, int, string);
+    void createMob(string, int, int, int, int, string, b2BodyType);
     QImage step();
     void createExplosion(Mob*);
 };

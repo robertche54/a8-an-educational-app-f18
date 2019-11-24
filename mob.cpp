@@ -8,7 +8,7 @@ Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY
     createBody(world);
 }
 
-Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world, type type)
+Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world, b2BodyType type)
     : position(locationX, locationY),
       size(sizeX,sizeY)
 {
