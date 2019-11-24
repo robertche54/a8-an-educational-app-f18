@@ -1,19 +1,20 @@
 #include "mob.h"
 
-Mob::Mob(std::string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world)
+Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world)
     : position(locationX, locationY),
       size(sizeX,sizeY)
 {
-    sprite_image.loadFromFile(file);
-    sprite_image.setSmooth(true);
-    sprite.setTexture(sprite_image);
-    auto bounds = sprite.getLocalBounds();
-    sprite.setOrigin(Vector2f(bounds.width/2, bounds.height/2));
-    sprite.setPosition(position);
-
+    createSprite(file);
     createBody(world);
 }
 
+Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world, type type)
+    : position(locationX, locationY),
+      size(sizeX,sizeY)
+{
+    createSprite(file);
+    createBody(world, type);
+}
 
 void Mob::Update(windowTransform transform)
 {
@@ -26,11 +27,32 @@ void Mob::Update(windowTransform transform)
     sprite.setScale(transform.transformWidth(size.x) / bounds.width, transform.transformHeight(size.y) / bounds.height);
 }
 
-void Mob::createBody(b2World &world, bool dynamic)
+void Mob::createSprite(string file)
+{
+    sprite_image.loadFromFile(file);
+    sprite_image.setSmooth(true);
+    sprite.setTexture(sprite_image);
+    auto bounds = sprite.getLocalBounds();
+    sprite.setOrigin(Vector2f(bounds.width/2, bounds.height/2));
+    sprite.setPosition(position);
+}
+
+void Mob::createBody(b2World &world, type type)
 {
     // Uses the b2World factory to create a new body
     b2BodyDef bodyDef;
-    if(dynamic) bodyDef.type = b2_dynamicBody;
+    switch(type)
+    {
+        case staticBody:
+            bodyDef.type = b2_staticBody;
+        break;
+        case dynamicBody:
+            bodyDef.type = b2_dynamicBody;
+        break;
+        case kinematicBody:
+            bodyDef.type = b2_kinematicBody;
+        break;
+    }
     bodyDef.position.Set(position.x, position.y);
     body = world.CreateBody(&bodyDef);
 
@@ -39,16 +61,8 @@ void Mob::createBody(b2World &world, bool dynamic)
     polygonShape.SetAsBox(size.x, size.y);
 
     fixtureDef.shape = &polygonShape;
-    fixtureDef.density = dynamic;
+    fixtureDef.density = (type == dynamicBody) || (type == kinematicBody);
     fixtureDef.friction = 0.3f;
     fixtureDef.restitution = 0.7f;
     body->CreateFixture(&fixtureDef);
-}
-
-Mob::~Mob() {
-    body->GetWorld()->DestroyBody(body);
-}
-
-Sprite& Mob::getSprite() {
-    return sprite;
 }
