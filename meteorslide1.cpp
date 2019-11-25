@@ -1,5 +1,6 @@
 #include "meteorslide1.h"
 #include "ui_meteorslide1.h"
+#include <iostream>
 
 MeteorSlide1::MeteorSlide1(QWidget *parent) :
     QDialog(parent),
@@ -15,9 +16,29 @@ MeteorSlide1::MeteorSlide1(QWidget *parent) :
     infoVec.push_back(string3);
     infoVec.push_back(string4);
 
+    b2BodyDef myBodyDef;
+    b2FixtureDef myFixtureDef;
+
+    myBodyDef.type = b2_staticBody; //change body type
+    myBodyDef.position.Set(0,-10);
+
+    b2EdgeShape edgeShape;
+    edgeShape.Set(b2Vec2(-100,0), b2Vec2(100,0));
+    myFixtureDef.shape = &edgeShape;
+    b2Body* staticBody = simulation.world.CreateBody(&myBodyDef);
+    staticBody->CreateFixture(&myFixtureDef);
+
     ui->TextLabel->setText(infoVec.front());
 
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/otherimage.png",-15.0,90.0,5.0,5.0,"Unicorn");
+    Mob *uni = simulation.namedMobs.at("Unicorn");
+    uni->body->SetLinearVelocity(b2Vec2(20.0f, -100.0));
 
+    for(float i = -5; i < 20; i++)
+    {
+        simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/bricks.jpg", i,-8.0,0.5,0.5);
+    }
+    ui->AnimationLabel->setPixmap(QPixmap::fromImage(simulation.step()));
 }
 
 MeteorSlide1::~MeteorSlide1()
@@ -34,6 +55,12 @@ void MeteorSlide1::on_NextButton_clicked()
     }
 }
 
+void MeteorSlide1::runAnimation(){
+
+    QImage newImage = simulation.step();
+    ui->AnimationLabel->setPixmap(QPixmap::fromImage(newImage));
+}
+
 void MeteorSlide1::on_BackButton_clicked()
 {
     if(infoIndex > 0)
@@ -41,4 +68,11 @@ void MeteorSlide1::on_BackButton_clicked()
         infoIndex--;
         ui->TextLabel->setText(infoVec.at(infoIndex));
     }
+}
+
+void MeteorSlide1::on_Start_clicked()
+{
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &MeteorSlide1::runAnimation);
+    timer->start(1000/60);
 }
