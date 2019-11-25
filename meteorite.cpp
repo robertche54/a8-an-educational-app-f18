@@ -15,10 +15,12 @@ Meteorite::~Meteorite()
 
 void Meteorite::on_OceanButton_clicked()
 {
-    slide1Popup.exec();
+    MeteorSlide1 slide1;
+    slide1.exec();
 }
 
 void Meteorite::on_GroundButton_clicked()
 {
-    slide2Popup.exec();
+    MeteorSlide2 slide2;
+    slide2.exec();
 }

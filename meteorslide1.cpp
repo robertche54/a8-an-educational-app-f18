@@ -17,7 +17,6 @@ MeteorSlide1::MeteorSlide1(QWidget *parent) :
 
     ui->TextLabel->setText(infoVec.front());
 
-
 }
 
 MeteorSlide1::~MeteorSlide1()

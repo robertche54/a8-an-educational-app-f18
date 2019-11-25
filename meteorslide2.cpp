@@ -1,5 +1,6 @@
 #include "meteorslide2.h"
 #include "ui_meteorslide2.h"
+#include "Box2D/Box2D.h"
 
 MeteorSlide2::MeteorSlide2(QWidget *parent) :
     QDialog(parent),
@@ -16,6 +17,36 @@ MeteorSlide2::MeteorSlide2(QWidget *parent) :
     infoVec.push_back(string4);
 
     ui->TextLabel->setText(infoVec.front());
+
+    b2BodyDef myBodyDef;
+    b2FixtureDef myFixtureDef;
+
+    myBodyDef.type = b2_staticBody; //change body type
+    myBodyDef.position.Set(0,-10); //middle, bottom
+
+    b2EdgeShape edgeShape;
+    edgeShape.Set(b2Vec2(-100,0), b2Vec2(100,0));
+    myFixtureDef.shape = &edgeShape;
+    b2Body* staticBody = sim.world.CreateBody(&myBodyDef);
+    staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
+
+    sim.setGravity(0,-1);
+
+    // Meteor mob
+    sim.createMob("../A9/meteorite.png",0,50,5,5,"meteor");
+    Mob* meteor = sim.namedMobs.at("meteor");
+    meteor->body->SetLinearVelocity(b2Vec2(0.0f, -50.0f));
+    ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim.step()));
+
+    // Dino mobs
+    for(int i=0; i<5; i++){
+        sim.createMob("../A9/TRex.png",-i-1,1,2,2);
+    }
+
+    QTimer* timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &MeteorSlide2::update);
+    timer->start(1000/60);
+
 }
 
 MeteorSlide2::~MeteorSlide2()
@@ -39,4 +70,8 @@ void MeteorSlide2::on_BackButton_clicked()
         infoIndex--;
         ui->TextLabel->setText(infoVec.at(infoIndex));
     }
+}
+
+void MeteorSlide2::update(){
+     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim.step()));
 }

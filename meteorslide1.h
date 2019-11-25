@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <vector>
+#include "simulation.h"
 using namespace std;
 
 namespace Ui {

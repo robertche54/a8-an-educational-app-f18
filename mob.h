@@ -17,8 +17,7 @@ class Mob
 private:
     const int scale = 1;
 
-    b2Body* body;
-    b2FixtureDef fixtureDef;
+
 
     void createBody(b2World &world, bool dynamic = true);
 
@@ -27,6 +26,8 @@ public:
     Vector2f size;
     Texture sprite_image;
     Sprite sprite;
+    b2Body* body;
+    b2FixtureDef fixtureDef;
 
     Mob(string, float, float, float, float, b2World &world);
     ~Mob();
