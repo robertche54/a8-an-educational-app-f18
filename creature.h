@@ -10,6 +10,8 @@ protected:
 public:
     Creature(std::string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world);
     void Update(windowTransform);
+    void SetRadius(float radius);
+    float GetRadius();
 };
 
 #endif // CREATURE_H

@@ -11,6 +11,7 @@ void Creature::Update(windowTransform tf) {
 }
 
 void Creature::SetRadius(float radius) {
+    size = radius;
     b2BodyDef myBodyDef;
     myBodyDef.type = b2_dynamicBody;
     myBodyDef.position.Set(body->GetPosition().x, body->GetPosition().y);
@@ -27,4 +28,8 @@ void Creature::SetRadius(float radius) {
 
     world->DestroyBody(body);
     body = newBody;
+}
+
+float Creature::GetRadius() {
+    return size;
 }
