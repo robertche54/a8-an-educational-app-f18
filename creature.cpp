@@ -1,7 +1,7 @@
 #include "creature.h"
 #include <limits>
 
-Creature::Creature(std::string file, float locationX, float locationY, float radius, b2World &wor) :
+Creature::Creature(string file, float locationX, float locationY, float radius, b2World &wor) :
     Mob(file, locationX, locationY, radius, radius, wor),
     radius(radius),
     newRadius(radius)

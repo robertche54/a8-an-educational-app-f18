@@ -25,6 +25,7 @@ public:
     void setGravity(float, float);
     void createMob(string, int, int, int, int);
     void createMob(string, int, int, int, int, string);
+    void addMob(Mob*, string name = "");
     QImage step();
     void createExplosion(Mob*);
 };

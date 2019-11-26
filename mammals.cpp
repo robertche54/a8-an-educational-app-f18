@@ -10,7 +10,8 @@ Mammals::Mammals(QWidget *parent) :
     handler = new CreatureCollisionHandler();
     simulation.setContactListener(handler);
 
-    simulation.createMob("../A9/cabbage.png", 5, 5, 4, 4);
+    Creature* cabbage = new Creature("../A9/cabbage.png", 5, 5, 4, simulation.world);
+    simulation.addMob(cabbage);
 }
 
 Mammals::~Mammals()

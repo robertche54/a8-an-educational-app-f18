@@ -33,6 +33,12 @@ void Simulation::createMob(string filePath, int posX, int posY, int sizeX, int s
     namedMobs.insert(pair<string, Mob*>(name, newMob));
 }
 
+void Simulation::addMob(Mob* mob, string name)
+{
+    if(name.empty()) genericMobs.push_back(mob);
+    else namedMobs.insert(pair<string, Mob*>(name, mob));
+}
+
 QImage Simulation::step() {
     canvas.clear();
 
