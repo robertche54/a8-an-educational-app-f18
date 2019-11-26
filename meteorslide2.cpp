@@ -18,6 +18,8 @@ MeteorSlide2::MeteorSlide2(QWidget *parent) :
 
     ui->TextLabel->setText(infoVec.front());
 
+    ui->backLabel->setPixmap(QPixmap("../A9/dinoscene0.jpg"));
+
     b2BodyDef myBodyDef;
     b2FixtureDef myFixtureDef;
 

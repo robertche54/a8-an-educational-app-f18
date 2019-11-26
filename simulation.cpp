@@ -44,7 +44,7 @@ void Simulation::createMob(string filePath, int posX, int posY, int sizeX,
  * Returns a QImage representing the state of box2D after the simulated step.
  */
 QImage Simulation::step() {
-    canvas.clear();
+    canvas.clear(Color(10,10,10,0));
 
     if(isRunning)
         world.Step(1 / 240.0f, 8, 3);
