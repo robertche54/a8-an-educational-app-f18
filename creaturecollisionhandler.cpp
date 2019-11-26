@@ -7,10 +7,10 @@ CreatureCollisionHandler::CreatureCollisionHandler()
 }
 
 void CreatureCollisionHandler::BeginContact(b2Contact* contact) {
-
-    //check if fixture A was a ball
+    //Get userdata from the two bodies involved in the collision
     void* bodyAUserData = contact->GetFixtureA()->GetBody()->GetUserData();
     void* bodyBUserData = contact->GetFixtureB()->GetBody()->GetUserData();
+
     if (bodyAUserData != nullptr && bodyBUserData != nullptr) {
         Creature* cA = reinterpret_cast<Creature*>(bodyAUserData);
         Creature* cB = reinterpret_cast<Creature*>(bodyBUserData);
