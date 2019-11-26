@@ -21,6 +21,7 @@ public:
 
     Simulation();
     ~Simulation();
+    void setContactListener(b2ContactListener*);
     void setGravity(float, float);
     void createMob(string, int, int, int, int);
     void createMob(string, int, int, int, int, string);

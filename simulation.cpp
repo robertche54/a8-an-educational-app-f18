@@ -14,6 +14,11 @@ Simulation::~Simulation() {
     }
 }
 
+void Simulation::setContactListener(b2ContactListener* listener)
+{
+    world.SetContactListener(listener);
+}
+
 void Simulation::setGravity(float x, float y) {
     world.SetGravity(b2Vec2(x, y));
 }

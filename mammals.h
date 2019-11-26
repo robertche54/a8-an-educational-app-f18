@@ -3,9 +3,10 @@
 
 #include <QDialog>
 
-namespace Ui {
-class Mammals;
-}
+#include <simulation.h>
+#include <creaturecollisionhandler.h>
+
+namespace Ui { class Mammals; }
 
 class Mammals : public QDialog
 {
@@ -17,6 +18,8 @@ public:
 
 private:
     Ui::Mammals *ui;
+    CreatureCollisionHandler* handler;
+    Simulation simulation;
 };
 
 #endif // MAMMALS_H

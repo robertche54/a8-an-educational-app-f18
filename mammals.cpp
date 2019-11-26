@@ -6,6 +6,8 @@ Mammals::Mammals(QWidget *parent) :
     ui(new Ui::Mammals)
 {
     ui->setupUi(this);
+    handler = new CreatureCollisionHandler();
+    simulation.setContactListener(handler);
 }
 
 Mammals::~Mammals()
