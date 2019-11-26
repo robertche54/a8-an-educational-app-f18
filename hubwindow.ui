@@ -18,7 +18,7 @@
     <property name="geometry">
      <rect>
       <x>100</x>
-      <y>360</y>
+      <y>310</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -31,7 +31,7 @@
     <property name="geometry">
      <rect>
       <x>260</x>
-      <y>360</y>
+      <y>310</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -44,7 +44,7 @@
     <property name="geometry">
      <rect>
       <x>410</x>
-      <y>360</y>
+      <y>310</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -67,6 +67,19 @@
     </property>
     <property name="scaledContents">
      <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="physicsButton">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>350</y>
+      <width>391</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Toggle Physics</string>
     </property>
    </widget>
   </widget>

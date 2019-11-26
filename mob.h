@@ -11,27 +11,29 @@
 using namespace std;
 using namespace sf;
 
-class Mob
+class Mob : QObject
 {
+    Q_OBJECT
 
 private:
     const int scale = 1;
 
+    b2FixtureDef fixtureDef;
 
-
-    void createBody(b2World &world, bool dynamic = true);
+    void createBody(b2World &world, b2BodyType type = b2_dynamicBody);
+    void createSprite(string);
 
 public:
+    b2Body* body;
     Vector2f position;
     Vector2f size;
     Texture sprite_image;
     Sprite sprite;
-    b2Body* body;
-    b2FixtureDef fixtureDef;
 
-    Mob(string, float, float, float, float, b2World &world);
-    ~Mob();
-    Sprite &getSprite();
+    Mob(string, float, float, float, float, b2World&);
+    Mob(string, float, float, float, float, b2World&, b2BodyType type);
+    ~Mob() { body->GetWorld()->DestroyBody(body); }
+    Sprite &getSprite() { return sprite; }
     void Update(windowTransform);
 };
 

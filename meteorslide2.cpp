@@ -33,7 +33,7 @@ MeteorSlide2::MeteorSlide2(QWidget *parent) :
     sim.setGravity(0,-1);
 
     // Meteor mob
-    sim.createMob("../A9/meteorite.png",0,50,5,5,"meteor");
+    sim.createMob("../A9/meteorite.png",0,50,5,5,"meteor", b2_dynamicBody);
     Mob* meteor = sim.namedMobs.at("meteor");
     meteor->body->SetLinearVelocity(b2Vec2(0.0f, -50.0f));
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim.step()));

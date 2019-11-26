@@ -1,7 +1,7 @@
 #ifndef WINDOWTRANSFORM_H
 #define WINDOWTRANSFORM_H
-#include "Box2D/Box2D.h"
 
+#include "Box2D/Box2D.h"
 
 class windowTransform
 {
