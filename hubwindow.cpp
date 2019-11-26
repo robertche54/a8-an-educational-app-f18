@@ -21,18 +21,22 @@ HubWindow::HubWindow(QWidget *parent)
     b2Body* staticBody = simulation.world.CreateBody(&myBodyDef);
     staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
 
-    simulation.createMob("../A9/DinoTitle.png", 0, 10, 15, 5);
-    simulation.createMob("../A9/bricks.jpg", 5, 2, 4, 4, "", b2_staticBody);
+    simulation.createMob("../A9/DinoTitle.png", 0, 5, 15, 5, "title", b2_dynamicBody);
+    simulation.createMob("../A9/bricks.jpg", 5, 1, 2, 2, "", b2_staticBody);
 
     connect(ui->metoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);
     connect(ui->volcanoButton, &QPushButton::pressed, this, &HubWindow::volcanoClicked);
     connect(ui->mammalButton, &QPushButton::pressed, this, &HubWindow::mammalsClicked);
     connect(ui->physicsButton, &QPushButton::pressed, this, &HubWindow::togglePhysics);
 
+    Mob* title = simulation.namedMobs.at("");
+    simulation.createExplosion(title->body->GetPosition(), 50, 5000);
+    //simulation.applyImpulse(title, 135, 12.0f);
 }
 
 void HubWindow::paintEvent(QPaintEvent*)
 {
+
     QImage newImage = simulation.step();
     ui->titleLabel->setPixmap(QPixmap::fromImage(newImage));
 }

@@ -56,15 +56,12 @@ QImage Simulation::step() {
     return canvasQImage;
 }
 
-void Simulation::createExplosion(int x, int y, int blastPower, int numRays) {
+void Simulation::createExplosion(b2Vec2 position, int blastPower, int numRays) {
 
     vector<b2Body*> rays;
 
     // Cleans up rays after they run out of momentum (after 5 seconds)
-    QTimer::singleShot(500, this, SLOT([] () => {
-        for(b2Body* ray : rays)
-            ray->GetWorld()->DestroyBody(ray);
-    }));
+    QTimer::singleShot(5000, this, SLOT(removeRays()));
 
     // Simulates the effect of an explosion by creating a number of
     // particle rays that emit off a point
@@ -80,8 +77,8 @@ void Simulation::createExplosion(int x, int y, int blastPower, int numRays) {
         bd.bullet = true; // Treats the rays as bullets (so they dont tunnel)
         bd.linearDamping = 10; // Apply resistance due to air
         bd.gravityScale = 0; // Make sure rays are not effected by gravity
-        bd.position = b2Vec2(x, y);
-        bd.linearVelocity = blastPower * rayDir;
+        bd.position = position;
+        bd.linearVelocity = (blastPower * 10) * rayDir;
         b2Body* body = world.CreateBody(&bd);
 
         rays.push_back(body);
@@ -91,12 +88,14 @@ void Simulation::createExplosion(int x, int y, int blastPower, int numRays) {
 
         b2FixtureDef fd;
         fd.shape = &circleShape;
-        fd.density = 60/numRays;
+        fd.density = 600/numRays;
         fd.friction = 0;
         fd.restitution = 0.99f; // High reflection
         fd.filter.groupIndex = -1; // Make rays not collide with each other
         body->CreateFixture( &fd );
     }
+
+    rayQueue.push(rays);
 }
 
 void Simulation::applyImpulse(Mob* movedMob, double degreeAngle, float magnitude) {
@@ -108,4 +107,17 @@ void Simulation::applyImpulse(Mob* movedMob, double degreeAngle, float magnitude
     b2Vec2 position = movedMob->body->GetPosition();
 
     movedMob->body->ApplyLinearImpulse(impulse, position, true);
+}
+
+void Simulation::removeRays() {
+    if(rayQueue.empty()) {
+        return;
+    }
+
+    vector<b2Body*> rays = rayQueue.front();
+
+    for(b2Body* ray : rays) {
+        ray->GetWorld()->DestroyBody(ray);
+    }
+    rayQueue.pop();
 }

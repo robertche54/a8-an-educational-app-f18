@@ -50,7 +50,7 @@ void Mob::createBody(b2World &world, b2BodyType type)
     polygonShape.SetAsBox(size.x, size.y);
 
     fixtureDef.shape = &polygonShape;
-    fixtureDef.density = (type == b2_dynamicBody) || (type == b2_kinematicBody);
+    fixtureDef.density = 1; //(type == b2_dynamicBody) || (type == b2_kinematicBody);
     fixtureDef.friction = 0.3f;
     fixtureDef.restitution = 0.7f;
     body->CreateFixture(&fixtureDef);
