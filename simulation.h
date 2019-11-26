@@ -35,6 +35,7 @@ public:
     void createMob(string, int, int, int, int);
     void createMob(string, int, int, int, int, string, b2BodyType);
     void toggleRunning() { isRunning = !isRunning; }
+
     QImage step();
     void createExplosion(b2Vec2 position, int blastPower = 20, int numRays = 50);
     void applyImpulse(Mob*, double, float);

@@ -68,6 +68,19 @@
     <string>Back</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="Start">
+   <property name="geometry">
+    <rect>
+     <x>568</x>
+     <y>350</y>
+     <width>121</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Start Animation</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
