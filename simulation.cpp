@@ -14,27 +14,42 @@ Simulation::~Simulation() {
     }
 }
 
+// Changes the simulation's gravity if earth-like gravity is not desireable.
 void Simulation::setGravity(float x, float y) {
     world.SetGravity(b2Vec2(x, y));
 }
 
+/*
+ * Creates a generic Mob that CANNOT be accessed later.
+ * For Mobs that are part of the environment and are thrown around by other forces
+ * like explosions and collisions with other Mobs.
+ */
 void Simulation::createMob(string filePath, int posX, int posY, int sizeX, int sizeY) {
     Mob* newMob = new Mob(filePath, posX, posY, sizeX, sizeY, world);
     genericMobs.push_back(newMob);
 }
 
+/*
+ * Creates a named Mob that CAN be accessed later.
+ * For Mobs that are used to create explosions or have impulses applied to them.
+ */
 void Simulation::createMob(string filePath, int posX, int posY, int sizeX,
                            int sizeY, string name, b2BodyType type) {
     Mob* newMob = new Mob(filePath, posX, posY, sizeX, sizeY, world, type);
     namedMobs.insert(pair<string, Mob*>(name, newMob));
 }
 
+/*
+ * Moves the simulation forward one frame.
+ * Returns a QImage representing the state of box2D after the simulated step.
+ */
 QImage Simulation::step() {
     canvas.clear();
 
     if(isRunning)
         world.Step(1 / 240.0f, 8, 3);
 
+    // Updates our named Mobs first because they can cause other Mobs to move
     for(pair<string, Mob*> namedMob : namedMobs) {
         namedMob.second->Update(tf);
         canvas.draw(namedMob.second->getSprite());
@@ -99,11 +114,16 @@ void Simulation::createExplosion(b2Vec2 position, int blastPower, int numRays) {
 }
 
 void Simulation::applyImpulse(Mob* movedMob, double degreeAngle, float magnitude) {
+    // cmath uses radians
     float radAngle = float(degreeAngle) * degreeToRad;
 
+    // box2D wants 2D vectors
     float magX = magnitude * cos(radAngle);
     float magY = magnitude * sin(radAngle);
-    b2Vec2 impulse = b2Vec2(magX * movedMob->body->GetMass(), magY * movedMob->body->GetMass());
+
+    // box2D calculates impulse based on an object's mass
+    float mass = movedMob->body->GetMass();
+    b2Vec2 impulse = b2Vec2(magX * mass, magY * mass);
     b2Vec2 position = movedMob->body->GetPosition();
 
     movedMob->body->ApplyLinearImpulse(impulse, position, true);
@@ -115,7 +135,6 @@ void Simulation::removeRays() {
     }
 
     vector<b2Body*> rays = rayQueue.front();
-
     for(b2Body* ray : rays) {
         ray->GetWorld()->DestroyBody(ray);
     }

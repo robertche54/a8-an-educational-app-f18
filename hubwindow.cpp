@@ -29,6 +29,7 @@ HubWindow::HubWindow(QWidget *parent)
     connect(ui->mammalButton, &QPushButton::pressed, this, &HubWindow::mammalsClicked);
     connect(ui->physicsButton, &QPushButton::pressed, this, &HubWindow::togglePhysics);
 
+    // explosion and impulse examples, creating the explosion at "" and impulse on "title" works best
     Mob* title = simulation.namedMobs.at("");
     simulation.createExplosion(title->body->GetPosition(), 50, 50);
     //simulation.applyImpulse(title, 135, 12.0f);
