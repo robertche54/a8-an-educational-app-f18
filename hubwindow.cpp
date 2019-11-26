@@ -4,7 +4,6 @@
 HubWindow::HubWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::HubWindow)
-    , tf(b2Vec2(-10,10),b2Vec2(10,-10),320,180)
 {
 
     ui->setupUi(this); 
@@ -29,6 +28,9 @@ HubWindow::HubWindow(QWidget *parent)
     connect(ui->mammalButton, &QPushButton::pressed, this, &HubWindow::mammalsClicked);
     connect(ui->physicsButton, &QPushButton::pressed, this, &HubWindow::togglePhysics);
 
+    //connect(meteoritePopup, &Meteorite::returnFocus, this, &HubWindow::recieveFocus);
+    connect(&volcanoPopup, &Volcano::returnFocus, this, &HubWindow::recieveFocus);
+
     // explosion and impulse examples, creating the explosion at "" and impulse on "title" works best
     Mob* brick = simulation.namedMobs.at("");
     simulation.createExplosion(brick->body->GetPosition(), 8, 120);
@@ -37,7 +39,6 @@ HubWindow::HubWindow(QWidget *parent)
 
 void HubWindow::paintEvent(QPaintEvent*)
 {
-
     QImage newImage = simulation.step();
     ui->titleLabel->setPixmap(QPixmap::fromImage(newImage));
 }
@@ -48,16 +49,17 @@ HubWindow::~HubWindow()
 }
 
 void HubWindow::metoriteClicked() {
+    simulation.toggleRunning();
     meteoritePopup.exec();
 }
 
 void HubWindow::volcanoClicked() {
-    Mob* title = simulation.namedMobs.at("title");
-    //simulation.createExplosion(brick->body->GetPosition(), 30, 120);
-    simulation.applyImpulse(title, 90, 50);
-    //volcanoPopup.exec();
+    simulation.toggleRunning();
+    volcanoPopup.exec();
 }
 
 void HubWindow::mammalsClicked() {
+    simulation.toggleRunning();
     mammalsPopup.exec();
 }
+

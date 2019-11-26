@@ -2,6 +2,8 @@
 #define VOLCANO_H
 
 #include <QDialog>
+#include <QCloseEvent>
+#include "simulation.h"
 
 namespace Ui {
 class Volcano;
@@ -19,9 +21,14 @@ public slots:
     void explodeClicked();
 
 signals :
+    void returnFocus();
 
 private:
     Ui::Volcano *ui;
+    Simulation simulation;
+
+    void closeEvent(QCloseEvent*);
+    void paintEvent(QPaintEvent*);
 };
 
 #endif // VOLCANO_H
