@@ -16,7 +16,7 @@ public:
     ~Volcano();
 
 public slots:
-    void explode();
+    void explodeClicked();
 
 signals :
 

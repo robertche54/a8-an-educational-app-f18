@@ -30,8 +30,8 @@ HubWindow::HubWindow(QWidget *parent)
     connect(ui->physicsButton, &QPushButton::pressed, this, &HubWindow::togglePhysics);
 
     // explosion and impulse examples, creating the explosion at "" and impulse on "title" works best
-    Mob* title = simulation.namedMobs.at("");
-    simulation.createExplosion(title->body->GetPosition(), 50, 50);
+    Mob* brick = simulation.namedMobs.at("");
+    simulation.createExplosion(brick->body->GetPosition(), 8, 120);
     //simulation.applyImpulse(title, 135, 12.0f);
 }
 
@@ -52,13 +52,12 @@ void HubWindow::metoriteClicked() {
 }
 
 void HubWindow::volcanoClicked() {
-    volcanoPopup.exec();
+    Mob* title = simulation.namedMobs.at("title");
+    //simulation.createExplosion(brick->body->GetPosition(), 30, 120);
+    simulation.applyImpulse(title, 90, 50);
+    //volcanoPopup.exec();
 }
 
 void HubWindow::mammalsClicked() {
     mammalsPopup.exec();
-}
-
-sf::Sprite HubWindow::setSprite(std::string file, int x, int y){
-
 }

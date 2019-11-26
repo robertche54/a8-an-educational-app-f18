@@ -20,7 +20,6 @@ class HubWindow : public QMainWindow
 public:
     HubWindow(QWidget *parent = nullptr);
     ~HubWindow();
-    sf::Sprite setSprite(std::string, int, int);
 
 public slots:
     void metoriteClicked();
