@@ -30,7 +30,7 @@ public:
     Mob(string, float, float, float, float, b2World &world);
     ~Mob();
     Sprite &getSprite();
-    void Update(windowTransform);
+    bool Update(windowTransform);
 };
 
 #endif // SPRITE_H

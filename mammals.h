@@ -20,6 +20,8 @@ private:
     Ui::Mammals *ui;
     CreatureCollisionHandler* handler;
     Simulation simulation;
+
+    void paintEvent(QPaintEvent*);
 };
 
 #endif // MAMMALS_H
