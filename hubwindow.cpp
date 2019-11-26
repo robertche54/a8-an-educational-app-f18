@@ -30,7 +30,7 @@ HubWindow::HubWindow(QWidget *parent)
     connect(ui->physicsButton, &QPushButton::pressed, this, &HubWindow::togglePhysics);
 
     Mob* title = simulation.namedMobs.at("");
-    simulation.createExplosion(title->body->GetPosition(), 50, 5000);
+    simulation.createExplosion(title->body->GetPosition(), 50, 50);
     //simulation.applyImpulse(title, 135, 12.0f);
 }
 
