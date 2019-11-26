@@ -4,6 +4,7 @@
 #include <QTimer>
 #include <QVector>
 #include <map>
+#include <cmath>
 
 #include "mob.h"
 
@@ -19,6 +20,7 @@ private:
     vector<Mob*> genericMobs;
 
     bool isRunning = true;
+    const float degreeToRad = float(M_PI/180);
 
 public:
     map<string, Mob*> namedMobs;
@@ -33,6 +35,7 @@ public:
     void toggleRunning() { isRunning = !isRunning; }
     QImage step();
     void createExplosion(int x, int y, int blastPower = 20, int numRays = 50);
+    void applyImpulse(Mob*, double, float);
 };
 
 #endif // SIMULATION_H

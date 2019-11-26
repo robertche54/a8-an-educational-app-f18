@@ -98,3 +98,14 @@ void Simulation::createExplosion(int x, int y, int blastPower, int numRays) {
         body->CreateFixture( &fd );
     }
 }
+
+void Simulation::applyImpulse(Mob* movedMob, double degreeAngle, float magnitude) {
+    float radAngle = float(degreeAngle) * degreeToRad;
+
+    float magX = magnitude * cos(radAngle);
+    float magY = magnitude * sin(radAngle);
+    b2Vec2 impulse = b2Vec2(magX * movedMob->body->GetMass(), magY * movedMob->body->GetMass());
+    b2Vec2 position = movedMob->body->GetPosition();
+
+    movedMob->body->ApplyLinearImpulse(impulse, position, true);
+}
