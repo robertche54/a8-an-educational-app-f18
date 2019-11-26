@@ -16,7 +16,7 @@ Mob::Mob(std::string file, float locationX, float locationY, float sizeX, float 
 }
 
 
-void Mob::Update(windowTransform transform)
+bool Mob::Update(windowTransform transform)
 {
     // Updates SFML sprite with b2Body position and rotation
     sprite.setPosition(transform.transformX(body->GetPosition().x), transform.transformY(body->GetPosition().y));
@@ -25,6 +25,7 @@ void Mob::Update(windowTransform transform)
     sprite.setRotation(transform.transformAngle(body->GetAngle()));
     auto bounds = sprite.getLocalBounds();
     sprite.setScale(transform.transformWidth(size.x) / bounds.width, transform.transformHeight(size.y) / bounds.height);
+    return true;
 }
 
 void Mob::createBody(b2World &world, bool dynamic)

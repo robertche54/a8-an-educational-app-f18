@@ -7,13 +7,16 @@ Creature::Creature(std::string file, float locationX, float locationY, float rad
     newRadius(radius)
 {
 
-    fixtureDef.userData = reinterpret_cast<void*>(this);
 }
-void Creature::Update(windowTransform tf) {
+bool Creature::Update(windowTransform tf) {
     if (fabs(newRadius - radius) < numeric_limits<float>::min()) {
         SetRadius(newRadius);
     }
     this->Mob::Update(tf);
+    if (radius == 0) {
+        return false;
+    }
+    return true;
 }
 
 void Creature::SetRadius(float radius) {
@@ -31,6 +34,7 @@ void Creature::SetRadius(float radius) {
     b2FixtureDef myFixtureDef;
     myFixtureDef.shape = &circleShape;
     newBody->CreateFixture(&myFixtureDef);
+    newBody->SetUserData(this);
 
     world->DestroyBody(body);
     body = newBody;
