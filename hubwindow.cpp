@@ -58,7 +58,3 @@ void HubWindow::volcanoClicked() {
 void HubWindow::mammalsClicked() {
     mammalsPopup.exec();
 }
-
-sf::Sprite HubWindow::setSprite(std::string file, int x, int y){
-
-}

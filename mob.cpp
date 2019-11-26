@@ -20,8 +20,6 @@ void Mob::Update(windowTransform transform)
 {
     // Updates SFML sprite with b2Body position and rotation
     sprite.setPosition(transform.transformX(body->GetPosition().x), transform.transformY(body->GetPosition().y));
-    //printf("%f, %d; %f, %d\n",body->GetPosition().x, transform.transformX(body->GetPosition().x)
-    //                 ,body->GetPosition().y, transform.transformY(body->GetPosition().y));
     sprite.setRotation(transform.transformAngle(body->GetAngle()));
     auto bounds = sprite.getLocalBounds();
     sprite.setScale(transform.transformWidth(size.x) / bounds.width, transform.transformHeight(size.y) / bounds.height);
