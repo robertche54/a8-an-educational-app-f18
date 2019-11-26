@@ -26,8 +26,8 @@ HubWindow::HubWindow(QWidget *parent)
     b2Body* staticBody = simulation.world.CreateBody(&myBodyDef);
     staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
 
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/DinoTitle.png", 0, 10, 15, 5);
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/bricks.jpg", 5, 2, 4, 4);
+    simulation.createMob("../A9/DinoTitle.png", 0, 10, 15, 5);
+    simulation.createMob("../A9/bricks.jpg", 5, 2, 4, 4);
 
     QTimer *timer;
     timer = new QTimer(this);
