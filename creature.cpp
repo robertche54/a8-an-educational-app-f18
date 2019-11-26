@@ -1,17 +1,23 @@
 #include "creature.h"
+#include <limits>
 
-Creature::Creature(std::string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world) :
-    Mob(file, locationX, locationY, sizeX, sizeY, world)
+Creature::Creature(std::string file, float locationX, float locationY, float radius, b2World &wor) :
+    Mob(file, locationX, locationY, radius, radius, wor),
+    radius(radius),
+    newRadius(radius)
 {
-    fixtureDef.userData = reinterpret_cast<void*>(1);
-}
 
+    fixtureDef.userData = reinterpret_cast<void*>(this);
+}
 void Creature::Update(windowTransform tf) {
+    if (fabs(newRadius - radius) < numeric_limits<float>::min()) {
+        SetRadius(newRadius);
+    }
     this->Mob::Update(tf);
 }
 
 void Creature::SetRadius(float radius) {
-    size = radius;
+    this->radius = radius;
     b2BodyDef myBodyDef;
     myBodyDef.type = b2_dynamicBody;
     myBodyDef.position.Set(body->GetPosition().x, body->GetPosition().y);
@@ -30,6 +36,9 @@ void Creature::SetRadius(float radius) {
     body = newBody;
 }
 
+void Creature::ScheduleRadiusChange(float radius) {
+    newRadius = radius;
+}
 float Creature::GetRadius() {
-    return size;
+    return this->newRadius;
 }
