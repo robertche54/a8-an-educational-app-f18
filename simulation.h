@@ -21,10 +21,10 @@ private:
     vector<Mob*> genericMobs;
     queue<vector<b2Body*>> rayQueue;
 
-    bool isRunning = true;
     const float degreeToRad = float(M_PI/180);
 
 public:
+    bool isRunning = true;
     map<string, Mob*> namedMobs;
     b2World world = b2World(gravity);
     windowTransform tf;

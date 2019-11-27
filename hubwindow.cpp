@@ -54,7 +54,9 @@ void HubWindow::metoriteClicked() {
 }
 
 void HubWindow::volcanoClicked() {
-    simulation.toggleRunning();
+    if(simulation.isRunning) {
+        simulation.toggleRunning();
+    }
     volcanoPopup.exec();
 }
 

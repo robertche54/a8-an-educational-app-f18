@@ -19,8 +19,11 @@ Volcano::Volcano(QWidget *parent) :
     b2Body* staticBody = simulation.world.CreateBody(&myBodyDef);
     staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
 
-    simulation.createMob("../A9/DinoTitle.png", 0, 5, 15, 5, "title", b2_dynamicBody);
-    simulation.createMob("../A9/bricks.jpg", 5, 1, 2, 2, "brick", b2_staticBody);
+    simulation.createMob("../A9/bricks.jpg", 0, -9, 2, 2, "brick", b2_dynamicBody);
+
+    for(int i = -5; i < 5; i++) {
+        simulation.createMob("../A9/otherimage.png", i, -7, 1, 1);
+    }
 
     connect(ui->explodeButton, &QPushButton::pressed, this, &Volcano::explodeClicked);
 }
@@ -42,13 +45,12 @@ void Volcano::paintEvent(QPaintEvent*)
 }
 
 void Volcano::explodeClicked() {
+    Mob* brick = simulation.namedMobs.at("brick");
 
     if(ui->customCheck->isChecked()) {
-        Mob* title = simulation.namedMobs.at("title");
-        simulation.applyImpulse(title, 90, 20);
+        simulation.applyImpulse(brick, 90, 20);
     }
     else {
-        Mob* brick = simulation.namedMobs.at("brick");
         simulation.createExplosion(brick->body->GetPosition(), 50, 120);
     }
 }
