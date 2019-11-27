@@ -33,8 +33,7 @@ void Simulation::createMob(string filePath, float posX, float posY, float sizeX,
  * Creates a named Mob that CAN be accessed later.
  * For Mobs that are used to create explosions or have impulses applied to them.
  */
-void Simulation::createMob(string filePath, float posX, float posY, float sizeX,
-                           float sizeY, string name, b2BodyType type) {
+void Simulation::createMob(string filePath, float posX, float posY, float sizeX, float sizeY, string name, b2BodyType type) {
     Mob* newMob = new Mob(filePath, posX, posY, sizeX, sizeY, world, type);
     namedMobs.insert(pair<string, Mob*>(name, newMob));
 }
@@ -83,7 +82,9 @@ void Simulation::createExplosion(b2Vec2 position, int blastPower, int numRays) {
     for(int i = 0; i < numRays; i++)
     {
         // Converts degrees into radians (which is what Box2D uses)
-        float angle = static_cast<float>(((i/numRays) * i * M_PI ) / 180);
+        float raySeperation = numRays/(360 * degreeToRad);
+        float angle = i * raySeperation;
+        //float angle = static_cast<float>(((i/numRays) * i * M_PI ) / 180);
         b2Vec2 rayDir( sinf(angle), cosf(angle) );
 
         b2BodyDef bd;
@@ -103,7 +104,7 @@ void Simulation::createExplosion(b2Vec2 position, int blastPower, int numRays) {
 
         b2FixtureDef fd;
         fd.shape = &circleShape;
-        fd.density = 600/numRays;
+        fd.density = 100;
         fd.friction = 0;
         fd.restitution = 0.99f; // High reflection
         fd.filter.groupIndex = -1; // Make rays not collide with each other

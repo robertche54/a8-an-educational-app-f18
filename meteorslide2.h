@@ -18,17 +18,24 @@ class MeteorSlide2 : public QDialog
 public:
     explicit MeteorSlide2(QWidget *parent = nullptr);
     ~MeteorSlide2();
-    Simulation sim;
+    void addElements();
 private slots:
     void on_NextButton_clicked();
-
     void on_BackButton_clicked();
     void update();
+    void changeBackground();
 
 private:
     Ui::MeteorSlide2 *ui;
-    vector<QString> infoVec;
     int infoIndex = 0;
+    int backgroundIndex = 0;
+    QTimer* backGroundTimer;
+    Simulation sim;
+    vector<QString> infoVec{ "Welcome to the ground impact page. Press 'Next' to continue!",
+                           "The ground impact, like, seriously messed the dinos up.",
+                           "Well, the ground didn't impact anything. . .",
+                           "It was actually the meteorite that impacted the ground that did it."};
+
 };
 
 #endif // METEORSLIDE2_H

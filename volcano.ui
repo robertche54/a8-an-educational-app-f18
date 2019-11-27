@@ -16,8 +16,8 @@
   <widget class="QLabel" name="simulationLabel">
    <property name="geometry">
     <rect>
-     <x>60</x>
-     <y>20</y>
+     <x>10</x>
+     <y>10</y>
      <width>330</width>
      <height>250</height>
     </rect>
@@ -29,14 +29,73 @@
   <widget class="QPushButton" name="explodeButton">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>300</y>
+     <x>350</x>
+     <y>310</y>
      <width>89</width>
      <height>25</height>
     </rect>
    </property>
    <property name="text">
-    <string>Detonate</string>
+    <string>EXPLODE!</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="powerSelector">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>150</y>
+     <width>86</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="customPower">
+   <property name="geometry">
+    <rect>
+     <x>380</x>
+     <y>40</y>
+     <width>81</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="customCheck">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>280</y>
+     <width>161</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Use Custom Power?</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="historicLabel">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>120</y>
+     <width>101</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Historic Power</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="customLabel">
+   <property name="geometry">
+    <rect>
+     <x>370</x>
+     <y>10</y>
+     <width>101</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Custom Power</string>
    </property>
   </widget>
  </widget>
