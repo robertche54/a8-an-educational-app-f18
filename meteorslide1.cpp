@@ -29,14 +29,14 @@ MeteorSlide1::MeteorSlide1(QWidget *parent) :
     staticBody->CreateFixture(&myFixtureDef);
 
     ui->TextLabel->setText(infoVec.front());
-    QPixmap pixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/waterImpactBackdrop.jpg");
+    QPixmap pixmap("../A9/waterImpactBackdrop.jpg");
     ui->label->setPixmap(pixmap);
     simulation.setGravity(0,-10);
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/otherimage.png",-15.0,90.0,5.0,5.0,"Unicorn", b2_dynamicBody);
+    simulation.createMob("../A9/otherimage.png",-15.0,90.0,5.0,5.0,"Unicorn", b2_dynamicBody);
     Mob *uni = simulation.namedMobs.at("Unicorn");
     uni->body->SetLinearVelocity(b2Vec2(60.0f, -450.0));
 
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/TRex.png", 5,-5,4,4);
+    simulation.createMob("../A9/TRex.png", 5,-5,4,4);
 
 
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(simulation.step()));

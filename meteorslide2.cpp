@@ -8,7 +8,7 @@ MeteorSlide2::MeteorSlide2(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->TextLabel->setText(infoVec.front());
-    ui->backLabel->setPixmap(QPixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/dinoscene0.jpg"));
+    ui->backLabel->setPixmap(QPixmap("../A9/dinoscene0.jpg"));
 
     sim.setGravity(0,-9.81f);
     addElements();
@@ -79,15 +79,15 @@ void MeteorSlide2::addElements(){
 
 
     // Meteor mob
-    sim.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/meteorite.png",45,50,10,10,"meteor", b2_dynamicBody);
+    sim.createMob("../A9/meteorite.png",45,50,10,10,"meteor", b2_dynamicBody);
     Mob* meteor = sim.namedMobs.at("meteor");
     sim.applyImpulse(meteor,235,150);
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim.step()));
 
     //Dino mobs
-    sim.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/TRex.png",-3,-5,2,2);
-    sim.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/screamingDino.png", -8, -4, 3, 3);
-    sim.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/pteranodon.png",4, 6, 2, 2);
+    sim.createMob("../A9/TRex.png",-3,-5,2,2);
+    sim.createMob("../A9/screamingDino.png", -8, -4, 3, 3);
+    sim.createMob("../A9/pteranodon.png",4, 6, 2, 2);
 }
 
 
@@ -99,16 +99,16 @@ void MeteorSlide2::addElements(){
 void MeteorSlide2::changeBackground(){
     switch(++backgroundIndex){
         case 1:
-            ui->backLabel->setPixmap(QPixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/dinoscene1.jpg"));
+            ui->backLabel->setPixmap(QPixmap("../A9/dinoscene1.jpg"));
             break;
         case 2:
-            ui->backLabel->setPixmap(QPixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/dinoscene2.jpg"));
+            ui->backLabel->setPixmap(QPixmap("../A9/dinoscene2.jpg"));
             break;
         case 3:
-            ui->backLabel->setPixmap(QPixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/dinoscene3.jpg"));
+            ui->backLabel->setPixmap(QPixmap("../A9/dinoscene3.jpg"));
             break;
         case 4:
-            ui->backLabel->setPixmap(QPixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/dinoscene4.jpg"));
+            ui->backLabel->setPixmap(QPixmap("../A9/dinoscene4.jpg"));
             break;
         default:
             backGroundTimer->stop();

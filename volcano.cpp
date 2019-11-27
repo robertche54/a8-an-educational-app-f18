@@ -19,8 +19,8 @@ Volcano::Volcano(QWidget *parent) :
     b2Body* staticBody = simulation.world.CreateBody(&myBodyDef);
     staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
 
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/DinoTitle.png", 0, 5, 15, 5, "title", b2_dynamicBody);
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/bricks.jpg", 5, 1, 2, 2, "brick", b2_staticBody);
+    simulation.createMob("../A9/DinoTitle.png", 0, 5, 15, 5, "title", b2_dynamicBody);
+    simulation.createMob("../A9/bricks.jpg", 5, 1, 2, 2, "brick", b2_staticBody);
 
     connect(ui->explodeButton, &QPushButton::pressed, this, &Volcano::explodeClicked);
 }
