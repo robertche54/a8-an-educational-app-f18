@@ -128,3 +128,10 @@ void MeteorSlide2::on_startButton_clicked()
     connect(backGroundTimer, &QTimer::timeout, this, &MeteorSlide2::changeBackground);
     backGroundTimer->start(400);
 }
+
+void MeteorSlide2::selectDinoCount(int count)
+{
+    for(int i = 0; i < count; i++){
+
+    }
+}

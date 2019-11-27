@@ -25,7 +25,7 @@ private slots:
     void update();
     void changeBackground();
     void on_startButton_clicked();
-
+    void selectDinoCount(int);
 private:
     Ui::MeteorSlide2 *ui;
     int infoIndex = 0;
