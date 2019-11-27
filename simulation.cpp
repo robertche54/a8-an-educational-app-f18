@@ -1,7 +1,7 @@
 #include "simulation.h"
 
-Simulation::Simulation() : tf(b2Vec2(-10,10),b2Vec2(10,-10),320,180) {
-    canvas.create(320, 180);
+Simulation::Simulation() : tf(b2Vec2(-10,10),b2Vec2(10,-10),600,500) {
+    canvas.create(600, 500);
 }
 
 Simulation::~Simulation() {
@@ -24,7 +24,7 @@ void Simulation::setGravity(float x, float y) {
  * For Mobs that are part of the environment and are thrown around by other forces
  * like explosions and collisions with other Mobs.
  */
-void Simulation::createMob(string filePath, int posX, int posY, int sizeX, int sizeY) {
+void Simulation::createMob(string filePath, float posX, float posY, float sizeX, float sizeY) {
     Mob* newMob = new Mob(filePath, posX, posY, sizeX, sizeY, world);
     genericMobs.push_back(newMob);
 }
@@ -33,8 +33,8 @@ void Simulation::createMob(string filePath, int posX, int posY, int sizeX, int s
  * Creates a named Mob that CAN be accessed later.
  * For Mobs that are used to create explosions or have impulses applied to them.
  */
-void Simulation::createMob(string filePath, int posX, int posY, int sizeX,
-                           int sizeY, string name, b2BodyType type) {
+void Simulation::createMob(string filePath, float posX, float posY, float sizeX,
+                           float sizeY, string name, b2BodyType type) {
     Mob* newMob = new Mob(filePath, posX, posY, sizeX, sizeY, world, type);
     namedMobs.insert(pair<string, Mob*>(name, newMob));
 }
@@ -44,7 +44,7 @@ void Simulation::createMob(string filePath, int posX, int posY, int sizeX,
  * Returns a QImage representing the state of box2D after the simulated step.
  */
 QImage Simulation::step() {
-    canvas.clear();
+    canvas.clear(Color(10,10,10,0));
 
     if(isRunning)
         world.Step(1 / 240.0f, 8, 3);
@@ -65,7 +65,7 @@ QImage Simulation::step() {
     Texture canvasTexture = canvas.getTexture();
     Image canvasImage = canvasTexture.copyToImage();
     const uint8_t *canvasPixelsPtr = canvasImage.getPixelsPtr();
-    QImage canvasQImage(canvasPixelsPtr, 320, 180,QImage::Format_ARGB32);
+    QImage canvasQImage(canvasPixelsPtr, 600, 500,QImage::Format_ARGB32);
     canvasQImage = canvasQImage.rgbSwapped();
 
     return canvasQImage;

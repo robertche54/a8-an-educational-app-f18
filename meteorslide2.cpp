@@ -33,14 +33,14 @@ MeteorSlide2::MeteorSlide2(QWidget *parent) :
     sim.setGravity(0,-1);
 
     // Meteor mob
-    sim.createMob("../A9/meteorite.png",5,50,5,5,"meteor", b2_dynamicBody);
+    sim.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/meteorite.png",5,50,5,5,"meteor", b2_dynamicBody);
     Mob* meteor = sim.namedMobs.at("meteor");
     sim.applyImpulse(meteor,260,150);
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim.step()));
 
     // Dino mobs
     for(int i=0; i<5; i++){      
-        sim.createMob("../A9/TRex.png",i-2,1,2,2);
+        sim.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/TRex.png",i-2,1,2,2);
     }
 
     QTimer* timer = new QTimer(this);
