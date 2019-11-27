@@ -22,8 +22,8 @@
   <widget class="QPushButton" name="NextButton">
    <property name="geometry">
     <rect>
-     <x>1010</x>
-     <y>610</y>
+     <x>220</x>
+     <y>490</y>
      <width>89</width>
      <height>25</height>
     </rect>
@@ -64,8 +64,8 @@
   <widget class="QPushButton" name="BackButton">
    <property name="geometry">
     <rect>
-     <x>1010</x>
-     <y>650</y>
+     <x>90</x>
+     <y>490</y>
      <width>89</width>
      <height>25</height>
     </rect>
@@ -90,11 +90,25 @@
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QPushButton" name="startButton">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>610</y>
+     <width>131</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Start Exctinction</string>
+   </property>
+  </widget>
   <zorder>backLabel</zorder>
   <zorder>NextButton</zorder>
   <zorder>TextLabel</zorder>
   <zorder>AnimationLabel</zorder>
   <zorder>BackButton</zorder>
+  <zorder>startButton</zorder>
  </widget>
  <resources/>
  <connections/>

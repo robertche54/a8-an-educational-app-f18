@@ -6,7 +6,13 @@ HubWindow::HubWindow(QWidget *parent)
     , ui(new Ui::HubWindow)
 {
 
-    ui->setupUi(this); 
+    ui->setupUi(this);
+
+    QPixmap background ("../A9/dinoBackground.jpg");
+    background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette pal;
+    pal.setBrush(QPalette::Background,background);
+    this->setPalette(pal);
 
     b2BodyDef myBodyDef;
     b2FixtureDef myFixtureDef;
