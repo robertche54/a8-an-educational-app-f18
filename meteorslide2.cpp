@@ -12,15 +12,7 @@ MeteorSlide2::MeteorSlide2(QWidget *parent) :
 
     sim.setGravity(0,-9.81f);
     addElements();
-
-    // Steping timer to call update
-    QTimer* timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &MeteorSlide2::update);
-    timer->start(1000/60);
-
-    backGroundTimer = new QTimer();
-    connect(backGroundTimer, &QTimer::timeout, this, &MeteorSlide2::changeBackground);
-    backGroundTimer->start(400);
+    ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim.step()));
 }
 
 MeteorSlide2::~MeteorSlide2()
@@ -72,13 +64,14 @@ void MeteorSlide2::addElements(){
     // Bouncy ground for collision
     b2BodyDef tramp;
     tramp.type = b2_dynamicBody;
-    tramp.position.Set(0,-3);
+    tramp.position.Set(0,-9);
 
     b2FixtureDef trampFixDef;
     trampFixDef.restitution = 2.0f;
+    trampFixDef.friction = 0.0f;
 
     b2PolygonShape shape;
-    shape.SetAsBox(200,1);
+    shape.SetAsBox(200,0.5);
     trampFixDef.shape = &shape;
 
     b2Body* trampoline = sim.world.CreateBody(&tramp);
@@ -86,14 +79,15 @@ void MeteorSlide2::addElements(){
 
 
     // Meteor mob
-    sim.createMob("../A9/meteorite.png",45,50,10,10,"meteor", b2_dynamicBody);
+    sim.createMob("../A9/meteorite.png",40,50,10,10,"meteor", b2_dynamicBody);
     Mob* meteor = sim.namedMobs.at("meteor");
-    sim.applyImpulse(meteor,230,150);
+    sim.applyImpulse(meteor,235,150);
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim.step()));
 
     //Dino mobs
-    sim.createMob("../A9/TRex.png",-5,-3,2,2);
-    sim.createMob("../A9/screamingDino.png", 0, -2, 2, 2);
+    sim.createMob("../A9/TRex.png",-3,-5,2,2);
+    sim.createMob("../A9/screamingDino.png", -8, -4, 3, 3);
+    sim.createMob("../A9/pteranodon.png",4, 6, 2, 2);
 }
 
 
@@ -120,4 +114,17 @@ void MeteorSlide2::changeBackground(){
             backGroundTimer->stop();
             break;
     }
+}
+
+
+void MeteorSlide2::on_startButton_clicked()
+{
+    // Steping timer to call update
+    QTimer* timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &MeteorSlide2::update);
+    timer->start(1000/60);
+
+    backGroundTimer = new QTimer();
+    connect(backGroundTimer, &QTimer::timeout, this, &MeteorSlide2::changeBackground);
+    backGroundTimer->start(400);
 }

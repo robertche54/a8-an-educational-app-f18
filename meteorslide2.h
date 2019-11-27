@@ -24,6 +24,7 @@ private slots:
     void on_BackButton_clicked();
     void update();
     void changeBackground();
+    void on_startButton_clicked();
 
 private:
     Ui::MeteorSlide2 *ui;
