@@ -4,7 +4,7 @@
 HubWindow::HubWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::HubWindow)
-    , tf(b2Vec2(-10,10),b2Vec2(10,-10),320,180)
+    , tf(b2Vec2(-10,10),b2Vec2(10,-10),600,500)
 {
 
     ui->setupUi(this); 
@@ -21,8 +21,8 @@ HubWindow::HubWindow(QWidget *parent)
     b2Body* staticBody = simulation.world.CreateBody(&myBodyDef);
     staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
 
-    simulation.createMob("../A9/DinoTitle.png", 0, 5, 15, 5, "title", b2_dynamicBody);
-    simulation.createMob("../A9/bricks.jpg", 5, 1, 2, 2, "", b2_staticBody);
+    simulation.createMob("../A9/DinoTitle.png", 0, 5, 10, 5, "title", b2_dynamicBody);
+ //   simulation.createMob("../A9/bricks.jpg", 5, 1, 2, 2, "", b2_staticBody);
 
     connect(ui->metoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);
     connect(ui->volcanoButton, &QPushButton::pressed, this, &HubWindow::volcanoClicked);
@@ -30,8 +30,8 @@ HubWindow::HubWindow(QWidget *parent)
 //    connect(ui->physicsButton, &QPushButton::pressed, this, &HubWindow::togglePhysics);
 
     // explosion and impulse examples, creating the explosion at "" and impulse on "title" works best
-    Mob* title = simulation.namedMobs.at("");
-    simulation.createExplosion(title->body->GetPosition(), 50, 50);
+//    Mob* title = simulation.namedMobs.at("");
+//    simulation.createExplosion(title->body->GetPosition(), 50, 50);
     //simulation.applyImpulse(title, 135, 12.0f);
 }
 

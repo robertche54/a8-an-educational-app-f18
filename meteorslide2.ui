@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>686</width>
-    <height>485</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>800</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Ground Impact</string>
@@ -16,8 +22,8 @@
   <widget class="QPushButton" name="NextButton">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>400</y>
+     <x>1010</x>
+     <y>610</y>
      <width>89</width>
      <height>25</height>
     </rect>
@@ -29,10 +35,10 @@
   <widget class="QLabel" name="TextLabel">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>20</y>
-     <width>311</width>
-     <height>321</height>
+     <x>40</x>
+     <y>150</y>
+     <width>331</width>
+     <height>281</height>
     </rect>
    </property>
    <property name="text">
@@ -45,10 +51,10 @@
   <widget class="QLabel" name="AnimationLabel">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>10</y>
-     <width>291</width>
-     <height>321</height>
+     <x>529</x>
+     <y>69</y>
+     <width>600</width>
+     <height>500</height>
     </rect>
    </property>
    <property name="text">
@@ -58,8 +64,8 @@
   <widget class="QPushButton" name="BackButton">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>440</y>
+     <x>1010</x>
+     <y>650</y>
      <width>89</width>
      <height>25</height>
     </rect>
@@ -68,6 +74,27 @@
     <string>Back</string>
    </property>
   </widget>
+  <widget class="QLabel" name="backLabel">
+   <property name="geometry">
+    <rect>
+     <x>529</x>
+     <y>69</y>
+     <width>600</width>
+     <height>500</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="scaledContents">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <zorder>backLabel</zorder>
+  <zorder>NextButton</zorder>
+  <zorder>TextLabel</zorder>
+  <zorder>AnimationLabel</zorder>
+  <zorder>BackButton</zorder>
  </widget>
  <resources/>
  <connections/>

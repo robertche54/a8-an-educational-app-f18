@@ -7,64 +7,20 @@ MeteorSlide2::MeteorSlide2(QWidget *parent) :
     ui(new Ui::MeteorSlide2)
 {
     ui->setupUi(this);
-    QString string1 = "Welcome to the ground impact page. Press 'Next' to continue!";
-    QString string2 = "The ground impact, like, seriously messed the dinos up.";
-    QString string3 = "Well, the ground didn't impact anything. . .";
-    QString string4 = "It was actually the meteorite that impacted the ground that did it.";
-    infoVec.push_back(string1);
-    infoVec.push_back(string2);
-    infoVec.push_back(string3);
-    infoVec.push_back(string4);
-
     ui->TextLabel->setText(infoVec.front());
+    ui->backLabel->setPixmap(QPixmap("../A9/dinoscene0.jpg"));
 
-    sim.setGravity(0,-1);
-
-    // Creating the ground
-    b2BodyDef myBodyDef;
-    b2FixtureDef myFixtureDef;
-
-    myBodyDef.type = b2_staticBody; //change body type
-    myBodyDef.position.Set(0,-10); //middle, bottom
-
-    b2EdgeShape edgeShape;
-    edgeShape.Set(b2Vec2(-100,0), b2Vec2(100,0));
-    myFixtureDef.shape = &edgeShape;
-    b2Body* staticBody = sim.world.CreateBody(&myBodyDef);
-    staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
-
-    // Bouncy ground for collision
-    b2BodyDef tramp;
-    tramp.type = b2_dynamicBody;
-    tramp.position.Set(0,-8);
-
-    b2FixtureDef trampFixDef;
-    trampFixDef.restitution = 0.99f;
-
-    b2PolygonShape shape;
-    shape.SetAsBox(5,1);
-    trampFixDef.shape = &shape;
-
-    b2Body* trampoline = sim.world.CreateBody(&tramp);
-    trampoline->CreateFixture(&trampFixDef);
-
-
-    // Meteor mob
-    sim.createMob("../A9/meteorite.png",5,50,5,5,"meteor", b2_dynamicBody);
-    Mob* meteor = sim.namedMobs.at("meteor");
-    sim.applyImpulse(meteor,260,200);
-    ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim.step()));
-
-    // Dino mobs
-    for(int i=0; i<5; i++){      
-        sim.createMob("../A9/TRex.png",i-2,-5,2,2);
-    }
+    sim.setGravity(0,-9.81f);
+    addElements();
 
     // Steping timer to call update
     QTimer* timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MeteorSlide2::update);
     timer->start(1000/60);
 
+    backGroundTimer = new QTimer();
+    connect(backGroundTimer, &QTimer::timeout, this, &MeteorSlide2::changeBackground);
+    backGroundTimer->start(400);
 }
 
 MeteorSlide2::~MeteorSlide2()
@@ -92,4 +48,76 @@ void MeteorSlide2::on_BackButton_clicked()
 
 void MeteorSlide2::update(){
      ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim.step()));
+}
+
+
+/**
+ * Adds all the bodies to the world for the simulation
+ * @brief MeteorSlide2::addElements
+ */
+void MeteorSlide2::addElements(){
+    // Creates ground
+    b2BodyDef myBodyDef;
+    b2FixtureDef myFixtureDef;
+
+    myBodyDef.type = b2_staticBody; //change body type
+    myBodyDef.position.Set(0,-10); //middle, bottom
+
+    b2EdgeShape edgeShape;
+    edgeShape.Set(b2Vec2(-100,0), b2Vec2(100,0));
+    myFixtureDef.shape = &edgeShape;
+    b2Body* staticBody = sim.world.CreateBody(&myBodyDef);
+    staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
+
+    // Bouncy ground for collision
+    b2BodyDef tramp;
+    tramp.type = b2_dynamicBody;
+    tramp.position.Set(0,-3);
+
+    b2FixtureDef trampFixDef;
+    trampFixDef.restitution = 2.0f;
+
+    b2PolygonShape shape;
+    shape.SetAsBox(200,1);
+    trampFixDef.shape = &shape;
+
+    b2Body* trampoline = sim.world.CreateBody(&tramp);
+    trampoline->CreateFixture(&trampFixDef);
+
+
+    // Meteor mob
+    sim.createMob("../A9/meteorite.png",45,50,10,10,"meteor", b2_dynamicBody);
+    Mob* meteor = sim.namedMobs.at("meteor");
+    sim.applyImpulse(meteor,230,150);
+    ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim.step()));
+
+    //Dino mobs
+    sim.createMob("../A9/TRex.png",-5,-3,2,2);
+    sim.createMob("../A9/screamingDino.png", 0, -2, 2, 2);
+}
+
+
+/**
+ * Updates the background to mirror the movement
+ * of the meteorite
+ * @brief MeteorSlide2::changeBackground
+ */
+void MeteorSlide2::changeBackground(){
+    switch(++backgroundIndex){
+        case 1:
+            ui->backLabel->setPixmap(QPixmap("../A9/dinoscene1.jpg"));
+            break;
+        case 2:
+            ui->backLabel->setPixmap(QPixmap("../A9/dinoscene2.jpg"));
+            break;
+        case 3:
+            ui->backLabel->setPixmap(QPixmap("../A9/dinoscene3.jpg"));
+            break;
+        case 4:
+            ui->backLabel->setPixmap(QPixmap("../A9/dinoscene4.jpg"));
+            break;
+        default:
+            backGroundTimer->stop();
+            break;
+    }
 }
