@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>686</width>
-    <height>485</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>800</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Ground Impact</string>
@@ -16,8 +22,8 @@
   <widget class="QPushButton" name="NextButton">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>400</y>
+     <x>1020</x>
+     <y>540</y>
      <width>89</width>
      <height>25</height>
     </rect>
@@ -29,11 +35,17 @@
   <widget class="QLabel" name="TextLabel">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>200</x>
      <y>20</y>
-     <width>311</width>
-     <height>321</height>
+     <width>600</width>
+     <height>500</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>600</width>
+     <height>500</height>
+    </size>
    </property>
    <property name="text">
     <string/>
@@ -45,11 +57,17 @@
   <widget class="QLabel" name="AnimationLabel">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>10</y>
-     <width>291</width>
-     <height>321</height>
+     <x>200</x>
+     <y>20</y>
+     <width>600</width>
+     <height>500</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>600</width>
+     <height>500</height>
+    </size>
    </property>
    <property name="text">
     <string>Ground impact animation goes here</string>
@@ -58,8 +76,8 @@
   <widget class="QPushButton" name="BackButton">
    <property name="geometry">
     <rect>
-     <x>570</x>
-     <y>440</y>
+     <x>1020</x>
+     <y>580</y>
      <width>89</width>
      <height>25</height>
     </rect>

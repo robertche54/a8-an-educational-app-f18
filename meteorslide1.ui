@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>708</width>
-    <height>471</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>800</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Ocean Impact</string>
@@ -16,8 +22,8 @@
   <widget class="QPushButton" name="NextButton">
    <property name="geometry">
     <rect>
-     <x>600</x>
-     <y>390</y>
+     <x>690</x>
+     <y>640</y>
      <width>89</width>
      <height>25</height>
     </rect>
@@ -29,11 +35,17 @@
   <widget class="QLabel" name="AnimationLabel">
    <property name="geometry">
     <rect>
-     <x>410</x>
-     <y>60</y>
-     <width>281</width>
-     <height>281</height>
+     <x>200</x>
+     <y>20</y>
+     <width>600</width>
+     <height>500</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>600</width>
+     <height>500</height>
+    </size>
    </property>
    <property name="text">
     <string>Ocean Impact animation goes here</string>
@@ -42,11 +54,17 @@
   <widget class="QLabel" name="TextLabel">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>60</y>
-     <width>321</width>
-     <height>291</height>
+     <x>200</x>
+     <y>20</y>
+     <width>600</width>
+     <height>500</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>600</width>
+     <height>500</height>
+    </size>
    </property>
    <property name="text">
     <string/>
@@ -58,8 +76,8 @@
   <widget class="QPushButton" name="BackButton">
    <property name="geometry">
     <rect>
-     <x>600</x>
-     <y>430</y>
+     <x>690</x>
+     <y>680</y>
      <width>89</width>
      <height>25</height>
     </rect>

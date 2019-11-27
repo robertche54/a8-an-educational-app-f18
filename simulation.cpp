@@ -1,7 +1,7 @@
 #include "simulation.h"
 
-Simulation::Simulation() : tf(b2Vec2(-10,10),b2Vec2(10,-10),320,180) {
-    canvas.create(320, 180);
+Simulation::Simulation() : tf(b2Vec2(-10,10),b2Vec2(10,-10),600,500) {
+    canvas.create(600, 500);
 }
 
 Simulation::~Simulation() {
@@ -65,7 +65,7 @@ QImage Simulation::step() {
     Texture canvasTexture = canvas.getTexture();
     Image canvasImage = canvasTexture.copyToImage();
     const uint8_t *canvasPixelsPtr = canvasImage.getPixelsPtr();
-    QImage canvasQImage(canvasPixelsPtr, 320, 180,QImage::Format_ARGB32);
+    QImage canvasQImage(canvasPixelsPtr, 600, 500,QImage::Format_ARGB32);
     canvasQImage = canvasQImage.rgbSwapped();
 
     return canvasQImage;
