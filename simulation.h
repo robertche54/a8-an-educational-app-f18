@@ -32,8 +32,8 @@ public:
     Simulation();
     ~Simulation();
     void setGravity(float, float);
-    void createMob(string, int, int, int, int);
-    void createMob(string, int, int, int, int, string, b2BodyType);
+    void createMob(string, float, float, float, float);
+    void createMob(string, float, float, float, float, string, b2BodyType);
     void toggleRunning() { isRunning = !isRunning; }
     QImage step();
     void createExplosion(b2Vec2 position, int blastPower = 20, int numRays = 50);

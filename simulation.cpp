@@ -24,7 +24,7 @@ void Simulation::setGravity(float x, float y) {
  * For Mobs that are part of the environment and are thrown around by other forces
  * like explosions and collisions with other Mobs.
  */
-void Simulation::createMob(string filePath, int posX, int posY, int sizeX, int sizeY) {
+void Simulation::createMob(string filePath, float posX, float posY, float sizeX, float sizeY) {
     Mob* newMob = new Mob(filePath, posX, posY, sizeX, sizeY, world);
     genericMobs.push_back(newMob);
 }
@@ -33,8 +33,8 @@ void Simulation::createMob(string filePath, int posX, int posY, int sizeX, int s
  * Creates a named Mob that CAN be accessed later.
  * For Mobs that are used to create explosions or have impulses applied to them.
  */
-void Simulation::createMob(string filePath, int posX, int posY, int sizeX,
-                           int sizeY, string name, b2BodyType type) {
+void Simulation::createMob(string filePath, float posX, float posY, float sizeX,
+                           float sizeY, string name, b2BodyType type) {
     Mob* newMob = new Mob(filePath, posX, posY, sizeX, sizeY, world, type);
     namedMobs.insert(pair<string, Mob*>(name, newMob));
 }
