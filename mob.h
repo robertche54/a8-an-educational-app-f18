@@ -15,8 +15,6 @@ class Mob
 {
 
 protected:
-    b2Body* body;
-    b2FixtureDef fixtureDef;
     b2World* world;
 
     void createBody(b2World &world, bool dynamic = true);
@@ -26,11 +24,13 @@ public:
     Vector2f size;
     Texture sprite_image;
     Sprite sprite;
+    b2Body* body;
+    b2FixtureDef fixtureDef;
 
     Mob(string, float, float, float, float, b2World &world);
-    ~Mob();
+    virtual ~Mob();
     Sprite &getSprite();
-    bool Update(windowTransform);
+    virtual bool Update(windowTransform);
 };
 
 #endif // SPRITE_H

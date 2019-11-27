@@ -23,8 +23,8 @@ public:
     ~Simulation();
     void setContactListener(b2ContactListener*);
     void setGravity(float, float);
-    void createMob(string, int, int, int, int);
-    void createMob(string, int, int, int, int, string);
+    void createMob(string, float, float, float, float);
+    void createMob(string, float, float, float, float, string);
     void addMob(Mob*, string name = "");
     QImage step();
     void createExplosion(Mob*);

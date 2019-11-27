@@ -22,6 +22,8 @@ private:
     Simulation simulation;
 
     void paintEvent(QPaintEvent*);
+public slots:
+    void physicsUpdate();
 };
 
 #endif // MAMMALS_H
