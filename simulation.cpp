@@ -24,7 +24,7 @@ void Simulation::setGravity(float x, float y) {
  * For Mobs that are part of the environment and are thrown around by other forces
  * like explosions and collisions with other Mobs.
  */
-void Simulation::createMob(string filePath, float posX, float posY,float sizeX, float sizeY) {
+void Simulation::createMob(string filePath, float posX, float posY, float sizeX, float sizeY) {
     Mob* newMob = new Mob(filePath, posX, posY, sizeX, sizeY, world);
     genericMobs.push_back(newMob);
 }

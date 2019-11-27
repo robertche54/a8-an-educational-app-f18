@@ -6,9 +6,9 @@ HubWindow::HubWindow(QWidget *parent)
     , ui(new Ui::HubWindow)
 {
 
-    ui->setupUi(this); 
+    ui->setupUi(this);
 
-    QPixmap background ("../A9/dinoBackground.jpg");
+    QPixmap background ("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/dinoBackground.jpg");
     background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette pal;
     pal.setBrush(QPalette::Background,background);
@@ -26,8 +26,8 @@ HubWindow::HubWindow(QWidget *parent)
     b2Body* staticBody = simulation.world.CreateBody(&myBodyDef);
     staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
 
-    simulation.createMob("../A9/title2-01.png", 0, 5, 10, 5, "title", b2_dynamicBody);
- //   simulation.createMob("../A9/bricks.jpg", 5, 1, 2, 2, "", b2_staticBody);
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/title2-01.png", 0, 5, 10, 5, "title", b2_dynamicBody);
+ //   simulation.createMob("/bricks.jpg", 5, 1, 2, 2, "", b2_staticBody);
 
     connect(ui->metoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);
     connect(ui->volcanoButton, &QPushButton::pressed, this, &HubWindow::volcanoClicked);
