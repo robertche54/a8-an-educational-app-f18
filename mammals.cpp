@@ -12,3 +12,7 @@ Mammals::~Mammals()
 {
     delete ui;
 }
+
+void Mammals::closeEvent(QCloseEvent *) {
+    emit returnFocus();
+}

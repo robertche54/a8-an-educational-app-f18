@@ -23,13 +23,16 @@ HubWindow::HubWindow(QWidget *parent)
     simulation.createMob("../A9/DinoTitle.png", 0, 5, 15, 5, "title", b2_dynamicBody);
     simulation.createMob("../A9/bricks.jpg", 5, 1, 2, 2, "", b2_staticBody);
 
+    // connecting ui buttons to open popups and toggle if physics is active
     connect(ui->metoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);
     connect(ui->volcanoButton, &QPushButton::pressed, this, &HubWindow::volcanoClicked);
     connect(ui->mammalButton, &QPushButton::pressed, this, &HubWindow::mammalsClicked);
     connect(ui->physicsButton, &QPushButton::pressed, this, &HubWindow::togglePhysics);
 
-    //connect(meteoritePopup, &Meteorite::returnFocus, this, &HubWindow::recieveFocus);
+    // hubWindow enables physics when a popup has closed
+    connect(&meteoritePopup, &Meteorite::returnFocus, this, &HubWindow::recieveFocus);
     connect(&volcanoPopup, &Volcano::returnFocus, this, &HubWindow::recieveFocus);
+    connect(&mammalsPopup, &Mammals::returnFocus, this, &HubWindow::recieveFocus);
 
     // explosion and impulse examples, creating the explosion at "" and impulse on "title" works best
     Mob* brick = simulation.namedMobs.at("");
@@ -49,7 +52,9 @@ HubWindow::~HubWindow()
 }
 
 void HubWindow::metoriteClicked() {
-    simulation.toggleRunning();
+    if(simulation.isRunning) {
+        simulation.toggleRunning();
+    }
     meteoritePopup.exec();
 }
 
@@ -61,7 +66,9 @@ void HubWindow::volcanoClicked() {
 }
 
 void HubWindow::mammalsClicked() {
-    simulation.toggleRunning();
+    if(simulation.isRunning) {
+        simulation.toggleRunning();
+    }
     mammalsPopup.exec();
 }
 

@@ -22,3 +22,7 @@ void Meteorite::on_GroundButton_clicked()
 {
     slide2Popup.exec();
 }
+
+void Meteorite::closeEvent(QCloseEvent*) {
+    emit returnFocus();
+}
