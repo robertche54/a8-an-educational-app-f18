@@ -19,6 +19,7 @@ public:
 
 public slots:
     void explodeClicked();
+    void clearSimulation();
 
 signals :
     void returnFocus();
@@ -26,9 +27,11 @@ signals :
 private:
     Ui::Volcano *ui;
     Simulation simulation;
+    b2Body* groundBody;
 
     void closeEvent(QCloseEvent*);
     void paintEvent(QPaintEvent*);
+    void initializeSimulation();
 };
 
 #endif // VOLCANO_H

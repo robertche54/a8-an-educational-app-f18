@@ -38,6 +38,7 @@ public:
     QImage step();
     void createExplosion(b2Vec2 position, int blastPower = 20, int numRays = 50);
     void applyImpulse(Mob*, double, float);
+    void clearSimulation();
 
 public slots:
     void removeRays();
