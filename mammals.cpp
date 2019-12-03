@@ -51,7 +51,7 @@ void Mammals::addPlant(float x, float y) {
 void Mammals::physicsUpdate() {
 
     QImage newImage = simulation.step();
-    ui->worldLabel->setPixmap(QPixmap::fromImage(newImage));
+    ui->simulationLabel->setPixmap(QPixmap::fromImage(newImage));
 }
 
 Mammals::~Mammals()
@@ -63,4 +63,7 @@ void Mammals::paintEvent(QPaintEvent*)
 {
     //QImage newImage = simulation.step();
     //ui->worldLabel->setPixmap(QPixmap::fromImage(newImage));
+}
+void Mammals::closeEvent(QCloseEvent *) {
+    emit returnFocus();
 }

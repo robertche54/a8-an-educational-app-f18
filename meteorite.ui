@@ -6,13 +6,61 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>800</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Meteorite</string>
   </property>
+  <widget class="QPushButton" name="OceanButton">
+   <property name="geometry">
+    <rect>
+     <x>330</x>
+     <y>330</y>
+     <width>131</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ocean Impact</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="GroundButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>330</y>
+     <width>131</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Ground Impact</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>10</y>
+     <width>401</width>
+     <height>271</height>
+    </rect>
+   </property>
+   <property name="lineWidth">
+    <number>1</number>
+   </property>
+   <property name="text">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Welcome to the meteorite extinction event home page!&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;From here you can select either Ground Impact&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;or Ocean Impact. &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;These will give information about &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;and simulate the type of &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;meteorite impact you selected!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>

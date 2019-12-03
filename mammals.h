@@ -2,6 +2,7 @@
 #define MAMMALS_H
 
 #include <QDialog>
+#include <QCloseEvent>
 
 #include <simulation.h>
 #include <creaturecollisionhandler.h>
@@ -16,6 +17,9 @@ public:
     explicit Mammals(QWidget *parent = nullptr);
     ~Mammals();
 
+signals:
+    void returnFocus();
+
 private:
     Ui::Mammals *ui;
     CreatureCollisionHandler* handler;
@@ -28,6 +32,8 @@ private:
     void paintEvent(QPaintEvent*);
 public slots:
     void physicsUpdate();
+
+    void closeEvent(QCloseEvent *);
 };
 
 #endif // MAMMALS_H

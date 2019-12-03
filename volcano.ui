@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>484</width>
-    <height>345</height>
+    <width>1200</width>
+    <height>800</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1200</width>
+    <height>800</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>Volcano</string>
@@ -16,11 +22,17 @@
   <widget class="QLabel" name="simulationLabel">
    <property name="geometry">
     <rect>
-     <x>60</x>
+     <x>200</x>
      <y>20</y>
-     <width>330</width>
-     <height>250</height>
+     <width>600</width>
+     <height>500</height>
     </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>600</width>
+     <height>500</height>
+    </size>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -29,14 +41,108 @@
   <widget class="QPushButton" name="explodeButton">
    <property name="geometry">
     <rect>
-     <x>180</x>
-     <y>300</y>
+     <x>980</x>
+     <y>340</y>
      <width>89</width>
      <height>25</height>
     </rect>
    </property>
    <property name="text">
-    <string>Detonate</string>
+    <string>EXPLODE!</string>
+   </property>
+  </widget>
+  <widget class="QComboBox" name="powerSelector">
+   <property name="geometry">
+    <rect>
+     <x>990</x>
+     <y>180</y>
+     <width>121</width>
+     <height>25</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="customPower">
+   <property name="geometry">
+    <rect>
+     <x>1010</x>
+     <y>70</y>
+     <width>81</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <property name="maximum">
+    <number>15</number>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="customCheck">
+   <property name="geometry">
+    <rect>
+     <x>940</x>
+     <y>310</y>
+     <width>161</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Use Custom Power?</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="historicLabel">
+   <property name="geometry">
+    <rect>
+     <x>1000</x>
+     <y>150</y>
+     <width>101</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Historic Power</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="customLabel">
+   <property name="geometry">
+    <rect>
+     <x>1000</x>
+     <y>40</y>
+     <width>101</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Custom Power</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="backgroundLabel">
+   <property name="geometry">
+    <rect>
+     <x>200</x>
+     <y>20</y>
+     <width>600</width>
+     <height>500</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>600</width>
+     <height>500</height>
+    </size>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="resetButton">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>340</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Reset</string>
    </property>
   </widget>
  </widget>

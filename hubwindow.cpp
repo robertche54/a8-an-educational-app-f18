@@ -1,18 +1,12 @@
 #include "hubwindow.h"
 #include "ui_hubwindow.h"
-#include "mammals.h"
-#include "volcano.h"
-#include "meteorite.h"
-#include <QThread>
-#include <QTimer>
 
 HubWindow::HubWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::HubWindow)
-    , tf(b2Vec2(-10,10),b2Vec2(10,-10),320,180)
 {
 
-    ui->setupUi(this); 
+    ui->setupUi(this);
 
     b2BodyDef myBodyDef;
     b2FixtureDef myFixtureDef;
@@ -25,22 +19,29 @@ HubWindow::HubWindow(QWidget *parent)
     myFixtureDef.shape = &edgeShape;
     b2Body* staticBody = simulation.world.CreateBody(&myBodyDef);
     staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
-    simulation.createMob("../A9/DinoTitle.png", 0, 10, 15, 3);
-    simulation.createMob("../A9/bricks.jpg", 5, 2, 4, 4);
 
-    QTimer *timer;
-    timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &HubWindow::wiggleTitle);
-    timer->start(1000/60);
+    simulation.createMob("../A9/DinoTitle.png", 0, 5, 15, 5, "title", b2_dynamicBody);
+    simulation.createMob("../A9/bricks.jpg", 5, 1, 2, 2, "", b2_staticBody);
 
+    // connecting ui buttons to open popups and toggle if physics is active
     connect(ui->metoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);
     connect(ui->volcanoButton, &QPushButton::pressed, this, &HubWindow::volcanoClicked);
     connect(ui->mammalButton, &QPushButton::pressed, this, &HubWindow::mammalsClicked);
+    connect(ui->physicsButton, &QPushButton::pressed, this, &HubWindow::togglePhysics);
 
+    // hubWindow enables physics when a popup has closed
+    connect(&meteoritePopup, &Meteorite::returnFocus, this, &HubWindow::recieveFocus);
+    connect(&volcanoPopup, &Volcano::returnFocus, this, &HubWindow::recieveFocus);
+    connect(&mammalsPopup, &Mammals::returnFocus, this, &HubWindow::recieveFocus);
+
+    // explosion and impulse examples, creating the explosion at "" and impulse on "title" works best
+    Mob* brick = simulation.namedMobs.at("");
+    simulation.createExplosion(brick->body->GetPosition(), 8, 120);
+    //simulation.applyImpulse(title, 135, 12.0f);
 }
 
-void HubWindow::wiggleTitle(){
-
+void HubWindow::paintEvent(QPaintEvent*)
+{
     QImage newImage = simulation.step();
     ui->titleLabel->setPixmap(QPixmap::fromImage(newImage));
 }
@@ -51,17 +52,22 @@ HubWindow::~HubWindow()
 }
 
 void HubWindow::metoriteClicked() {
+    if(simulation.isRunning) {
+        simulation.toggleRunning();
+    }
     meteoritePopup.exec();
 }
 
 void HubWindow::volcanoClicked() {
+    if(simulation.isRunning) {
+        simulation.toggleRunning();
+    }
     volcanoPopup.exec();
 }
 
 void HubWindow::mammalsClicked() {
+    if(simulation.isRunning) {
+        simulation.toggleRunning();
+    }
     mammalsPopup.exec();
-}
-
-sf::Sprite HubWindow::setSprite(std::string file, int x, int y){
-
 }

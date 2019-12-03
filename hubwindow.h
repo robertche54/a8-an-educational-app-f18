@@ -2,14 +2,15 @@
 #define HUBWINDOW_H
 
 #include <QMainWindow>
-#include <SFML/Graphics.hpp>
-#include <string>
 #include <QImage>
+#include <SFML/Graphics.hpp>
+
+#include <string>
+
 #include "meteorite.h"
 #include "mammals.h"
 #include "volcano.h"
 #include "simulation.h"
-#include <QTimer>
 
 namespace Ui { class HubWindow; }
 class HubWindow : public QMainWindow
@@ -19,13 +20,13 @@ class HubWindow : public QMainWindow
 public:
     HubWindow(QWidget *parent = nullptr);
     ~HubWindow();
-    sf::Sprite setSprite(std::string, int, int);
 
 public slots:
     void metoriteClicked();
     void volcanoClicked();
     void mammalsClicked();
-    void wiggleTitle();
+    void recieveFocus() { simulation.toggleRunning(); }
+    void togglePhysics() { simulation.toggleRunning(); }
 
 signals:
 
@@ -35,6 +36,7 @@ private:
     Volcano volcanoPopup;
     Mammals mammalsPopup;
     Simulation simulation;
-    windowTransform tf;
+
+    void paintEvent(QPaintEvent*);
 };
 #endif // HUBWINDOW_H

@@ -68,6 +68,8 @@ SOURCES += \
     hubwindow.cpp \
     mammals.cpp \
     meteorite.cpp \
+    meteorslide1.cpp \
+    meteorslide2.cpp \
     mob.cpp \
     simulation.cpp \
     volcano.cpp \
@@ -126,6 +128,8 @@ HEADERS += \
     hubwindow.h \
     mammals.h \
     meteorite.h \
+    meteorslide1.h \
+    meteorslide2.h \
     mob.h \
     simulation.h \
     volcano.h \
@@ -135,6 +139,8 @@ FORMS += \
     hubwindow.ui \
     mammals.ui \
     meteorite.ui \
+    meteorslide1.ui \
+    meteorslide2.ui \
     volcano.ui
 
 LIBS += -lsfml-audio -lsfml-graphics -lsfml-window -lsfml-system

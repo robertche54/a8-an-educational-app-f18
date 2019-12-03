@@ -1,20 +1,21 @@
 #include "mob.h"
 
-Mob::Mob(std::string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world)
+Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world)
     : position(locationX, locationY),
       size(sizeX,sizeY),
       world(&world)
 {
-    sprite_image.loadFromFile(file);
-    sprite_image.setSmooth(true);
-    sprite.setTexture(sprite_image);
-    auto bounds = sprite.getLocalBounds();
-    sprite.setOrigin(Vector2f(bounds.width/2, bounds.height/2));
-    sprite.setPosition(position);
-
+    createSprite(file);
     createBody(world);
 }
 
+Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world, b2BodyType type)
+    : position(locationX, locationY),
+      size(sizeX,sizeY)
+{
+    createSprite(file);
+    createBody(world, type);
+}
 
 bool Mob::Update(windowTransform transform)
 {
@@ -28,11 +29,21 @@ bool Mob::Update(windowTransform transform)
     return true;
 }
 
-void Mob::createBody(b2World &world, bool dynamic)
+void Mob::createSprite(string file)
+{
+    sprite_image.loadFromFile(file);
+    sprite_image.setSmooth(true);
+    sprite.setTexture(sprite_image);
+    auto bounds = sprite.getLocalBounds();
+    sprite.setOrigin(Vector2f(bounds.width/2, bounds.height/2));
+    sprite.setPosition(position);
+}
+
+void Mob::createBody(b2World &world, b2BodyType type)
 {
     // Uses the b2World factory to create a new body
     b2BodyDef bodyDef;
-    if(dynamic) bodyDef.type = b2_dynamicBody;
+    bodyDef.type = type;
     bodyDef.position.Set(position.x, position.y);
     body = world.CreateBody(&bodyDef);
 
@@ -41,8 +52,9 @@ void Mob::createBody(b2World &world, bool dynamic)
     polygonShape.SetAsBox(size.x, size.y);
 
     fixtureDef.shape = &polygonShape;
-    fixtureDef.density = dynamic;
+    fixtureDef.density = 1; //(type == b2_dynamicBody) || (type == b2_kinematicBody);
     fixtureDef.friction = 0.3f;
+    fixtureDef.restitution = 0.2f;
     body->CreateFixture(&fixtureDef);
 }
 
