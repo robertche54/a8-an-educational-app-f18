@@ -20,6 +20,7 @@ private:
     b2Vec2 gravity = b2Vec2(0.0, -9.81f);
     vector<Mob*> genericMobs;
     queue<vector<b2Body*>> rayQueue;
+    b2Vec2 singularity = b2Vec2(0, 0);
 
     const float degreeToRad = float(M_PI/180);
 
@@ -31,15 +32,22 @@ public:
 
     Simulation();
     ~Simulation();
+    QImage step();
+
     void setContactListener(b2ContactListener*);
     void setGravity(float, float);
+
+    void toggleRunning() { isRunning = !isRunning; }
+    void createSingularity(float x, float y) { singularity.Set(x, y); }
+
     void createMob(string, float, float, float, float);
     void createMob(string, float, float, float, float, string, b2BodyType);
-    void addMob(Mob*, string name = "");
-    void toggleRunning() { isRunning = !isRunning; }
-    QImage step();
     void createExplosion(b2Vec2 position, int blastPower = 20, int numRays = 50);
+    void addMob(Mob*, string name = "");
+
     void applyImpulse(Mob*, double, float);
+    void applyRadialGravity(Mob*, b2Vec2);
+
     void clearSimulation();
 
 public slots:

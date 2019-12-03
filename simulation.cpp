@@ -54,16 +54,27 @@ QImage Simulation::step() {
     if(isRunning) {
         world.Step(1 / 240.0f, 8, 3);
 
-        // Updates our named Mobs first because they can cause other Mobs to move
-        for(pair<string, Mob*> namedMob : namedMobs) {
-            namedMob.second->Update(tf);
-            canvas.draw(namedMob.second->getSprite());
+        if(singularity.x != 0.f && singularity.y != 0.f){
+            for(pair<string, Mob*> namedMob : namedMobs) {
+                applyRadialGravity(namedMob.second, singularity);
+            }
+            for(Mob* mob : genericMobs) {
+                applyRadialGravity(mob, singularity);
+            }
         }
+    }
 
-        for(Mob* mob : genericMobs) {
-            mob->Update(tf);
-            canvas.draw(mob->getSprite());
-        }
+    // Updates our named Mobs first because they can cause other Mobs to move
+    // PLEASE keep this out of the isRunning block so that if simulation is paused,
+    // the sprites are still being rendered.
+    for(pair<string, Mob*> namedMob : namedMobs) {
+        namedMob.second->Update(tf);
+        canvas.draw(namedMob.second->getSprite());
+    }
+
+    for(Mob* mob : genericMobs) {
+        mob->Update(tf);
+        canvas.draw(mob->getSprite());
     }
 
     canvas.display();
@@ -135,6 +146,12 @@ void Simulation::applyImpulse(Mob* movedMob, double degreeAngle, float magnitude
     b2Vec2 position = movedMob->body->GetPosition();
 
     movedMob->body->ApplyLinearImpulse(impulse, position, true);
+}
+
+void Simulation::applyRadialGravity(Mob* movedMob, b2Vec2 source)
+{
+    b2Vec2 distance = source - movedMob->body->GetPosition();
+    movedMob->body->ApplyLinearImpulse(distance, movedMob->body->GetPosition(), true);
 }
 
 void Simulation::removeRays() {
