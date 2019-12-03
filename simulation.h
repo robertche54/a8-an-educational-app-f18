@@ -18,13 +18,13 @@ class Simulation : QObject
 private:
     sf::RenderTexture canvas;
     b2Vec2 gravity = b2Vec2(0.0, -9.81f);
-    vector<Mob*> genericMobs;
     queue<vector<b2Body*>> rayQueue;
 
     const float degreeToRad = float(M_PI/180);
 
 public:
     bool isRunning = true;
+    vector<Mob*> genericMobs;
     map<string, Mob*> namedMobs;
     b2World world = b2World(gravity);
     windowTransform tf;
