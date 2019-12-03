@@ -12,8 +12,6 @@ Creature::Creature(string file, float locationX, float locationY, float score, b
 }
 bool Creature::Update(windowTransform tf) {
     if (fabs(newRadius - radius) > numeric_limits<float>::min()) {
-        printf("Size changed\n");
-        fflush(stdout);
         SetRadius(newRadius);
     }
     this->Mob::Update(tf);

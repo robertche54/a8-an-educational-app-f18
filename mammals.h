@@ -20,6 +20,10 @@ private:
     Ui::Mammals *ui;
     CreatureCollisionHandler* handler;
     Simulation simulation;
+    void populateWorld(float xRange, float yRange, int plants, int mammals, int dinos);
+    void addMammal(float x, float y);
+    void addDino(float x, float y);
+    void addPlant(float x, float y);
 
     void paintEvent(QPaintEvent*);
 public slots:
