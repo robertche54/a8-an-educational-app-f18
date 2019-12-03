@@ -29,14 +29,19 @@ MeteorSlide1::MeteorSlide1(QWidget *parent) :
     staticBody->CreateFixture(&myFixtureDef);
 
     ui->TextLabel->setText(infoVec.front());
-    QPixmap pixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/waterImpactBackdrop.jpg");
+    QPixmap pixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/underwater.jpg");
     ui->label->setPixmap(pixmap);
     simulation.setGravity(0,-10);
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/otherimage.png",-15.0,90.0,5.0,5.0,"Unicorn", b2_dynamicBody);
-    Mob *uni = simulation.namedMobs.at("Unicorn");
-    uni->body->SetLinearVelocity(b2Vec2(60.0f, -450.0));
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/oceanwave.png",-80.0,0.0,4,20.0,"Wave", b2_dynamicBody);
+    Mob *wave = simulation.namedMobs.at("Wave");
 
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/TRex.png", 5,-5,4,4);
+    wave->body->SetLinearVelocity(b2Vec2(250.0f, 0.0f));
+    wave->body->SetFixedRotation(true);
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/coelacanth.png", 2,5,2,2);
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/mosasaurus.png", 5,-5,3,3);
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/coelacanth.png", 4,8,2,2);
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/seaweed.png", -5,0,2,7);
+
 
 
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(simulation.step()));
