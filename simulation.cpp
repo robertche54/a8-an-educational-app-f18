@@ -14,7 +14,11 @@ Simulation::~Simulation() {
     }
 }
 
-// Changes the simulation's gravity if earth-like gravity is not desireable.
+void Simulation::setContactListener(b2ContactListener* listener)
+{
+    world.SetContactListener(listener);
+}
+
 void Simulation::setGravity(float x, float y) {
     world.SetGravity(b2Vec2(x, y));
 }
@@ -33,16 +37,17 @@ void Simulation::createMob(string filePath, float posX, float posY, float sizeX,
  * Creates a named Mob that CAN be accessed later.
  * For Mobs that are used to create explosions or have impulses applied to them.
  */
-void Simulation::createMob(string filePath, float posX, float posY, float sizeX,
-                           float sizeY, string name, b2BodyType type) {
+void Simulation::createMob(string filePath, float posX, float posY, float sizeX, float sizeY, string name, b2BodyType type) {
     Mob* newMob = new Mob(filePath, posX, posY, sizeX, sizeY, world, type);
     namedMobs.insert(pair<string, Mob*>(name, newMob));
 }
 
-/*
- * Moves the simulation forward one frame.
- * Returns a QImage representing the state of box2D after the simulated step.
- */
+void Simulation::addMob(Mob* mob, string name)
+{
+    if(name.empty()) genericMobs.push_back(mob);
+    else namedMobs.insert(pair<string, Mob*>(name, mob));
+}
+
 QImage Simulation::step() {
     canvas.clear();
 

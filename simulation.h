@@ -31,9 +31,11 @@ public:
 
     Simulation();
     ~Simulation();
+    void setContactListener(b2ContactListener*);
     void setGravity(float, float);
     void createMob(string, float, float, float, float);
     void createMob(string, float, float, float, float, string, b2BodyType);
+    void addMob(Mob*, string name = "");
     void toggleRunning() { isRunning = !isRunning; }
     QImage step();
     void createExplosion(b2Vec2 position, int blastPower = 20, int numRays = 50);
