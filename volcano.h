@@ -29,6 +29,7 @@ private:
     Simulation simulation;
     b2Body* groundBody;
 
+    void showEvent(QShowEvent *);
     void closeEvent(QCloseEvent*);
     void paintEvent(QPaintEvent*);
     void initializeSimulation();

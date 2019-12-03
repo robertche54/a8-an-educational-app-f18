@@ -15,8 +15,6 @@ Volcano::Volcano(QWidget *parent) :
 
     ui->powerSelector->addItems(volcanoList);
 
-    initializeSimulation();
-
     connect(ui->explodeButton, &QPushButton::pressed, this, &Volcano::explodeClicked);
     connect(ui->resetButton, &QPushButton::pressed, this, &Volcano::clearSimulation);
 }
@@ -26,7 +24,13 @@ Volcano::~Volcano()
     delete ui;
 }
 
+void Volcano::showEvent(QShowEvent *) {
+    initializeSimulation();
+}
+
 void Volcano::closeEvent(QCloseEvent*) {
+    simulation.clearSimulation();
+    simulation.world.DestroyBody(groundBody);
     emit returnFocus();
 }
 
