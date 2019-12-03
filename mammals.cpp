@@ -3,8 +3,8 @@
 #include <QTimer>
 
 auto plantFunctor = [] (float a) -> float {return a==0 ? 0 : 1;};
-auto mammalFunctor = [] (float a) -> float {return sqrt(30 - (5*21)/(4+a));};
-auto dinoFunctor = [] (float a) -> float {return sqrt(100 - (10*96)/(9+a));};
+auto mammalFunctor = [] (float a) -> float {return sqrt(max(0.0f,30 - (5*21)/(4+a)));};
+auto dinoFunctor = [] (float a) -> float {return sqrt(max(0.0f,100 - (10*96)/(9+a)));};
 
 Mammals::Mammals(QWidget *parent) :
     QDialog(parent),
@@ -14,7 +14,7 @@ Mammals::Mammals(QWidget *parent) :
     simulation.setGravity(0,0);
     handler = new CreatureCollisionHandler();
     simulation.setContactListener(handler);
-    populateWorld(15,15,200,5,5);
+    populateWorld(10,10,5,2,2);
     QTimer *timer;
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Mammals::physicsUpdate);
@@ -29,22 +29,22 @@ void Mammals::populateWorld(float xRange, float yRange, int plants, int mammals,
     while (mammals-- > 0) {
         float x = xRange*(random()%20000 - 10000)/10000;
         float y = yRange*(random()%20000 - 10000)/10000;
-        //addMammal(x,y);
+        addMammal(x,y);
     }
     while (dinos-- > 0) {
         float x = xRange*(random()%20000 - 10000)/10000;
         float y = yRange*(random()%20000 - 10000)/10000;
-        //addDino(x,y);
+        addDino(x,y);
     }
 }
 void Mammals::addMammal(float x, float y) {
-    simulation.addMob(new Creature("../A9/mammal.png", x, y, 1, simulation.world, mammalFunctor));
+    simulation.addMob(new Creature("../A9/mammal.png", x, y, float(random()%8+2)/3.0f, simulation.world, mammalFunctor));
 }
 void Mammals::addDino(float x, float y) {
-    simulation.addMob(new Creature("../A9/otherimage.png", x, y, 1, simulation.world, dinoFunctor));
+    simulation.addMob(new Creature("../A9/otherimage.png", x, y, float(random()%8+2)/3.0f, simulation.world, dinoFunctor));
 }
 void Mammals::addPlant(float x, float y) {
-    simulation.addMob(new Creature("../A9/cabbage.png", x, y, 1, simulation.world, plantFunctor));
+    simulation.addMob(new Creature("../A9/cabbage.png", x, y, float(random()%3+2)/3.0f, simulation.world, plantFunctor));
 }
 
 
