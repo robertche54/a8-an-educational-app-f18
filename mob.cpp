@@ -2,7 +2,8 @@
 
 Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world)
     : position(locationX, locationY),
-      size(sizeX,sizeY)
+      size(sizeX,sizeY),
+      world(&world)
 {
     createSprite(file);
     createBody(world);
@@ -16,7 +17,7 @@ Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY
     createBody(world, type);
 }
 
-void Mob::Update(windowTransform transform)
+bool Mob::Update(windowTransform transform)
 {
     // Updates SFML sprite with b2Body position and rotation
     sprite.setPosition(transform.transformX(body->GetPosition().x), transform.transformY(body->GetPosition().y));
@@ -25,6 +26,7 @@ void Mob::Update(windowTransform transform)
     sprite.setRotation(transform.transformAngle(body->GetAngle()));
     auto bounds = sprite.getLocalBounds();
     sprite.setScale(transform.transformWidth(size.x) / bounds.width, transform.transformHeight(size.y) / bounds.height);
+    return true;
 }
 
 void Mob::createSprite(string file)
@@ -54,4 +56,12 @@ void Mob::createBody(b2World &world, b2BodyType type)
     fixtureDef.friction = 0.3f;
     fixtureDef.restitution = 0.2f;
     body->CreateFixture(&fixtureDef);
+}
+
+Mob::~Mob() {
+    body->GetWorld()->DestroyBody(body);
+}
+
+Sprite& Mob::getSprite() {
+    return sprite;
 }

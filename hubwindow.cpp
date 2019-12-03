@@ -6,7 +6,7 @@ HubWindow::HubWindow(QWidget *parent)
     , ui(new Ui::HubWindow)
 {
 
-    ui->setupUi(this); 
+    ui->setupUi(this);
 
     b2BodyDef myBodyDef;
     b2FixtureDef myFixtureDef;
@@ -71,4 +71,3 @@ void HubWindow::mammalsClicked() {
     }
     mammalsPopup.exec();
 }
-
