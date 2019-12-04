@@ -42,6 +42,41 @@ void Simulation::createMob(string filePath, float posX, float posY, float sizeX,
     namedMobs.insert(pair<string, Mob*>(name, newMob));
 }
 
+/*
+ * Circle with Name
+ */
+void Simulation::createMob(string filePath, float posX, float posY, float radius, string name, b2BodyType type) {
+    Mob* newMob = new Mob(filePath, posX, posY, radius, world, type);
+    namedMobs.insert(pair<string, Mob*>(name, newMob));
+}
+
+/*
+ * Circle generic
+ */
+void Simulation::createMob(string filePath, float posX, float posY, float radius, b2BodyType type) {
+    Mob* newMob = new Mob(filePath, posX, posY, radius, world, type);
+    genericMobs.push_back(newMob);
+}
+
+/*
+ * polygon with Name
+ */
+void Simulation::createMob(string filePath, float posX, float posY, vector<b2Vec2> vertices, string name, b2BodyType type) {
+    //Mob* newMob = new Mob(filePath, posX, posY, radius, world, type);
+    //namedMobs.insert(pair<string, Mob*>(name, newMob));
+}
+
+/*
+ * polygon generic
+ */
+void Simulation::createMob(string filePath, float posX, float posY, vector<b2Vec2> vertices, b2BodyType type) {
+    //Mob* newMob = new Mob(filePath, posX, posY, radius, world, type);
+    //namedMobs.insert(pair<string, Mob*>(name, newMob));
+}
+
+
+
+
 void Simulation::addMob(Mob* mob, string name)
 {
     if(name.empty()) genericMobs.push_back(mob);

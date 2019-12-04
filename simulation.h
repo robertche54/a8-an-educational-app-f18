@@ -42,6 +42,12 @@ public:
 
     void createMob(string, float, float, float, float);
     void createMob(string, float, float, float, float, string, b2BodyType);
+    void createMob(string, float, float, float, string, b2BodyType);
+    void createMob(string, float, float, float, b2BodyType);
+    void createMob(string, float, float, vector<b2Vec2>, string, b2BodyType);
+    void createMob(string, float, float, vector<b2Vec2>, b2BodyType);
+
+
     void createExplosion(b2Vec2 position, int blastPower = 20, int numRays = 50);
     void addMob(Mob*, string name = "");
 
