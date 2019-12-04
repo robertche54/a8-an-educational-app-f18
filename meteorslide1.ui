@@ -22,8 +22,8 @@
   <widget class="QPushButton" name="NextButton">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>640</y>
+     <x>240</x>
+     <y>410</y>
      <width>89</width>
      <height>25</height>
     </rect>
@@ -35,8 +35,8 @@
   <widget class="QLabel" name="AnimationLabel">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>20</y>
+     <x>610</x>
+     <y>0</y>
      <width>600</width>
      <height>500</height>
     </rect>
@@ -54,10 +54,10 @@
   <widget class="QLabel" name="TextLabel">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>20</y>
-     <width>600</width>
-     <height>500</height>
+     <x>10</x>
+     <y>0</y>
+     <width>321</width>
+     <height>291</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -76,8 +76,8 @@
   <widget class="QPushButton" name="BackButton">
    <property name="geometry">
     <rect>
-     <x>690</x>
-     <y>680</y>
+     <x>10</x>
+     <y>410</y>
      <width>89</width>
      <height>25</height>
     </rect>
@@ -86,6 +86,38 @@
     <string>Back</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="Start">
+   <property name="geometry">
+    <rect>
+     <x>610</x>
+     <y>520</y>
+     <width>121</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Start Animation</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>0</y>
+     <width>600</width>
+     <height>500</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>NextButton</zorder>
+  <zorder>AnimationLabel</zorder>
+  <zorder>TextLabel</zorder>
+  <zorder>BackButton</zorder>
+  <zorder>Start</zorder>
  </widget>
  <resources/>
  <connections/>

@@ -23,8 +23,8 @@
    <widget class="QPushButton" name="metoriteButton">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>620</y>
+      <x>420</x>
+      <y>640</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -36,8 +36,8 @@
    <widget class="QPushButton" name="volcanoButton">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>620</y>
+      <x>560</x>
+      <y>640</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -49,8 +49,8 @@
    <widget class="QPushButton" name="mammalButton">
     <property name="geometry">
      <rect>
-      <x>610</x>
-      <y>620</y>
+      <x>710</x>
+      <y>640</y>
       <width>89</width>
       <height>25</height>
      </rect>
@@ -62,8 +62,8 @@
    <widget class="QLabel" name="titleLabel">
     <property name="geometry">
      <rect>
-      <x>180</x>
-      <y>70</y>
+      <x>310</x>
+      <y>0</y>
       <width>600</width>
       <height>500</height>
      </rect>
@@ -84,9 +84,9 @@
    <widget class="QPushButton" name="physicsButton">
     <property name="geometry">
      <rect>
-      <x>300</x>
-      <y>660</y>
-      <width>391</width>
+      <x>420</x>
+      <y>680</y>
+      <width>381</width>
       <height>25</height>
      </rect>
     </property>

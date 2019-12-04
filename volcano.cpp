@@ -13,6 +13,7 @@ Volcano::Volcano(QWidget *parent) :
                                <<"3: Nevado del Ruiz (1985)"<<"4: Laki (1783)"<<"5: St. Helens (1980)"
                                <<"6: Krakatoa (1883)"<<"7: Tambora (1815)"<<"8: Yellowstone (630,000 BC)");
 
+
     ui->powerSelector->addItems(volcanoList);
 
     connect(ui->explodeButton, &QPushButton::pressed, this, &Volcano::explodeClicked);
@@ -201,6 +202,7 @@ void Volcano::initializeSimulation() {
     }
     //creation of volcano test
     //simulation.createMob("../A9/otherimage.png", -10, 10, 2.0f, b2_dynamicBody);
+    simulation.createMob("../A9/otherimage.png", -10, 10, 2.0f, b2_dynamicBody);
     vector<b2Vec2> vert;
     b2Vec2 vert1(10, -20);
     vert.push_back(vert1);
