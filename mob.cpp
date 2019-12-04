@@ -65,7 +65,7 @@ void Mob::createBody(b2World &world, b2BodyType type)
 
     // Sets body data
     b2PolygonShape polygonShape;
-    polygonShape.SetAsBox(size.x, size.y);
+    polygonShape.SetAsBox(size.x/2, size.y/2);
 
     fixtureDef.shape = &polygonShape;
     fixtureDef.density = 1; //(type == b2_dynamicBody) || (type == b2_kinematicBody);
