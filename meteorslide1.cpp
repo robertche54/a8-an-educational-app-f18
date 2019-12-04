@@ -32,16 +32,16 @@ MeteorSlide1::MeteorSlide1(QWidget *parent) :
     QPixmap pixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/underwater.jpg");
     ui->label->setPixmap(pixmap);
     simulation.setGravity(0,-10);
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/oceanwave.png",-80.0,0.0,4,20.0,"Wave", b2_dynamicBody);
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/oceanwave.png",-80.0,0.0,6,40.0,"Wave", b2_dynamicBody);
     Mob *wave = simulation.namedMobs.at("Wave");
 
     wave->body->SetLinearVelocity(b2Vec2(250.0f, 0.0f));
     wave->body->SetFixedRotation(true);
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/coelacanth.png", 2,5,1,1);
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/mosasaurus.png", -3,2,4,2);
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/coelacanth.png", 4,2,1,1);
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/seaweed.png", 8,-5,1,5);
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/seaweed.png", -9,-2,1,4);
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/coelacanth.png", 2,5,3,3);
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/mosasaurus.png", -3,2,10,6);
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/coelacanth.png", 4,2,4,3);
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/seaweed.png", 8,-5,4,12);
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/seaweed.png", -9,-2,4,9);
 
 
 

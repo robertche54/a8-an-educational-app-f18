@@ -57,7 +57,7 @@ struct b2FixtureDef
 {
 	/// The constructor sets the default fixture definition values.
 	b2FixtureDef()
-	{
+    {
 		shape = nullptr;
 		userData = nullptr;
 		friction = 0.2f;

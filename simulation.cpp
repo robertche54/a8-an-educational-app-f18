@@ -14,7 +14,11 @@ Simulation::~Simulation() {
     }
 }
 
-// Changes the simulation's gravity if earth-like gravity is not desireable.
+void Simulation::setContactListener(b2ContactListener* listener)
+{
+    world.SetContactListener(listener);
+}
+
 void Simulation::setGravity(float x, float y) {
     world.SetGravity(b2Vec2(x, y));
 }
@@ -39,16 +43,65 @@ void Simulation::createMob(string filePath, float posX, float posY, float sizeX,
 }
 
 /*
- * Moves the simulation forward one frame.
- * Returns a QImage representing the state of box2D after the simulated step.
+ * Circle with Name
  */
+void Simulation::createMob(string filePath, float posX, float posY, float radius, string name, b2BodyType type) {
+    Mob* newMob = new Mob(filePath, posX, posY, radius, world, type);
+    namedMobs.insert(pair<string, Mob*>(name, newMob));
+}
+
+/*
+ * Circle generic
+ */
+void Simulation::createMob(string filePath, float posX, float posY, float radius, b2BodyType type) {
+    Mob* newMob = new Mob(filePath, posX, posY, radius, world, type);
+    genericMobs.push_back(newMob);
+}
+
+/*
+ * polygon with Name
+ */
+void Simulation::createMob(string filePath, float posX, float posY, vector<b2Vec2> vertices, string name, b2BodyType type) {
+    Mob* newMob = new Mob(filePath, posX, posY, vertices, world, type);
+    namedMobs.insert(pair<string, Mob*>(name, newMob));
+}
+
+/*
+ * polygon generic
+ */
+void Simulation::createMob(string filePath, float posX, float posY, vector<b2Vec2> vertices, b2BodyType type) {
+    Mob* newMob = new Mob(filePath, posX, posY, vertices, world, type);
+    genericMobs.push_back(newMob);
+}
+
+
+
+
+void Simulation::addMob(Mob* mob, string name)
+{
+    if(name.empty()) genericMobs.push_back(mob);
+    else namedMobs.insert(pair<string, Mob*>(name, mob));
+}
+
 QImage Simulation::step() {
     canvas.clear(Color(10,10,10,0));
 
-    if(isRunning)
+    if(isRunning) {
         world.Step(1 / 240.0f, 8, 3);
 
+        if(singularity.x != 0.f && singularity.y != 0.f){
+            for(pair<string, Mob*> namedMob : namedMobs) {
+                applyRadialGravity(namedMob.second, singularity);
+            }
+            for(Mob* mob : genericMobs) {
+                applyRadialGravity(mob, singularity);
+            }
+        }
+    }
+
     // Updates our named Mobs first because they can cause other Mobs to move
+    // PLEASE keep this out of the isRunning block so that if simulation is paused,
+    // the sprites are still being rendered.
     for(pair<string, Mob*> namedMob : namedMobs) {
         namedMob.second->Update(tf);
         canvas.draw(namedMob.second->getSprite());
@@ -130,6 +183,12 @@ void Simulation::applyImpulse(Mob* movedMob, double degreeAngle, float magnitude
     movedMob->body->ApplyLinearImpulse(impulse, position, true);
 }
 
+void Simulation::applyRadialGravity(Mob* movedMob, b2Vec2 source)
+{
+    b2Vec2 distance = source - movedMob->body->GetPosition();
+    movedMob->body->ApplyLinearImpulse(distance, movedMob->body->GetPosition(), true);
+}
+
 void Simulation::removeRays() {
     if(rayQueue.empty()) {
         return;
@@ -140,4 +199,19 @@ void Simulation::removeRays() {
         ray->GetWorld()->DestroyBody(ray);
     }
     rayQueue.pop();
+}
+
+void Simulation::clearSimulation() {
+    isRunning = false;
+
+    for (pair<string, Mob*> namedMob : namedMobs) {
+        delete namedMob.second;
+    }
+
+    for (Mob* mob : genericMobs) {
+        delete mob;
+    }
+
+    namedMobs.clear();
+    genericMobs.clear();
 }
