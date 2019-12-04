@@ -32,11 +32,18 @@ MeteorSlide1::MeteorSlide1(QWidget *parent) :
     QPixmap pixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/underwater.jpg");
     ui->label->setPixmap(pixmap);
     simulation.setGravity(0,-10);
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/oceanwave.png",-80.0,0.0,6,40.0,"Wave", b2_dynamicBody);
-    Mob *wave = simulation.namedMobs.at("Wave");
 
-    wave->body->SetLinearVelocity(b2Vec2(250.0f, 0.0f));
-    wave->body->SetFixedRotation(true);
+    for(int i = 0; i < 30; i++)
+    {
+        for(int j = 0; j < 10; j++)
+        {
+            simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/oceanwave2.png",-200.0 + i,j + 1,1.0,1.0,"Wave" + to_string(i) + to_string(j), b2_dynamicBody);
+            Mob *wave = simulation.namedMobs.at("Wave" + to_string(i) + to_string(j));
+            wave->body->SetLinearVelocity(b2Vec2(500.0f, 0.0f));
+            wave->body->SetAngularVelocity(80);
+        }
+    }
+
     simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/coelacanth.png", 2,5,3,3);
     simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/mosasaurus.png", -3,2,10,6);
     simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/coelacanth.png", 4,2,4,3);
