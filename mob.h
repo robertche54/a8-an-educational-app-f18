@@ -32,10 +32,12 @@ public:
     float radius;
     Texture sprite_image;
     Sprite sprite;
+    vector<b2Vec2> vertices;
 
     Mob(string, float, float, float, float, b2World &world);
     Mob(string, float, float, float, float, b2World &world, b2BodyType type);
     Mob(string, float locationX, float locationY, float radius, b2World &world, b2BodyType type);
+    Mob(string file, float locationX, float locationY, vector<b2Vec2> ver, b2World &world, b2BodyType type);
     virtual ~Mob();
     Sprite &getSprite();
     virtual bool Update(windowTransform);

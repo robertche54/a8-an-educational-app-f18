@@ -199,4 +199,17 @@ void Volcano::initializeSimulation() {
             simulation.createMob("../A9/otherimage.png", x, y, 1.0f, 1.0f);
         }
     }
+    //creation of volcano test
+    simulation.createMob("../A9/otherimage.png", -10, 10, 2.0f, b2_dynamicBody);
+    vector<b2Vec2> vert;
+    b2Vec2 vert1(-1, -1);
+    vert.push_back(vert1);
+    b2Vec2 vert2(0, 5);
+    vert.push_back(vert2);
+    b2Vec2 vert3(5, 5);
+    vert.push_back(vert3);
+
+//    b2Vec2 vert4(0, 0);
+//    vert.push_back(vert4);
+    //simulation.createMob("../A9/volcano.jpeg", 0, 0, vert, b2_dynamicBody);
 }
