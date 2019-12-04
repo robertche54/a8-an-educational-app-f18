@@ -84,15 +84,13 @@ void MeteorSlide2::addElements(){
     sim->applyImpulse(meteor,235,150);
 
     //Dino mobs
-    Mob* trex = new Mob("../A9/landDinos/TRex.png",-3,-5,2,2,sim->world);
-    sim->addMob(trex, "trex");
-    dinos.push_back(trex);
-    dinos.push_back(new Mob("../A9/landDinos/spikey.png", -8,-1,2,1, sim->world));
-    dinos.push_back(new Mob("../A9/landDinos/screamingDino.png", -8, -4, 3, 3, sim->world));
-    dinos.push_back(new Mob("../A9/landDinos/pteranodon.png",2, 6, 2, 2,sim->world));
-    dinos.push_back(new Mob("../A9/landDinos/dino2.png",-4,-6,2,2,sim->world));
-    dinos.push_back(new Mob("../A9/landDinos/rock.png",2,-9,4,4, sim->world));
-    dinos.push_back(new Mob("../A9/landDinos/tree.png",8,-8,10,10,sim->world));
+    dinos.insert(pair<string,Mob*>("TRex",new Mob("../A9/landDinos/TRex.png",-3,-5,2,2,sim->world)));
+    dinos.insert(pair<string,Mob*>("spikey",new Mob("../A9/landDinos/spikey.png", -4,-2,2,1, sim->world)));
+    dinos.insert(pair<string,Mob*>("screamingDino",new Mob("../A9/landDinos/screamingDino.png", -8, -4, 3, 3, sim->world)));
+    dinos.insert(pair<string,Mob*>("pteranodon",new Mob("../A9/landDinos/pteranodon.png",2, 6, 2, 2,sim->world)));
+    dinos.insert(pair<string,Mob*>("dino2",new Mob("../A9/landDinos/dino2.png",-8,-2,2,2,sim->world)));
+    dinos.insert(pair<string,Mob*>("rock",new Mob("../A9/landDinos/rock.png",2,-9,4,4, sim->world)));
+    dinos.insert(pair<string,Mob*>("tree",new Mob("../A9/landDinos/tree.png",8,-8,10,10,sim->world)));
 
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }
@@ -137,12 +135,6 @@ void MeteorSlide2::on_startButton_clicked(){
     backGroundTimer->start(400);
 }
 
-void MeteorSlide2::selectDinoCount(int count){
-    for(uint i = 0; i < static_cast<uint>(count); i++){
-        string s("%s",i);
-        sim->addMob(dinos[i],s);
-    }
-}
 
 void MeteorSlide2::on_reset_clicked(){
     worldTimer->stop();
@@ -151,13 +143,46 @@ void MeteorSlide2::on_reset_clicked(){
     addElements();
     ui->backLabel->setPixmap(QPixmap("../A9/dinoscene0.jpg"));
     backgroundIndex=0;
-    ui->dinoSelect->setValue(1);
 }
 
-void MeteorSlide2::on_dinoSelect_valueChanged(int count){
-    for(uint i = 0; i < static_cast<uint>(count); i++){
-        string s("%s",i);
-        sim->addMob(dinos[i],s);
-    }
+void MeteorSlide2::on_TRexButton_clicked()
+{
+    sim->addMob(dinos["TRex"]);
+    ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
+}
+
+void MeteorSlide2::on_dino2Button_clicked()
+{
+    sim->addMob(dinos["dino2"]);
+    ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
+}
+
+void MeteorSlide2::on_pteranButton_clicked()
+{
+    sim->addMob(dinos["pteranodon"]);
+    ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
+}
+
+void MeteorSlide2::on_rockButton_clicked()
+{
+    sim->addMob(dinos["rock"]);
+    ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
+}
+
+void MeteorSlide2::on_screamingDino_clicked()
+{
+    sim->addMob(dinos["screamingDino"]);
+    ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
+}
+
+void MeteorSlide2::on_spikeyButton_clicked()
+{
+    sim->addMob(dinos["spikey"]);
+    ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
+}
+
+void MeteorSlide2::on_treeButton_clicked()
+{
+    sim->addMob(dinos["tree"]);
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }

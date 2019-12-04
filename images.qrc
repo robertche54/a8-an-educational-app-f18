@@ -1,2 +1,12 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/items">
+        <file>landDinos/dino2.png</file>
+        <file>landDinos/pteranodon.png</file>
+        <file>landDinos/rock.png</file>
+        <file>landDinos/screamingDino.png</file>
+        <file>landDinos/smoke.png</file>
+        <file>landDinos/spikey.png</file>
+        <file>landDinos/tree.png</file>
+        <file>landDinos/TRex.png</file>
+    </qresource>
+</RCC>

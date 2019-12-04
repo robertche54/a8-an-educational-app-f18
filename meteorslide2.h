@@ -25,9 +25,16 @@ private slots:
     void update();
     void changeBackground();
     void on_startButton_clicked();
-    void selectDinoCount(int);
     void on_reset_clicked();
-    void on_dinoSelect_valueChanged(int);
+
+    //Dino button slots
+    void on_TRexButton_clicked();
+    void on_dino2Button_clicked();
+    void on_pteranButton_clicked();
+    void on_rockButton_clicked();
+    void on_screamingDino_clicked();
+    void on_spikeyButton_clicked();
+    void on_treeButton_clicked();
 
 private:
     Ui::MeteorSlide2 *ui;
@@ -36,7 +43,7 @@ private:
     QTimer* backGroundTimer;
     QTimer* worldTimer;
     Simulation* sim;
-    vector<Mob*> dinos;
+    map<string,Mob*> dinos;
     vector<QString> infoVec{ "Welcome to the ground impact page. Press 'Next' to continue!",
                            "The ground impact, like, seriously messed the dinos up.",
                            "Well, the ground didn't impact anything. . .",
