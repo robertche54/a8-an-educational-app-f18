@@ -35,20 +35,20 @@ MeteorSlide1::MeteorSlide1(QWidget *parent) :
 
     for(int i = 0; i < 30; i++)
     {
-        for(int j = 0; j < 10; j++)
+        for(int j = 0; j < 15; j++)
         {
-            simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/oceanwave2.png",-200.0 + i,j + 1,1.0,1.0,"Wave" + to_string(i) + to_string(j), b2_dynamicBody);
+            simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/oceanwave2.png",-200.0 + i,-5 + j,1.0,1.0,"Wave" + to_string(i) + to_string(j), b2_dynamicBody);
             Mob *wave = simulation.namedMobs.at("Wave" + to_string(i) + to_string(j));
             wave->body->SetLinearVelocity(b2Vec2(500.0f, 0.0f));
             wave->body->SetAngularVelocity(100);
         }
     }
 
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/coelacanth.png", 2,6,2,2);
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/mosasaurus.png", -5,2,9,5, "mosasaur", b2_dynamicBody);
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/coelacanth.png", 2,7,2,2);
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/mosasaurus.png", -5,3,9,5, "mosasaur", b2_dynamicBody);
     Mob *mosasaur = simulation.namedMobs.at("mosasaur");
     mosasaur->body->SetLinearVelocity(b2Vec2(10.0f, 0.0f));
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/coelacanth.png", 4,2,3,2, "fish", b2_dynamicBody);
+    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/coelacanth.png", 4,3,3,2, "fish", b2_dynamicBody);
     Mob *fish = simulation.namedMobs.at("fish");
     fish->body->SetLinearVelocity(b2Vec2(10.0f, 0.0f));
     simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/seaweed.png", 8,-5,3,11);
