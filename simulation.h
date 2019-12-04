@@ -21,10 +21,10 @@ private:
     vector<Mob*> genericMobs;
     queue<vector<b2Body*>> rayQueue;
 
-    bool isRunning = true;
     const float degreeToRad = float(M_PI/180);
 
 public:
+    bool isRunning = true;
     map<string, Mob*> namedMobs;
     b2World world = b2World(gravity);
     windowTransform tf;
@@ -39,6 +39,7 @@ public:
     QImage step();
     void createExplosion(b2Vec2 position, int blastPower = 20, int numRays = 50);
     void applyImpulse(Mob*, double, float);
+    void clearSimulation();
 
 public slots:
     void removeRays();

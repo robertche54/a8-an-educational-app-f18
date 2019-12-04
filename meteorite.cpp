@@ -30,3 +30,7 @@ void Meteorite::on_GroundButton_clicked()
     MeteorSlide2 slide2;
     slide2.exec();
 }
+
+void Meteorite::closeEvent(QCloseEvent*) {
+    emit returnFocus();
+}
