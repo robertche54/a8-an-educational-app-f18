@@ -42,6 +42,41 @@ void Simulation::createMob(string filePath, float posX, float posY, float sizeX,
     namedMobs.insert(pair<string, Mob*>(name, newMob));
 }
 
+/*
+ * Circle with Name
+ */
+void Simulation::createMob(string filePath, float posX, float posY, float radius, string name, b2BodyType type) {
+    Mob* newMob = new Mob(filePath, posX, posY, radius, world, type);
+    namedMobs.insert(pair<string, Mob*>(name, newMob));
+}
+
+/*
+ * Circle generic
+ */
+void Simulation::createMob(string filePath, float posX, float posY, float radius, b2BodyType type) {
+    Mob* newMob = new Mob(filePath, posX, posY, radius, world, type);
+    genericMobs.push_back(newMob);
+}
+
+/*
+ * polygon with Name
+ */
+void Simulation::createMob(string filePath, float posX, float posY, vector<b2Vec2> vertices, string name, b2BodyType type) {
+    //Mob* newMob = new Mob(filePath, posX, posY, radius, world, type);
+    //namedMobs.insert(pair<string, Mob*>(name, newMob));
+}
+
+/*
+ * polygon generic
+ */
+void Simulation::createMob(string filePath, float posX, float posY, vector<b2Vec2> vertices, b2BodyType type) {
+    //Mob* newMob = new Mob(filePath, posX, posY, radius, world, type);
+    //namedMobs.insert(pair<string, Mob*>(name, newMob));
+}
+
+
+
+
 void Simulation::addMob(Mob* mob, string name)
 {
     if(name.empty()) genericMobs.push_back(mob);
@@ -54,16 +89,27 @@ QImage Simulation::step() {
     if(isRunning) {
         world.Step(1 / 240.0f, 8, 3);
 
-        // Updates our named Mobs first because they can cause other Mobs to move
-        for(pair<string, Mob*> namedMob : namedMobs) {
-            namedMob.second->Update(tf);
-            canvas.draw(namedMob.second->getSprite());
+        if(singularity.x != 0.f && singularity.y != 0.f){
+            for(pair<string, Mob*> namedMob : namedMobs) {
+                applyRadialGravity(namedMob.second, singularity);
+            }
+            for(Mob* mob : genericMobs) {
+                applyRadialGravity(mob, singularity);
+            }
         }
+    }
 
-        for(Mob* mob : genericMobs) {
-            mob->Update(tf);
-            canvas.draw(mob->getSprite());
-        }
+    // Updates our named Mobs first because they can cause other Mobs to move
+    // PLEASE keep this out of the isRunning block so that if simulation is paused,
+    // the sprites are still being rendered.
+    for(pair<string, Mob*> namedMob : namedMobs) {
+        namedMob.second->Update(tf);
+        canvas.draw(namedMob.second->getSprite());
+    }
+
+    for(Mob* mob : genericMobs) {
+        mob->Update(tf);
+        canvas.draw(mob->getSprite());
     }
 
     canvas.display();
@@ -135,6 +181,12 @@ void Simulation::applyImpulse(Mob* movedMob, double degreeAngle, float magnitude
     b2Vec2 position = movedMob->body->GetPosition();
 
     movedMob->body->ApplyLinearImpulse(impulse, position, true);
+}
+
+void Simulation::applyRadialGravity(Mob* movedMob, b2Vec2 source)
+{
+    b2Vec2 distance = source - movedMob->body->GetPosition();
+    movedMob->body->ApplyLinearImpulse(distance, movedMob->body->GetPosition(), true);
 }
 
 void Simulation::removeRays() {

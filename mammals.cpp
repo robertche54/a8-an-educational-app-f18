@@ -59,11 +59,18 @@ Mammals::~Mammals()
     delete ui;
 }
 
+void Mammals::mousePressEvent(QMouseEvent *event)
+{
+    // QT coordinates need to be converted to box2D coordinates
+    //simulation.createSingularity(event->x(), event->y());
+}
+
 void Mammals::paintEvent(QPaintEvent*)
 {
     //QImage newImage = simulation.step();
     //ui->worldLabel->setPixmap(QPixmap::fromImage(newImage));
 }
+
 void Mammals::closeEvent(QCloseEvent *) {
     emit returnFocus();
 }
