@@ -120,44 +120,44 @@ void Volcano::clearSimulation() {
 void Volcano::initializeSimulation() {
     simulation.isRunning = true;
 
-    b2BodyDef groundBodyDef;
-    b2BodyDef leftWallBodyDef;
-    b2BodyDef rightWallBodyDef;
-    b2FixtureDef groundFixtureDef;
-    b2FixtureDef leftWallFixtureDef;
-    b2FixtureDef rightWallFixtureDef;
+   b2BodyDef groundBodyDef;
+//    b2BodyDef leftWallBodyDef;
+//    b2BodyDef rightWallBodyDef;
+   b2FixtureDef groundFixtureDef;
+//    b2FixtureDef leftWallFixtureDef;
+//    b2FixtureDef rightWallFixtureDef;
 
-    leftWallBodyDef.type = b2_staticBody;
+//    leftWallBodyDef.type = b2_staticBody;
 
-    b2Vec2 leftVerticies[3];
-    leftVerticies[0] = b2Vec2(10, -20);
-    leftVerticies[1] = b2Vec2(-30, -40);
-    leftVerticies[2] = b2Vec2(10, -40);
+//    b2Vec2 leftVerticies[3];
+//    leftVerticies[0] = b2Vec2(10, -20);
+//    leftVerticies[1] = b2Vec2(-30, -40);
+//    leftVerticies[2] = b2Vec2(10, -40);
 
-    b2PolygonShape leftWallShape;
-    leftWallShape.Set(leftVerticies, 3);
+//    b2PolygonShape leftWallShape;
+//    leftWallShape.Set(leftVerticies, 3);
 
-    leftWallFixtureDef.shape = &leftWallShape;
-    leftWallBodyDef.position.Set(0, 0);
+//    leftWallFixtureDef.shape = &leftWallShape;
+//    leftWallBodyDef.position.Set(0, 0);
 
-    leftWallBody = simulation.world.CreateBody(&leftWallBodyDef);
-    leftWallBody->CreateFixture(&leftWallFixtureDef);
+//    leftWallBody = simulation.world.CreateBody(&leftWallBodyDef);
+//    leftWallBody->CreateFixture(&leftWallFixtureDef);
 
-    rightWallBodyDef.type = b2_staticBody;
+//    rightWallBodyDef.type = b2_staticBody;
 
-    b2Vec2 rightVerticies[3];
-    rightVerticies[0] = b2Vec2(30, -20);
-    rightVerticies[1] = b2Vec2(60, -40);
-    rightVerticies[2] = b2Vec2(30, -40);
+//    b2Vec2 rightVerticies[3];
+//    rightVerticies[0] = b2Vec2(30, -20);
+//    rightVerticies[1] = b2Vec2(60, -40);
+//    rightVerticies[2] = b2Vec2(30, -40);
 
-    b2PolygonShape rightWallShape;
-    rightWallShape.Set(rightVerticies, 3);
+//    b2PolygonShape rightWallShape;
+//    rightWallShape.Set(rightVerticies, 3);
 
-    rightWallFixtureDef.shape = &rightWallShape;
-    rightWallBodyDef.position.Set(0, 0);
+//    rightWallFixtureDef.shape = &rightWallShape;
+//    rightWallBodyDef.position.Set(0, 0);
 
-    rightWallBody = simulation.world.CreateBody(&rightWallBodyDef);
-    rightWallBody->CreateFixture(&rightWallFixtureDef);
+//    rightWallBody = simulation.world.CreateBody(&rightWallBodyDef);
+//    rightWallBody->CreateFixture(&rightWallFixtureDef);
 
     /*
     for (int i = 10; i < 40; i += 20) {
@@ -200,16 +200,16 @@ void Volcano::initializeSimulation() {
         }
     }
     //creation of volcano test
-    simulation.createMob("../A9/otherimage.png", -10, 10, 2.0f, b2_dynamicBody);
+    //simulation.createMob("../A9/otherimage.png", -10, 10, 2.0f, b2_dynamicBody);
     vector<b2Vec2> vert;
-    b2Vec2 vert1(-1, -1);
+    b2Vec2 vert1(10, -20);
     vert.push_back(vert1);
-    b2Vec2 vert2(0, 5);
+    b2Vec2 vert2(-30, -40);
     vert.push_back(vert2);
-    b2Vec2 vert3(5, 5);
+    b2Vec2 vert3(10, -40);
     vert.push_back(vert3);
 
 //    b2Vec2 vert4(0, 0);
 //    vert.push_back(vert4);
-    //simulation.createMob("../A9/volcano.jpeg", 0, 0, vert, b2_dynamicBody);
+    simulation.createMob("../A9/volcano.jpeg", 0, 0, vert, b2_dynamicBody);
 }

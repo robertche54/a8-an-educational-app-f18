@@ -28,7 +28,7 @@ Mob::Mob(string file, float locationX, float locationY, float rad, b2World &worl
 }
 
 Mob::Mob(string file, float locationX, float locationY, vector<b2Vec2> ver, b2World &world, b2BodyType type)
-    : position(locationX, locationY),
+    :
       world(&world)
 {
     vertices = ver;
@@ -83,12 +83,12 @@ void Mob::createBody(b2World &world, b2BodyType type, int shape)
     // Uses the b2World factory to create a new body
     b2BodyDef bodyDef;
     bodyDef.type = type;
-    bodyDef.position.Set(position.x, position.y);
-    body = world.CreateBody(&bodyDef);
+    b2CircleShape circleShape;
+    b2PolygonShape polygonShape;
 
     // Sets body data
     if(shape == 1){//this check means it's a circle.
-        b2CircleShape circleShape;
+
         circleShape.m_p.Set(0, 0); //position, relative to body position
         circleShape.m_radius = radius; //radius
         fixtureDef.shape = &circleShape;
@@ -96,17 +96,16 @@ void Mob::createBody(b2World &world, b2BodyType type, int shape)
     else{//else it's a polygon
         b2Vec2 polygonVertices[vertices.size()];
         for(unsigned long i = 0; i < vertices.size(); i++){
-            polygonVertices[i].Set(vertices[i].x, vertices[i].x);
+            polygonVertices[i] = vertices[i];
         }
-
-        b2PolygonShape polygonShape;
         polygonShape.Set(polygonVertices, vertices.size());
         fixtureDef.shape = &polygonShape;
     }
-
+    bodyDef.position.Set(0, 0);
     fixtureDef.density = 1; //(type == b2_dynamicBody) || (type == b2_kinematicBody);
     fixtureDef.friction = 0.3f;
     fixtureDef.restitution = 0.2f;
+    body = world.CreateBody(&bodyDef);
     body->CreateFixture(&fixtureDef);
 }
 
