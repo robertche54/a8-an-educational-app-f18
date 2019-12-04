@@ -1,9 +1,9 @@
 #include "creature.h"
 #include <limits>
 
-Creature::Creature(string file, float locationX, float locationY, float score, b2World &wor, float (*f)(float)) :
+Creature::Creature(string file, float locationX, float locationY, float score, b2World &wor, function<float(float)>*f) :
     Mob(file, locationX, locationY, (*f)(score), (*f)(score), wor),
-    radius((*f)(score)),
+    //radius((*f)(score)),
     newRadius((*f)(score)),
     score(score),
     scoreToRadiusFunction(f)
@@ -23,8 +23,8 @@ bool Creature::Update(windowTransform tf) {
 
 void Creature::SetRadius(float radius) {
     this->radius = radius;
-    this->size.x = radius;
-    this->size.y = radius;
+    this->size.x = radius/2;
+    this->size.y = radius/2;
     b2BodyDef myBodyDef;
     myBodyDef.type = b2_dynamicBody;
     myBodyDef.position.Set(body->GetPosition().x, body->GetPosition().y);

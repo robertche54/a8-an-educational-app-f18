@@ -24,6 +24,7 @@ public:
     int transformWidth(float x);
     int transformHeight(float y);
     float transformAngle(float angle);
+    b2Vec2 windowToWorldCoordinates(int x, int y);
 };
 
 #endif // WINDOWTRANSFORM_H

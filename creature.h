@@ -1,17 +1,18 @@
 #ifndef CREATURE_H
 #define CREATURE_H
 #include "mob.h"
+#include <functional>
 
 
 class Creature : public Mob
 {
 protected:
-    float radius;
+    //float radius;
     float newRadius;
     float score;
-    float (*scoreToRadiusFunction)(float);
+    function<float(float)>*scoreToRadiusFunction;
 public:
-    Creature(std::string file, float locationX, float locationY, float radius, b2World &world, float (*scoreToRadius)(float));
+    explicit Creature(std::string file, float locationX, float locationY, float radius, b2World &world, std::function<float(float)>*);
     bool Update(windowTransform);
     void SetRadius(float radius);
     void SetScore(float score);

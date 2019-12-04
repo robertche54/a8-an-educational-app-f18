@@ -2,9 +2,16 @@
 #include "ui_mammals.h"
 #include <QTimer>
 
-auto plantFunctor = [] (float a) -> float {return a==0 ? 0 : 1;};
-auto mammalFunctor = [] (float a) -> float {return sqrt(max(0.0f,30 - (5*21)/(4+a)));};
-auto dinoFunctor = [] (float a) -> float {return sqrt(max(0.0f,100 - (10*96)/(9+a)));};
+function<float(float)> generateGrowthFunction(float minSize, float maxSize, float growthRate) {
+    auto function = [minSize,maxSize,growthRate] (float a) -> float {
+        return max(0.1f,maxSize - (growthRate*(maxSize - minSize))/(growthRate-1+a));
+    };
+    return function;
+};
+
+function<float(float)> plantFunctor = [] (float a) -> float {return a==0 ? 0 : 1;};
+function<float(float)> mammalFunctor = generateGrowthFunction(1.8, 10, 3);
+function<float(float)> dinoFunctor = generateGrowthFunction(1.3, 15, 20);
 
 Mammals::Mammals(QWidget *parent) :
     QDialog(parent),
@@ -14,13 +21,14 @@ Mammals::Mammals(QWidget *parent) :
     simulation.setGravity(0,0);
     handler = new CreatureCollisionHandler();
     simulation.setContactListener(handler);
-    populateWorld(10,10,5,2,2);
+    //populateWorld(10,10,15,10,10);
     QTimer *timer;
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &Mammals::physicsUpdate);
     timer->start(1000/60);
 }
 void Mammals::populateWorld(float xRange, float yRange, int plants, int mammals, int dinos) {
+    srand(time(NULL));
     while (plants-- > 0) {
         float x = xRange*(random()%20000 - 10000)/10000;
         float y = yRange*(random()%20000 - 10000)/10000;
@@ -38,13 +46,13 @@ void Mammals::populateWorld(float xRange, float yRange, int plants, int mammals,
     }
 }
 void Mammals::addMammal(float x, float y) {
-    simulation.addMob(new Creature("../A9/mammal.png", x, y, float(random()%8+2)/3.0f, simulation.world, mammalFunctor));
+    simulation.addMob(new Creature("../A9/mammal.png", x, y, float(random()%8+2)/3.0f, simulation.world, &mammalFunctor));
 }
 void Mammals::addDino(float x, float y) {
-    simulation.addMob(new Creature("../A9/otherimage.png", x, y, float(random()%8+2)/3.0f, simulation.world, dinoFunctor));
+    simulation.addMob(new Creature("../A9/otherimage.png", x, y, float(random()%8+2)/3.0f, simulation.world, &dinoFunctor));
 }
 void Mammals::addPlant(float x, float y) {
-    simulation.addMob(new Creature("../A9/cabbage.png", x, y, float(random()%3+2)/3.0f, simulation.world, plantFunctor));
+    simulation.addMob(new Creature("../A9/cabbage.png", x, y, float(random()%3+2)/3.0f, simulation.world, &plantFunctor));
 }
 
 
