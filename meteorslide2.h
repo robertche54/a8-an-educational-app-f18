@@ -26,12 +26,17 @@ private slots:
     void changeBackground();
     void on_startButton_clicked();
     void selectDinoCount(int);
+    void on_reset_clicked();
+    void on_dinoSelect_valueChanged(int);
+
 private:
     Ui::MeteorSlide2 *ui;
     int infoIndex = 0;
     int backgroundIndex = 0;
     QTimer* backGroundTimer;
-    Simulation sim;
+    QTimer* worldTimer;
+    Simulation* sim;
+    vector<Mob*> dinos;
     vector<QString> infoVec{ "Welcome to the ground impact page. Press 'Next' to continue!",
                            "The ground impact, like, seriously messed the dinos up.",
                            "Well, the ground didn't impact anything. . .",

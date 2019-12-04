@@ -37,8 +37,8 @@
     <rect>
      <x>40</x>
      <y>150</y>
-     <width>331</width>
-     <height>281</height>
+     <width>600</width>
+     <height>500</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -115,12 +115,43 @@
     <string>Start Exctinction</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="reset">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>660</y>
+     <width>131</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Reset</string>
+   </property>
+  </widget>
+  <widget class="QSpinBox" name="dinoSelect">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>610</y>
+     <width>71</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="minimum">
+    <number>1</number>
+   </property>
+   <property name="maximum">
+    <number>7</number>
+   </property>
+  </widget>
   <zorder>backLabel</zorder>
   <zorder>NextButton</zorder>
   <zorder>TextLabel</zorder>
   <zorder>AnimationLabel</zorder>
   <zorder>BackButton</zorder>
   <zorder>startButton</zorder>
+  <zorder>reset</zorder>
+  <zorder>dinoSelect</zorder>
  </widget>
  <resources/>
  <connections/>
