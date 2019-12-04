@@ -15,26 +15,30 @@ class Mob : QObject
 {
     Q_OBJECT
 
-private:
+protected:
+    b2World* world;
     const int scale = 1;
 
     b2FixtureDef fixtureDef;
 
     void createBody(b2World &world, b2BodyType type = b2_dynamicBody);
+    void createBody(b2World &world, b2BodyType type, int shape);
     void createSprite(string);
 
 public:
     b2Body* body;
     Vector2f position;
     Vector2f size;
+    float radius;
     Texture sprite_image;
     Sprite sprite;
 
-    Mob(string, float, float, float, float, b2World&);
-    Mob(string, float, float, float, float, b2World&, b2BodyType type);
-    ~Mob() { body->GetWorld()->DestroyBody(body); }
-    Sprite &getSprite() { return sprite; }
-    void Update(windowTransform);
+    Mob(string, float, float, float, float, b2World &world);
+    Mob(string, float, float, float, float, b2World &world, b2BodyType type);
+    Mob(string, float locationX, float locationY, float radius, b2World &world, b2BodyType type);
+    virtual ~Mob();
+    Sprite &getSprite();
+    virtual bool Update(windowTransform);
 };
 
 #endif // SPRITE_H
