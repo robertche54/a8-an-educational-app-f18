@@ -3,6 +3,8 @@
 
 #include <QDialog>
 #include <vector>
+#include <QTimer>
+#include "simulation.h"
 
 using namespace std;
 
@@ -23,10 +25,16 @@ private slots:
 
     void on_BackButton_clicked();
 
+    void runAnimation();
+
+    void on_Start_clicked();
+
 private:
     Ui::MeteorSlide1 *ui;
+    QTimer *timer;
     vector<QString> infoVec;
     int infoIndex = 0;
+    Simulation simulation;
 };
 
 #endif // METEORSLIDE1_H

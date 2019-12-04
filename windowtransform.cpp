@@ -30,7 +30,7 @@ void windowTransform::updateTrueCorners() {
     }
     trueTopLeftCorner = screenCenter - size;
     trueBottomRightCorner = screenCenter + size;
-    //printf("%f, %f; %f, %f\n", trueTopLeftCorner.x, trueTopLeftCorner.y, trueBottomRightCorner.x, trueBottomRightCorner.y);
+
 }
 int windowTransform::transformX(float x) {
     return int((x - trueTopLeftCorner.x) / (trueBottomRightCorner.x - trueTopLeftCorner.x) * windowWidth);

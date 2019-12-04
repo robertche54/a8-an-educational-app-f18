@@ -38,13 +38,13 @@ void Mammals::populateWorld(float xRange, float yRange, int plants, int mammals,
     }
 }
 void Mammals::addMammal(float x, float y) {
-    simulation.addMob(new Creature("../A9/mammal.png", x, y, float(random()%8+2)/3.0f, simulation.world, mammalFunctor));
+    simulation.addMob(new Creature("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/mammal.png", x, y, float(random()%8+2)/3.0f, simulation.world, mammalFunctor));
 }
 void Mammals::addDino(float x, float y) {
-    simulation.addMob(new Creature("../A9/otherimage.png", x, y, float(random()%8+2)/3.0f, simulation.world, dinoFunctor));
+    simulation.addMob(new Creature("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/otherimage.png", x, y, float(random()%8+2)/3.0f, simulation.world, dinoFunctor));
 }
 void Mammals::addPlant(float x, float y) {
-    simulation.addMob(new Creature("../A9/cabbage.png", x, y, float(random()%3+2)/3.0f, simulation.world, plantFunctor));
+    simulation.addMob(new Creature("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/cabbage.png", x, y, float(random()%3+2)/3.0f, simulation.world, plantFunctor));
 }
 
 

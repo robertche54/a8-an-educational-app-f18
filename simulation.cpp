@@ -84,7 +84,7 @@ void Simulation::addMob(Mob* mob, string name)
 }
 
 QImage Simulation::step() {
-    canvas.clear();
+    canvas.clear(Color(10,10,10,0));
 
     if(isRunning) {
         world.Step(1 / 240.0f, 8, 3);

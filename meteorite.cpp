@@ -6,6 +6,12 @@ Meteorite::Meteorite(QWidget *parent) :
     ui(new Ui::Meteorite)
 {
     ui->setupUi(this);
+
+    QPixmap background ("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/Earth.jpg");
+    background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
+    QPalette pal;
+    pal.setBrush(QPalette::Background,background);
+    this->setPalette(pal);
 }
 
 Meteorite::~Meteorite()
@@ -15,12 +21,14 @@ Meteorite::~Meteorite()
 
 void Meteorite::on_OceanButton_clicked()
 {
-    slide1Popup.exec();
+    MeteorSlide1 slide1;
+    slide1.exec();
 }
 
 void Meteorite::on_GroundButton_clicked()
 {
-    slide2Popup.exec();
+    MeteorSlide2 slide2;
+    slide2.exec();
 }
 
 void Meteorite::closeEvent(QCloseEvent*) {
