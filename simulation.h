@@ -48,7 +48,7 @@ public:
     void createMob(string, float, float, vector<b2Vec2>, string, b2BodyType);
     void createMob(string, float, float, vector<b2Vec2>, b2BodyType);
 
-    void createExplosion(b2Vec2 position, int blastPower = 20, int numRays = 50);
+    void createExplosion(b2Vec2 position, float blastPower = 20, int numRays = 50);
     void addMob(Mob*, string name = "");
 
     void applyImpulse(Mob*, double, float);

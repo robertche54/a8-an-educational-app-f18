@@ -74,7 +74,7 @@
     </rect>
    </property>
    <property name="maximum">
-    <number>15</number>
+    <number>10</number>
    </property>
   </widget>
   <widget class="QCheckBox" name="customCheck">
@@ -151,6 +151,19 @@
     <string>Reset</string>
    </property>
   </widget>
+  <widget class="QLabel" name="volcanoLabel">
+   <property name="geometry">
+    <rect>
+     <x>425</x>
+     <y>355</y>
+     <width>150</width>
+     <height>165</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
   <zorder>backgroundLabel</zorder>
   <zorder>simulationLabel</zorder>
   <zorder>explodeButton</zorder>
@@ -160,6 +173,7 @@
   <zorder>historicLabel</zorder>
   <zorder>customLabel</zorder>
   <zorder>resetButton</zorder>
+  <zorder>volcanoLabel</zorder>
  </widget>
  <resources/>
  <connections/>

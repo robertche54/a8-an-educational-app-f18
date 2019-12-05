@@ -128,7 +128,7 @@ QImage Simulation::step() {
     return canvasQImage;
 }
 
-void Simulation::createExplosion(b2Vec2 position, int blastPower, int numRays) {
+void Simulation::createExplosion(b2Vec2 position, float blastPower, int numRays) {
 
     vector<b2Body*> rays;
 

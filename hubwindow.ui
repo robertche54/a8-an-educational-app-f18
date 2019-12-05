@@ -81,19 +81,6 @@
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="physicsButton">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>680</y>
-      <width>381</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Toggle Physics</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
