@@ -24,6 +24,10 @@ Volcano::Volcano(QWidget *parent) :
     volcanoCover = volcanoCover.scaled(ui->volcanoLabel->size(), Qt::IgnoreAspectRatio);
     ui->volcanoLabel->setPixmap(volcanoCover);
 
+    QPixmap background("../A9/dinoscene4.jpg");
+    background = background.scaled(ui->backgroundLabel->size(), Qt::IgnoreAspectRatio);
+    ui->backgroundLabel->setPixmap(background);
+
     connect(ui->explodeButton, &QPushButton::pressed, this, &Volcano::explodeClicked);
     connect(ui->resetButton, &QPushButton::pressed, this, &Volcano::clearSimulation);
 }
