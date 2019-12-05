@@ -54,8 +54,6 @@ MeteorSlide1::MeteorSlide1(QWidget *parent) :
     simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/seaweed.png", 8,-5,3,11);
     simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/seaweed.png", -9,-7,3,8);
 
-
-
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(simulation.step()));
 }
 

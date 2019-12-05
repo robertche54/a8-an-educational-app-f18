@@ -42,6 +42,7 @@ public:
 
     void createMob(string, float, float, float, float);
     void createMob(string, float, float, float, float, string, b2BodyType);
+
     void createMob(string, float, float, float, string, b2BodyType);
     void createMob(string, float, float, float, b2BodyType);
     void createMob(string, float, float, vector<b2Vec2>, string, b2BodyType);

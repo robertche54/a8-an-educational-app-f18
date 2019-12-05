@@ -22,8 +22,8 @@
   <widget class="QPushButton" name="OceanButton">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>330</y>
+     <x>680</x>
+     <y>510</y>
      <width>131</width>
      <height>25</height>
     </rect>
@@ -35,8 +35,8 @@
   <widget class="QPushButton" name="GroundButton">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>330</y>
+     <x>370</x>
+     <y>510</y>
      <width>131</width>
      <height>25</height>
     </rect>
@@ -48,10 +48,10 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>0</y>
-     <width>441</width>
-     <height>171</height>
+     <x>290</x>
+     <y>100</y>
+     <width>611</width>
+     <height>341</height>
     </rect>
    </property>
    <property name="font">
@@ -67,7 +67,7 @@
     <number>1</number>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Welcome to the meteorite extinction event home page!&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;From here you can select either Ground Impact or Ocean Impact. &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;These will give information about and simulate the type of &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;meteorite impact you selected!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;Welcome to the meteorite extinction event home page!&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;From here you can select either Ground Impact or Ocean Impact. &lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:20pt;&quot;&gt;These will give information about and simulate the type of meteorite impact you selected!&lt;/span&gt;&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="wordWrap">
     <bool>true</bool>

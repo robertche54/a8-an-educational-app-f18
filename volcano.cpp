@@ -13,7 +13,6 @@ Volcano::Volcano(QWidget *parent) :
                                <<"3: Nevado del Ruiz (1985)"<<"4: Laki (1783)"<<"5: St. Helens (1980)"
                                <<"6: Krakatoa (1883)"<<"7: Tambora (1815)"<<"8: Yellowstone (630,000 BC)");
 
-
     ui->powerSelector->addItems(volcanoList);
 
     connect(ui->explodeButton, &QPushButton::pressed, this, &Volcano::explodeClicked);

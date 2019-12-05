@@ -16,6 +16,12 @@
     <height>800</height>
    </size>
   </property>
+  <property name="font">
+   <font>
+    <family>Ubuntu Mono</family>
+    <italic>false</italic>
+   </font>
+  </property>
   <property name="windowTitle">
    <string>Ground Impact</string>
   </property>
@@ -27,6 +33,11 @@
      <width>89</width>
      <height>25</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Purisa</family>
+    </font>
    </property>
    <property name="text">
     <string>Next</string>
@@ -43,12 +54,24 @@
    </property>
    <property name="minimumSize">
     <size>
-     <width>600</width>
-     <height>500</height>
+     <width>200</width>
+     <height>200</height>
     </size>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <property name="lineWidth">
+    <number>3</number>
    </property>
    <property name="text">
     <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
    <property name="wordWrap">
     <bool>true</bool>
@@ -82,6 +105,11 @@
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Purisa</family>
+    </font>
+   </property>
    <property name="text">
     <string>Back</string>
    </property>
@@ -95,6 +123,15 @@
      <height>500</height>
     </rect>
    </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <property name="lineWidth">
+    <number>3</number>
+   </property>
    <property name="text">
     <string/>
    </property>
@@ -105,14 +142,268 @@
   <widget class="QPushButton" name="startButton">
    <property name="geometry">
     <rect>
-     <x>770</x>
+     <x>1000</x>
      <y>610</y>
      <width>131</width>
      <height>25</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Purisa</family>
+     <pointsize>10</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Start Exctinction</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="reset">
+   <property name="geometry">
+    <rect>
+     <x>1000</x>
+     <y>660</y>
+     <width>131</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Purisa</family>
+    </font>
+   </property>
+   <property name="text">
+    <string>Reset</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="TRexButton">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>640</y>
+     <width>120</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#TRexButton{
+background-color: transparent;
+border-image: url(:items/landDinos/TRex.png);
+background : none;
+border: none;
+background-repeat: none;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="dino2Button">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>640</y>
+     <width>120</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#dino2Button{
+background-color: transparent;
+border-image: url(:items/landDinos/dino2.png);
+background : none;
+border: none;
+background-repeat: none;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pteranButton">
+   <property name="geometry">
+    <rect>
+     <x>290</x>
+     <y>640</y>
+     <width>120</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#pteranButton{
+background-color: transparent;
+border-image: url(:items/landDinos/pteranodon.png);
+background : none;
+border: none;
+background-repeat: none;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="rockButton">
+   <property name="geometry">
+    <rect>
+     <x>420</x>
+     <y>640</y>
+     <width>120</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#rockButton{
+background-color: transparent;
+border-image: url(:items/landDinos/rock.png);
+background : none;
+border: none;
+background-repeat: none;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="screamingDino">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>640</y>
+     <width>120</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#screamingDino{
+background-color: transparent;
+border-image: url(:items/landDinos/screamingDino.png);
+background : none;
+border: none;
+background-repeat: none;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="spikeyButton">
+   <property name="geometry">
+    <rect>
+     <x>680</x>
+     <y>640</y>
+     <width>120</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#spikeyButton{
+background-color: transparent;
+border-image: url(:items/landDinos/spikey.png);
+background : none;
+border: none;
+background-repeat: none;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="treeButton">
+   <property name="geometry">
+    <rect>
+     <x>810</x>
+     <y>640</y>
+     <width>120</width>
+     <height>100</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">#treeButton{
+background-color: transparent;
+border-image: url(:items/landDinos/tree.png);
+background : none;
+border: none;
+background-repeat: none;
+}</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="dinoSelection">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>540</y>
+     <width>191</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Purisa</family>
+     <pointsize>10</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <property name="lineWidth">
+    <number>2</number>
+   </property>
+   <property name="midLineWidth">
+    <number>2</number>
+   </property>
+   <property name="text">
+    <string>Select Your Elements:</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="titleLabel">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>60</y>
+     <width>400</width>
+     <height>101</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>0</height>
+    </size>
+   </property>
+   <property name="font">
+    <font>
+     <family>Purisa</family>
+     <pointsize>30</pointsize>
+     <weight>75</weight>
+     <italic>true</italic>
+     <bold>true</bold>
+     <underline>false</underline>
+    </font>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::NoFrame</enum>
+   </property>
+   <property name="text">
+    <string>LAND IMPACT</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
    </property>
   </widget>
   <zorder>backLabel</zorder>
@@ -121,6 +412,16 @@
   <zorder>AnimationLabel</zorder>
   <zorder>BackButton</zorder>
   <zorder>startButton</zorder>
+  <zorder>reset</zorder>
+  <zorder>TRexButton</zorder>
+  <zorder>dino2Button</zorder>
+  <zorder>pteranButton</zorder>
+  <zorder>rockButton</zorder>
+  <zorder>screamingDino</zorder>
+  <zorder>spikeyButton</zorder>
+  <zorder>treeButton</zorder>
+  <zorder>dinoSelection</zorder>
+  <zorder>titleLabel</zorder>
  </widget>
  <resources/>
  <connections/>
