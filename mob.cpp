@@ -28,19 +28,47 @@ Mob::Mob(string file, float locationX, float locationY, float rad, b2World &worl
 }
 
 Mob::Mob(string file, float locationX, float locationY, vector<b2Vec2> ver, b2World &world, b2BodyType type)
-    :
-      world(&world)
-{
+    :position(locationX, locationY),
+     world(&world)
+{   
     vertices = ver;
+    getSize();
     createSprite(file);
     //pass in 2 for a polygon
     createBody(world, type, 2);
+}
+
+void Mob::getSize(){
+    float minX = vertices[0].x;
+    float maxX = vertices[0].x;
+    float minY = vertices[0].y;
+    float maxY = vertices[0].y;
+
+    for(b2Vec2 value : vertices){
+        if(value.x < minX){
+            minX = value.x;
+        }
+        if(value.x > maxX){
+            maxX = value.x;
+        }
+        if(value.y < minY){
+            minY = value.y;
+        }
+        if(value.y > maxY){
+            maxY = value.y;
+        }
+    }
+    size = Vector2f(maxX - minX, maxY - minY);
+
+
 }
 
 bool Mob::Update(windowTransform transform)
 {
     // Updates SFML sprite with b2Body position and rotation
     sprite.setPosition(transform.transformX(body->GetPosition().x), transform.transformY(body->GetPosition().y));
+    //printf("%f, %d; %f, %d\n",body->GetPosition().x, transform.transformX(body->GetPosition().x)
+    //                 ,body->GetPosition().y, transform.transformY(body->GetPosition().y));
     sprite.setRotation(transform.transformAngle(body->GetAngle()));
     auto bounds = sprite.getLocalBounds();
     sprite.setScale(transform.transformWidth(size.x) / bounds.width, transform.transformHeight(size.y) / bounds.height);
@@ -55,6 +83,24 @@ void Mob::createSprite(string file)
     auto bounds = sprite.getLocalBounds();
     sprite.setOrigin(Vector2f(bounds.width/2, bounds.height/2));
     sprite.setPosition(position);
+
+
+
+
+
+//    sf::VertexArray triangle(sf::Triangles, 3);
+
+//    // define the position of the triangle's points
+//    triangle[0].position = sf::Vector2f(10.f, 10.f);
+//    triangle[1].position = sf::Vector2f(100.f, 10.f);
+//    triangle[2].position = sf::Vector2f(100.f, 100.f);
+
+//    // define the color of the triangle's points
+//    triangle[0].color = sf::Color::Red;
+//    triangle[1].color = sf::Color::Blue;
+//    triangle[2].color = sf::Color::Green;
+    //sprite.setTexture();
+
 }
 
 void Mob::createBody(b2World &world, b2BodyType type)
@@ -99,7 +145,7 @@ void Mob::createBody(b2World &world, b2BodyType type, int shape)
         polygonShape.Set(polygonVertices, vertices.size());
         fixtureDef.shape = &polygonShape;
     }
-    bodyDef.position.Set(0, 0);
+    bodyDef.position.Set(position.x, position.y);
     fixtureDef.density = 1; //(type == b2_dynamicBody) || (type == b2_kinematicBody);
     fixtureDef.friction = 0.3f;
     fixtureDef.restitution = 0.2f;

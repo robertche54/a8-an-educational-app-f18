@@ -15,6 +15,10 @@ Volcano::Volcano(QWidget *parent) :
 
 
     ui->powerSelector->addItems(volcanoList);
+    //ui->backgroundLabel->setText()
+    //ui->backgroungLabe->setText(infoVec.front());
+//    QPixmap pixmap("../A9/volcanoleft.png");
+//    ui->backgroundLabel->setPixmap(pixmap);
 
     connect(ui->explodeButton, &QPushButton::pressed, this, &Volcano::explodeClicked);
     connect(ui->resetButton, &QPushButton::pressed, this, &Volcano::clearSimulation);
@@ -72,43 +76,43 @@ void Volcano::explodeClicked() {
         simulation.applyImpulse(brick, 90, powerselected);
     }
     else {
-        int powerselected;
-        switch(ui->powerSelector->currentIndex()) {
+//        int powerselected;
+//        switch(ui->powerSelector->currentIndex()) {
 
-        // index corrosponds with the volanco's explosivity index
-        case 0: powerselected = 200;
-            break;
+//        // index corrosponds with the volanco's explosivity index
+//        case 0: powerselected = 200;
+//            break;
 
-        case 1: powerselected = 400;
-            break;
+//        case 1: powerselected = 400;
+//            break;
 
-        case 2: powerselected = 800;
-            break;
+//        case 2: powerselected = 800;
+//            break;
 
-        case 3: powerselected = 1600;
-            break;
+//        case 3: powerselected = 1600;
+//            break;
 
-        case 4: powerselected = 3200;
-            break;
+//        case 4: powerselected = 3200;
+//            break;
 
-        case 5: powerselected = 6400;
-            break;
+//        case 5: powerselected = 6400;
+//            break;
 
-        case 6: powerselected = 12800;
-            break;
+//        case 6: powerselected = 12800;
+//            break;
 
-        case 7: powerselected = 25600;
-            break;
+//        case 7: powerselected = 25600;
+//            break;
 
-        case 8: powerselected = 51200;
-            break;
+//        case 8: powerselected = 51200;
+//            break;
 
-        default: powerselected = 0;
-            break;
+//        default: powerselected = 0;
+//            break;
         }
 
-        simulation.createExplosion(brick->body->GetPosition(), powerselected, 120);
-    }
+//        simulation.createExplosion(brick->body->GetPosition(), powerselected, 120);
+//    }
 }
 
 void Volcano::clearSimulation() {
@@ -183,7 +187,7 @@ void Volcano::initializeSimulation() {
     */
 
     groundBodyDef.type = b2_staticBody; //change body type
-    groundBodyDef.position.Set(0,-40); //middle, bottom
+    groundBodyDef.position.Set(0,-20); //middle, bottom
 
     b2EdgeShape groundShape;
     groundShape.Set(b2Vec2(-100,0), b2Vec2(100,0));
@@ -192,26 +196,38 @@ void Volcano::initializeSimulation() {
     groundBody->CreateFixture(&groundFixtureDef); //add a fixture to the body
 
     simulation.setGravity(0.0f, -1000.0f);
-    simulation.tf.setWindowSize(200, 200);
-    simulation.createMob("../A9/bricks.jpg", 20.0f, -37.0f, 3.0f, 3.0f, "brick", b2_dynamicBody);
+    simulation.tf.setWindowSize(600, 500);
+    simulation.tf.setBox2dWindow(b2Vec2(-20,20),b2Vec2(20, -20));
+    simulation.createMob("../A9/lava2.png", 0.0f, -19.0f, 1.0f, 1.0f, "brick", b2_dynamicBody);
 
-    for(float x = 10; x < 30; x += 1.0f) {
-        for(float y = -34; y < -24; y += 1.0f) {
-            simulation.createMob("../A9/otherimage.png", x, y, 1.0f, 1.0f);
+    for(float x = -8; x < 8; x += .8f) {
+        for(float y = -14; y < 0; y += .8f) {
+            simulation.createMob("../A9/lava2.png", x, y, .8f, .8f);
         }
     }
     //creation of volcano test
     //simulation.createMob("../A9/otherimage.png", -10, 10, 2.0f, b2_dynamicBody);
-    simulation.createMob("../A9/otherimage.png", -10, 10, 2.0f, b2_dynamicBody);
-    vector<b2Vec2> vert;
-    b2Vec2 vert1(10, -20);
-    vert.push_back(vert1);
-    b2Vec2 vert2(-30, -40);
-    vert.push_back(vert2);
-    b2Vec2 vert3(10, -40);
-    vert.push_back(vert3);
+    simulation.createMob("../A9/lava2.png", -10, 10, 2.0f, b2_dynamicBody);
 
-//    b2Vec2 vert4(0, 0);
-//    vert.push_back(vert4);
-    simulation.createMob("../A9/volcano.jpeg", 0, 0, vert, b2_dynamicBody);
+        vector<b2Vec2> leftVolcano;
+        vector<b2Vec2> rightVolcano;
+
+        b2Vec2 vert1(-10, -10);
+        leftVolcano.push_back(vert1);
+        b2Vec2 vert2(10, -10);
+        leftVolcano.push_back(vert2);
+        b2Vec2 vert3(10, 10);
+        leftVolcano.push_back(vert3);
+
+        b2Vec2 cert1(-10, 10);
+        rightVolcano.push_back(cert1);
+        b2Vec2 cert2(-10, -10);
+        rightVolcano.push_back(cert2);
+        b2Vec2 cert3(10, -10);
+        rightVolcano.push_back(cert3);
+
+
+
+      simulation.createMob("../A9/volcanoleft.png", -16, -12, leftVolcano, b2_staticBody);
+      simulation.createMob("../A9/volcanoright.png", 16, -12, rightVolcano, b2_staticBody);
 }

@@ -116,8 +116,8 @@
   <widget class="QLabel" name="backgroundLabel">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>20</y>
+     <x>140</x>
+     <y>150</y>
      <width>600</width>
      <height>500</height>
     </rect>
@@ -127,6 +127,9 @@
      <width>600</width>
      <height>500</height>
     </size>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>TextLabel</string>
