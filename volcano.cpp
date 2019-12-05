@@ -37,78 +37,22 @@ void Volcano::closeEvent(QCloseEvent*) {
 
 void Volcano::paintEvent(QPaintEvent*)
 {
-    /*
-    if (earthQuake) {
-        simulation.tf.setWindowSize(windowW, windowH);
-
-        if (windowH == 200) {
-            windowH -= 20;
-        }
-        else {
-            windowH += 20;
-        }
-
-        for (pair<string, Mob*> namedMob : simulation.namedMobs) {
-            simulation.applyImpulse(namedMob.second, 90, 50);
-        }
-
-        for (Mob* mob : simulation.genericMobs) {
-            simulation.applyImpulse(mob, 90, 50);
-        }
-        earthQuake = false;
-    }
-    */
-
     QImage newImage = simulation.step();
     ui->simulationLabel->setPixmap(QPixmap::fromImage(newImage));
 }
 
 void Volcano::explodeClicked() {
     Mob* brick = simulation.namedMobs.at("brick");
+    float powerselected;
 
+    // value/index corrosponds with the volanco's explosivity index
     if(ui->customCheck->isChecked()) {
-        int powerselected = ui->customPower->value() * 100;
-
-        simulation.applyImpulse(brick, 90, powerselected);
+        powerselected = 35 + float(pow(2, ui->customPower->value()));
     }
     else {
-        int powerselected;
-        switch(ui->powerSelector->currentIndex()) {
-
-        // index corrosponds with the volanco's explosivity index
-        case 0: powerselected = 200;
-            break;
-
-        case 1: powerselected = 400;
-            break;
-
-        case 2: powerselected = 800;
-            break;
-
-        case 3: powerselected = 1600;
-            break;
-
-        case 4: powerselected = 3200;
-            break;
-
-        case 5: powerselected = 6400;
-            break;
-
-        case 6: powerselected = 12800;
-            break;
-
-        case 7: powerselected = 25600;
-            break;
-
-        case 8: powerselected = 51200;
-            break;
-
-        default: powerselected = 0;
-            break;
-        }
-
-        simulation.createExplosion(brick->body->GetPosition(), powerselected, 120);
+        powerselected = 35 + float(pow(2, ui->powerSelector->currentIndex()));
     }
+    simulation.createExplosion(brick->body->GetPosition(), powerselected, 120);
 }
 
 void Volcano::clearSimulation() {
