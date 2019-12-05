@@ -11,8 +11,7 @@ MeteorSlide2::MeteorSlide2(QWidget *parent) :
     ui->TextLabel->setText(infoVec.front());
     ui->backLabel->setPixmap(QPixmap("../A9/dinoscene0.jpg"));
 
-    sim->setGravity(0,-9.81f);
-    addElements();
+    addWorldDefinitions();
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }
 
@@ -21,6 +20,11 @@ MeteorSlide2::~MeteorSlide2()
     delete ui;
 }
 
+
+/**
+ * Progresses the info slides
+ * @brief MeteorSlide2::on_NextButton_clicked
+ */
 void MeteorSlide2::on_NextButton_clicked()
 {
     if(static_cast<ulong>(infoIndex) < infoVec.size() - 1)
@@ -30,6 +34,11 @@ void MeteorSlide2::on_NextButton_clicked()
     }
 }
 
+
+/**
+ * Moves to previous info slides
+ * @brief MeteorSlide2::on_BackButton_clicked
+ */
 void MeteorSlide2::on_BackButton_clicked()
 {
     if(infoIndex > 0)
@@ -39,16 +48,20 @@ void MeteorSlide2::on_BackButton_clicked()
     }
 }
 
+/**
+ * Steps the simulation updating the postions of the elements in the simulation.
+ * @brief MeteorSlide2::update
+ */
 void MeteorSlide2::update(){
      ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }
 
 
 /**
- * Adds all the bodies to the world for the simulation
+ * Adds the ground bodies to the world for the simulation
  * @brief MeteorSlide2::addElements
  */
-void MeteorSlide2::addElements(){
+void MeteorSlide2::addWorldDefinitions(){
     // Creates ground
     b2BodyDef myBodyDef;
     b2FixtureDef myFixtureDef;
@@ -77,22 +90,6 @@ void MeteorSlide2::addElements(){
 
     b2Body* trampoline = sim->world.CreateBody(&tramp);
     trampoline->CreateFixture(&trampFixDef);
-
-    // Meteor mob
-    sim->createMob("../A9/meteorite.png",45,50,10,10,"meteor", b2_dynamicBody);
-    Mob* meteor = sim->namedMobs.at("meteor");
-    sim->applyImpulse(meteor,235,150);
-
-    //Dino mobs
-    dinos.insert(pair<string,Mob*>("TRex",new Mob("../A9/landDinos/TRex.png",-3,-5,2,2,sim->world)));
-    dinos.insert(pair<string,Mob*>("spikey",new Mob("../A9/landDinos/spikey.png", -4,-2,2,1, sim->world)));
-    dinos.insert(pair<string,Mob*>("screamingDino",new Mob("../A9/landDinos/screamingDino.png", -8, -4, 3, 3, sim->world)));
-    dinos.insert(pair<string,Mob*>("pteranodon",new Mob("../A9/landDinos/pteranodon.png",2, 6, 2, 2,sim->world)));
-    dinos.insert(pair<string,Mob*>("dino2",new Mob("../A9/landDinos/dino2.png",-8,-2,2,2,sim->world)));
-    dinos.insert(pair<string,Mob*>("rock",new Mob("../A9/landDinos/rock.png",2,-9,4,4, sim->world)));
-    dinos.insert(pair<string,Mob*>("tree",new Mob("../A9/landDinos/tree.png",8,-8,10,10,sim->world)));
-
-    ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }
 
 
@@ -122,8 +119,20 @@ void MeteorSlide2::changeBackground(){
 }
 
 
+
+/**
+ * Starts the timer for the world stepping and the background to chang
+ * as the meteorite impacts the earth.
+ * @brief MeteorSlide2::on_startButton_clicked
+ */
 void MeteorSlide2::on_startButton_clicked(){
     sim->isRunning = true;
+    sim->setGravity(0,-9.81f);
+
+    // Add meteor mob
+    sim->createMob("../A9/meteorite.png",45,50,10,10,"meteor", b2_dynamicBody);
+    Mob* meteor = sim->namedMobs.at("meteor");
+    sim->applyImpulse(meteor,235,150);
 
     // Steping timer to call update
     worldTimer = new QTimer(this);
@@ -136,53 +145,154 @@ void MeteorSlide2::on_startButton_clicked(){
 }
 
 
+/**
+ * Clears the simulation and sets it to its defualt appearance.
+ * @brief MeteorSlide2::on_reset_clicked
+ */
 void MeteorSlide2::on_reset_clicked(){
     worldTimer->stop();
     sim = new Simulation();
     dinos.clear();
-    addElements();
+    TRexActive = dino2Active = pterActive = screamingDinoActive = spikeyActive = rockActive = treeActive = false;
+    addWorldDefinitions();
     ui->backLabel->setPixmap(QPixmap("../A9/dinoscene0.jpg"));
     backgroundIndex=0;
 }
 
+
+
+/**
+ * Adds in a TRex if it does not already exist in the
+ * simulation. Removes it otherwise
+ * @brief MeteorSlide2::on_TRexButton_clicked
+ */
 void MeteorSlide2::on_TRexButton_clicked()
 {
-    sim->addMob(dinos["TRex"]);
+    if(TRexActive){
+        Mob* temp = dinos["TRex"];
+        dinos.erase("TRex");
+        sim->world.DestroyBody(temp->body);
+    }else{
+        dinos.insert(pair<string,Mob*>("TRex",new Mob("../A9/landDinos/TRex.png",-3,-5,2,2,sim->world)));
+        sim->addMob(dinos["TRex"]);
+    }
+    TRexActive = TRexActive ? false : true;
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }
 
+/**
+ * Adds in a basic dino on click if it is not already present.
+ * Removes it otherwise.
+ * @brief MeteorSlide2::on_dino2Button_clicked
+ */
 void MeteorSlide2::on_dino2Button_clicked()
 {
-    sim->addMob(dinos["dino2"]);
+    if(dino2Active){
+        Mob* temp = dinos["dino2"];
+        dinos.erase("dino2");
+        sim->world.DestroyBody(temp->body);
+    }else{
+        dinos.insert(pair<string,Mob*>("dino2",new Mob("../A9/landDinos/dino2.png",-8,-2,2,2,sim->world)));
+        sim->addMob(dinos["dino2"]);
+    }
+    dino2Active = dino2Active ? false : true;
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }
 
+/**
+ * Adds a pteranodon if not present in the simulation.
+ * Removes it otherwise.
+ * @brief MeteorSlide2::on_pteranButton_clicked
+ */
 void MeteorSlide2::on_pteranButton_clicked()
 {
-    sim->addMob(dinos["pteranodon"]);
+    if(pterActive){
+        Mob* temp = dinos["pteranodon"];
+        dinos.erase("pteranodon");
+        sim->world.DestroyBody(temp->body);
+    }else{
+       dinos.insert(pair<string,Mob*>("pteranodon",new Mob("../A9/landDinos/pteranodon.png",2, 6, 2, 2,sim->world)));
+       sim->addMob(dinos["pteranodon"]);
+    }
+    pterActive = pterActive ? false : true;
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }
 
+/**
+ * Adds a rock to the simulation.
+ * Removes it from simulation otherwise.
+ * @brief MeteorSlide2::on_rockButton_clicked
+ */
 void MeteorSlide2::on_rockButton_clicked()
 {
-    sim->addMob(dinos["rock"]);
+    if(rockActive){
+        Mob* temp = dinos["rock"];
+        dinos.erase("rock");
+        sim->world.DestroyBody(temp->body);
+    }else{
+        dinos.insert(pair<string,Mob*>("rock",new Mob("../A9/landDinos/rock.png",2,-9,4,4, sim->world)));
+        sim->addMob(dinos["rock"]);
+    }
+    rockActive = rockActive ? false : true;
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }
 
+
+/**
+ * Adds in a screaming dinosuar if not already present.
+ * Removes it otherwise.
+ * @brief MeteorSlide2::on_screamingDino_clicked
+ */
 void MeteorSlide2::on_screamingDino_clicked()
 {
-    sim->addMob(dinos["screamingDino"]);
+    if(screamingDinoActive){
+        Mob* temp = dinos["screamingDino"];
+        dinos.erase("screamingDino");
+        sim->world.DestroyBody(temp->body);
+    }else{
+        dinos.insert(pair<string,Mob*>("screamingDino",new Mob("../A9/landDinos/screamingDino.png", -8, -4, 3, 3, sim->world)));
+        sim->addMob(dinos["screamingDino"]);
+    }
+    screamingDinoActive = screamingDinoActive ? false : true;
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }
 
+
+/**
+ * Adds a spikey dino if not present in the simulation.
+ * Removes the dino otherwise.
+ * @brief MeteorSlide2::on_spikeyButton_clicked
+ */
 void MeteorSlide2::on_spikeyButton_clicked()
 {
-    sim->addMob(dinos["spikey"]);
+    if(spikeyActive){
+        Mob* temp = dinos["spikey"];
+        dinos.erase("spikey");
+        sim->world.DestroyBody(temp->body);
+    }else{
+        dinos.insert(pair<string,Mob*>("spikey",new Mob("../A9/landDinos/spikey.png", -4,-2,2,1, sim->world)));
+        sim->addMob(dinos["spikey"]);
+    }
+    spikeyActive = spikeyActive ? false : true;
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }
 
+
+/**
+ * Adds a tree into the simulation.
+ * Removes it otherwise.
+ * @brief MeteorSlide2::on_treeButton_clicked
+ */
 void MeteorSlide2::on_treeButton_clicked()
 {
-    sim->addMob(dinos["tree"]);
+    if(treeActive){
+        Mob* temp = dinos["tree"];
+        dinos.erase("tree");
+        sim->world.DestroyBody(temp->body);
+    }else{
+        dinos.insert(pair<string,Mob*>("tree",new Mob("../A9/landDinos/tree.png",8,-8,10,10,sim->world)));
+        sim->addMob(dinos["tree"]);
+    }
+    treeActive = treeActive ? false : true;
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }
