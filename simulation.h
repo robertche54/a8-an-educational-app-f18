@@ -39,6 +39,7 @@ public:
 
     void toggleRunning() { isRunning = !isRunning; }
     void createSingularity(float x, float y) { singularity.Set(x, y); }
+    void createSingularity(b2Vec2 pos) { singularity = pos; }
 
     void createMob(string, float, float, float, float);
     void createMob(string, float, float, float, float, string, b2BodyType);

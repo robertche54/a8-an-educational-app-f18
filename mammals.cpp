@@ -77,6 +77,8 @@ void Mammals::mousePressEvent(QMouseEvent *event)
 {
     // QT coordinates need to be converted to box2D coordinates
     //simulation.createSingularity(event->x(), event->y());
+    simulation.createSingularity(simulation.tf.windowToWorldCoordinates(
+                    event->x() - ui->simulationLabel->x(), event->y() - ui->simulationLabel->y()));
 }
 
 void Mammals::paintEvent(QPaintEvent*)
