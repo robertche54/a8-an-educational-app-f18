@@ -16,6 +16,9 @@ Volcano::Volcano(QWidget *parent) :
 
     ui->powerSelector->addItems(volcanoList);
 
+//    ui->explodeButton->setIcon(QIcon("../A9/unknown.png"));
+//    ui->explodeButton->setIconSize(QSize(ui->explodeButton->size()));
+
     QPixmap pixmap("../A9/volcanoSky.jpeg");
     pixmap = pixmap.scaled(this->size(), Qt::IgnoreAspectRatio);
     ui->backgroundLabel->setPixmap(pixmap);

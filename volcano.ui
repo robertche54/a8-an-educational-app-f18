@@ -51,7 +51,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>EXPLODE!</string>
+    <string/>
    </property>
   </widget>
   <widget class="QComboBox" name="powerSelector">
