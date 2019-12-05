@@ -1,6 +1,5 @@
 #include "mammals.h"
 #include "ui_mammals.h"
-#include <QTimer>
 
 function<float(float)> generateGrowthFunction(float minSize, float maxSize, float growthRate) {
     auto function = [minSize,maxSize,growthRate] (float a) -> float {

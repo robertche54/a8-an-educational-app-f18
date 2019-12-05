@@ -71,7 +71,7 @@
     </rect>
    </property>
    <property name="maximum">
-    <number>15</number>
+    <number>10</number>
    </property>
   </widget>
   <widget class="QCheckBox" name="customCheck">
@@ -116,8 +116,8 @@
   <widget class="QLabel" name="backgroundLabel">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>20</y>
+     <x>140</x>
+     <y>150</y>
      <width>600</width>
      <height>500</height>
     </rect>
@@ -127,6 +127,9 @@
      <width>600</width>
      <height>500</height>
     </size>
+   </property>
+   <property name="autoFillBackground">
+    <bool>false</bool>
    </property>
    <property name="text">
     <string>TextLabel</string>
@@ -145,6 +148,35 @@
     <string>Reset</string>
    </property>
   </widget>
+  <widget class="QLabel" name="volcanoLabel">
+   <property name="geometry">
+    <rect>
+     <x>425</x>
+     <y>355</y>
+     <width>150</width>
+     <height>165</height>
+    </rect>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>150</width>
+     <height>165</height>
+    </size>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <zorder>backgroundLabel</zorder>
+  <zorder>simulationLabel</zorder>
+  <zorder>explodeButton</zorder>
+  <zorder>powerSelector</zorder>
+  <zorder>customPower</zorder>
+  <zorder>customCheck</zorder>
+  <zorder>historicLabel</zorder>
+  <zorder>customLabel</zorder>
+  <zorder>resetButton</zorder>
+  <zorder>volcanoLabel</zorder>
  </widget>
  <resources/>
  <connections/>

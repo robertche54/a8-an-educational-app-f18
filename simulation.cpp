@@ -33,6 +33,11 @@ void Simulation::createMob(string filePath, float posX, float posY, float sizeX,
     genericMobs.push_back(newMob);
 }
 
+void Simulation::createMob(string filePath, float posX, float posY, float sizeX, float sizeY, b2BodyType type) {
+    Mob* newMob = new Mob(filePath, posX, posY, sizeX, sizeY, world, type);
+    genericMobs.push_back(newMob);
+}
+
 /*
  * Creates a named Mob that CAN be accessed later.
  * For Mobs that are used to create explosions or have impulses applied to them.
@@ -146,7 +151,7 @@ QImage Simulation::step() {
     return canvasQImage;
 }
 
-void Simulation::createExplosion(b2Vec2 position, int blastPower, int numRays) {
+void Simulation::createExplosion(b2Vec2 position, float blastPower, int numRays) {
 
     vector<b2Body*> rays;
 
