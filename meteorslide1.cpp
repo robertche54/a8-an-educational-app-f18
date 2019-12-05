@@ -7,6 +7,7 @@ MeteorSlide1::MeteorSlide1(QWidget *parent) :
     ui(new Ui::MeteorSlide1)
 {
     ui->setupUi(this);
+    //ui->setStyleSheet("background-image: /home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/OceanImpactBackdrop.png");
     QString string1 = "Welcome to the ocean impact page. Press 'Next' to continue!";
     QString string2 = "The ocean impact, like, seriously messed the dinos up.";
     QString string3 = "Well, the ocean didn't impact anything. . .";
@@ -37,7 +38,7 @@ MeteorSlide1::MeteorSlide1(QWidget *parent) :
     {
         for(int j = 0; j < 15; j++)
         {
-            simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/oceanwave2.png",-200.0 + i,-5 + j,1.0,1.0,"Wave" + to_string(i) + to_string(j), b2_dynamicBody);
+            simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/WaterDroplet.png",-200.0 + i,-5 + j,1.0,1.0,"Wave" + to_string(i) + to_string(j), b2_dynamicBody);
             Mob *wave = simulation.namedMobs.at("Wave" + to_string(i) + to_string(j));
             wave->body->SetLinearVelocity(b2Vec2(500.0f, 0.0f));
             wave->body->SetAngularVelocity(100);

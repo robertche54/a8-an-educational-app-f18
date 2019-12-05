@@ -19,11 +19,18 @@
   <property name="windowTitle">
    <string>Ocean Impact</string>
   </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">#MeteorSlide1{
+background-image: url(:/items/OceanImpactBackdrop.jpg);}</string>
+  </property>
   <widget class="QPushButton" name="NextButton">
    <property name="geometry">
     <rect>
-     <x>240</x>
-     <y>410</y>
+     <x>360</x>
+     <y>450</y>
      <width>89</width>
      <height>25</height>
     </rect>
@@ -35,8 +42,8 @@
   <widget class="QLabel" name="AnimationLabel">
    <property name="geometry">
     <rect>
-     <x>610</x>
-     <y>0</y>
+     <x>600</x>
+     <y>10</y>
      <width>600</width>
      <height>500</height>
     </rect>
@@ -46,6 +53,15 @@
      <width>600</width>
      <height>500</height>
     </size>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <property name="lineWidth">
+    <number>3</number>
    </property>
    <property name="text">
     <string>Ocean Impact animation goes here</string>
@@ -54,17 +70,20 @@
   <widget class="QLabel" name="TextLabel">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>0</y>
-     <width>321</width>
-     <height>291</height>
+     <x>50</x>
+     <y>40</y>
+     <width>400</width>
+     <height>400</height>
     </rect>
    </property>
-   <property name="minimumSize">
-    <size>
-     <width>600</width>
-     <height>500</height>
-    </size>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <property name="lineWidth">
+    <number>3</number>
    </property>
    <property name="text">
     <string/>
@@ -76,8 +95,8 @@
   <widget class="QPushButton" name="BackButton">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>410</y>
+     <x>50</x>
+     <y>450</y>
      <width>89</width>
      <height>25</height>
     </rect>
@@ -96,14 +115,14 @@
     </rect>
    </property>
    <property name="text">
-    <string>Start Animation</string>
+    <string>Tsunami!</string>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
      <x>600</x>
-     <y>0</y>
+     <y>10</y>
      <width>600</width>
      <height>500</height>
     </rect>
