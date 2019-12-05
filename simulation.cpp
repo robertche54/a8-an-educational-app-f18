@@ -106,10 +106,33 @@ QImage Simulation::step() {
         namedMob.second->Update(tf);
         canvas.draw(namedMob.second->getSprite());
     }
+    map<string, Mob*>::iterator mapit;
+    for ( mapit = namedMobs.begin(); mapit != namedMobs.end(); ) {
+        auto pair = *mapit;
+        Mob *mob = pair.second;
+        bool living = mob->Update(tf);
+        if(!living) {
+            delete mob;
+            mapit = namedMobs.erase(mapit);
+        }
+        else {
+            canvas.draw(mob->getSprite());
+            ++mapit;
+        }
+    }
 
-    for(Mob* mob : genericMobs) {
-        mob->Update(tf);
-        canvas.draw(mob->getSprite());
+    vector<Mob*>::iterator it;
+    for ( it = genericMobs.begin(); it != genericMobs.end(); ) {
+        auto mob = *it;
+        bool living = mob->Update(tf);
+        if(!living) {
+            delete * it;
+            it = genericMobs.erase(it);
+        }
+        else {
+            canvas.draw(mob->getSprite());
+            ++it;
+        }
     }
 
     canvas.display();
