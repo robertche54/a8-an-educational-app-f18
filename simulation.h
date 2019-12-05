@@ -41,6 +41,7 @@ public:
     void createSingularity(float x, float y) { singularity.Set(x, y); }
 
     void createMob(string, float, float, float, float);
+    void createMob(string filePath, float posX, float posY, float sizeX, float sizeY, b2BodyType type);
     void createMob(string, float, float, float, float, string, b2BodyType);
     void createMob(string, float, float, float, string, b2BodyType);
     void createMob(string, float, float, float, b2BodyType);

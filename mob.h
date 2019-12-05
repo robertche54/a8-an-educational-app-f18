@@ -24,6 +24,7 @@ protected:
     void createBody(b2World &world, b2BodyType type = b2_dynamicBody);
     void createBody(b2World &world, b2BodyType type, int shape);
     void createSprite(string);
+    void getSize();
 
 public:
     b2Body* body;

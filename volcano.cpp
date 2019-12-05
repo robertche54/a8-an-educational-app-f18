@@ -15,6 +15,14 @@ Volcano::Volcano(QWidget *parent) :
 
 
     ui->powerSelector->addItems(volcanoList);
+    //ui->backgroundLabel->setText()
+    //ui->backgroungLabe->setText(infoVec.front());
+//    QPixmap pixmap("../A9/volcanoleft.png");
+//    ui->backgroundLabel->setPixmap(pixmap);
+
+    QPixmap volcanoCover("../A9/volcano.jpeg");
+    volcanoCover = volcanoCover.scaled(ui->volcanoLabel->size(), Qt::IgnoreAspectRatio);
+    ui->volcanoLabel->setPixmap(volcanoCover);
 
     connect(ui->explodeButton, &QPushButton::pressed, this, &Volcano::explodeClicked);
     connect(ui->resetButton, &QPushButton::pressed, this, &Volcano::clearSimulation);
@@ -47,10 +55,10 @@ void Volcano::explodeClicked() {
 
     // value/index corrosponds with the volanco's explosivity index
     if(ui->customCheck->isChecked()) {
-        powerselected = 35 + float(pow(2, ui->customPower->value()));
+        powerselected = 50 + float(pow(3, ui->customPower->value()));
     }
     else {
-        powerselected = 35 + float(pow(2, ui->powerSelector->currentIndex()));
+        powerselected = 50 + float(pow(3, ui->powerSelector->currentIndex()));
     }
     simulation.createExplosion(brick->body->GetPosition(), powerselected, 120);
 }
@@ -66,68 +74,11 @@ void Volcano::initializeSimulation() {
     simulation.isRunning = true;
 
    b2BodyDef groundBodyDef;
-//    b2BodyDef leftWallBodyDef;
-//    b2BodyDef rightWallBodyDef;
+
    b2FixtureDef groundFixtureDef;
-//    b2FixtureDef leftWallFixtureDef;
-//    b2FixtureDef rightWallFixtureDef;
-
-//    leftWallBodyDef.type = b2_staticBody;
-
-//    b2Vec2 leftVerticies[3];
-//    leftVerticies[0] = b2Vec2(10, -20);
-//    leftVerticies[1] = b2Vec2(-30, -40);
-//    leftVerticies[2] = b2Vec2(10, -40);
-
-//    b2PolygonShape leftWallShape;
-//    leftWallShape.Set(leftVerticies, 3);
-
-//    leftWallFixtureDef.shape = &leftWallShape;
-//    leftWallBodyDef.position.Set(0, 0);
-
-//    leftWallBody = simulation.world.CreateBody(&leftWallBodyDef);
-//    leftWallBody->CreateFixture(&leftWallFixtureDef);
-
-//    rightWallBodyDef.type = b2_staticBody;
-
-//    b2Vec2 rightVerticies[3];
-//    rightVerticies[0] = b2Vec2(30, -20);
-//    rightVerticies[1] = b2Vec2(60, -40);
-//    rightVerticies[2] = b2Vec2(30, -40);
-
-//    b2PolygonShape rightWallShape;
-//    rightWallShape.Set(rightVerticies, 3);
-
-//    rightWallFixtureDef.shape = &rightWallShape;
-//    rightWallBodyDef.position.Set(0, 0);
-
-//    rightWallBody = simulation.world.CreateBody(&rightWallBodyDef);
-//    rightWallBody->CreateFixture(&rightWallFixtureDef);
-
-    /*
-    for (int i = 10; i < 40; i += 20) {
-        wallBodyDef.position.Set(i, -40);
-
-        vertecies[0] = b2Vec2(i, -40);
-        vertecies[1] = b2Vec2(i * 20, -40);
-        vertecies[2] = b2Vec2(i, 0);
-        wallShape.Set(vertecies, 3);
-
-        wallFixtureDef.shape = &wallShape;
-
-        if (i == -1) {
-            leftWallBody = simulation.world.CreateBody(&wallBodyDef);
-            leftWallBody->CreateFixture(&wallFixtureDef);
-        }
-        else {
-            rightWallBody = simulation.world.CreateBody(&wallBodyDef);
-            rightWallBody->CreateFixture(&wallFixtureDef);
-        }
-    }
-    */
 
     groundBodyDef.type = b2_staticBody; //change body type
-    groundBodyDef.position.Set(0,-40); //middle, bottom
+    groundBodyDef.position.Set(0,-20); //middle, bottom
 
     b2EdgeShape groundShape;
     groundShape.Set(b2Vec2(-100,0), b2Vec2(100,0));
@@ -136,26 +87,36 @@ void Volcano::initializeSimulation() {
     groundBody->CreateFixture(&groundFixtureDef); //add a fixture to the body
 
     simulation.setGravity(0.0f, -1000.0f);
-    simulation.tf.setWindowSize(200, 200);
-    simulation.createMob("../A9/bricks.jpg", 20.0f, -37.0f, 3.0f, 3.0f, "brick", b2_dynamicBody);
+    simulation.tf.setWindowSize(600, 500);
+    simulation.tf.setBox2dWindow(b2Vec2(-20,20),b2Vec2(20, -20));
+    simulation.createMob("../A9/lava2.png", 0.0f, -19.0f, 1.0f, 1.0f, "brick", b2_dynamicBody);
 
-    for(float x = 10; x < 30; x += 1.0f) {
-        for(float y = -34; y < -24; y += 1.0f) {
-            simulation.createMob("../A9/otherimage.png", x, y, 1.0f, 1.0f);
+    for(float x = -8; x < 8; x += .8f) {
+        for(float y = -14; y < 0; y += .8f) {
+            simulation.createMob("../A9/lava2.png", x, y, .8f, .8f);
         }
     }
     //creation of volcano test
     //simulation.createMob("../A9/otherimage.png", -10, 10, 2.0f, b2_dynamicBody);
-    simulation.createMob("../A9/otherimage.png", -10, 10, 2.0f, b2_dynamicBody);
-    vector<b2Vec2> vert;
-    b2Vec2 vert1(10, -20);
-    vert.push_back(vert1);
-    b2Vec2 vert2(-30, -40);
-    vert.push_back(vert2);
-    b2Vec2 vert3(10, -40);
-    vert.push_back(vert3);
+    simulation.createMob("../A9/lava2.png", -10, 10, 2.0f, b2_dynamicBody);
 
-//    b2Vec2 vert4(0, 0);
-//    vert.push_back(vert4);
-    simulation.createMob("../A9/volcano.jpeg", 0, 0, vert, b2_dynamicBody);
+        vector<b2Vec2> leftVolcano;
+        vector<b2Vec2> rightVolcano;
+
+        b2Vec2 vert1(-10, -10);
+        leftVolcano.push_back(vert1);
+        b2Vec2 vert2(11, -10);
+        leftVolcano.push_back(vert2);
+        b2Vec2 vert3(9, 9);
+        leftVolcano.push_back(vert3);
+
+        b2Vec2 cert1(-9, 9);
+        rightVolcano.push_back(cert1);
+        b2Vec2 cert2(-11, -10);
+        rightVolcano.push_back(cert2);
+        b2Vec2 cert3(10, -10);
+        rightVolcano.push_back(cert3);
+
+      simulation.createMob("../A9/volcanoleft.png", -16, -12, leftVolcano, b2_staticBody);
+      simulation.createMob("../A9/volcanoright.png", 16, -12, rightVolcano, b2_staticBody);
 }
