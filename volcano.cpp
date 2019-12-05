@@ -15,10 +15,17 @@ Volcano::Volcano(QWidget *parent) :
 
 
     ui->powerSelector->addItems(volcanoList);
-    //ui->backgroundLabel->setText()
-    //ui->backgroungLabe->setText(infoVec.front());
-//    QPixmap pixmap("../A9/volcanoleft.png");
-//    ui->backgroundLabel->setPixmap(pixmap);
+
+    QPixmap pixmap("../A9/volcanoSky.jpeg");
+    pixmap = pixmap.scaled(this->size(), Qt::IgnoreAspectRatio);
+//    int w = ui->backgroundLabel->width();
+//    int h = ui->backgroundLabel->height() + 40;
+    ui->backgroundLabel->setPixmap(pixmap);
+
+
+
+    // set a scaled pixmap to a w x h window keeping its aspect ratio
+    //ui->backgroundLabel->setPixmap(pixmap.scaled(w,h,Qt::KeepAspectRatio));
 
     connect(ui->explodeButton, &QPushButton::pressed, this, &Volcano::explodeClicked);
     connect(ui->resetButton, &QPushButton::pressed, this, &Volcano::clearSimulation);
@@ -76,43 +83,43 @@ void Volcano::explodeClicked() {
         simulation.applyImpulse(brick, 90, powerselected);
     }
     else {
-//        int powerselected;
-//        switch(ui->powerSelector->currentIndex()) {
+        int powerselected;
+        switch(ui->powerSelector->currentIndex()) {
 
-//        // index corrosponds with the volanco's explosivity index
-//        case 0: powerselected = 200;
-//            break;
+        // index corrosponds with the volanco's explosivity index
+        case 0: powerselected = 200;
+            break;
 
-//        case 1: powerselected = 400;
-//            break;
+        case 1: powerselected = 400;
+            break;
 
-//        case 2: powerselected = 800;
-//            break;
+        case 2: powerselected = 800;
+            break;
 
-//        case 3: powerselected = 1600;
-//            break;
+        case 3: powerselected = 1600;
+            break;
 
-//        case 4: powerselected = 3200;
-//            break;
+        case 4: powerselected = 3200;
+            break;
 
-//        case 5: powerselected = 6400;
-//            break;
+        case 5: powerselected = 6400;
+            break;
 
-//        case 6: powerselected = 12800;
-//            break;
+        case 6: powerselected = 12800;
+            break;
 
-//        case 7: powerselected = 25600;
-//            break;
+        case 7: powerselected = 25600;
+            break;
 
-//        case 8: powerselected = 51200;
-//            break;
+        case 8: powerselected = 51200;
+            break;
 
-//        default: powerselected = 0;
-//            break;
+        default: powerselected = 0;
+            break;
         }
 
-//        simulation.createExplosion(brick->body->GetPosition(), powerselected, 120);
-//    }
+        simulation.createExplosion(brick->body->GetPosition(), powerselected, 120);
+    }
 }
 
 void Volcano::clearSimulation() {
@@ -202,12 +209,12 @@ void Volcano::initializeSimulation() {
 
     for(float x = -8; x < 8; x += .8f) {
         for(float y = -14; y < 0; y += .8f) {
-            simulation.createMob("../A9/lava2.png", x, y, .8f, .8f);
+            simulation.createMob("../A9/Lava.png", x, y, .5f, b2_dynamicBody);
         }
     }
     //creation of volcano test
     //simulation.createMob("../A9/otherimage.png", -10, 10, 2.0f, b2_dynamicBody);
-    simulation.createMob("../A9/lava2.png", -10, 10, 2.0f, b2_dynamicBody);
+    //simulation.createMob("../A9/lava2.png", -10, 10, 2.0f, b2_dynamicBody);
 
         vector<b2Vec2> leftVolcano;
         vector<b2Vec2> rightVolcano;

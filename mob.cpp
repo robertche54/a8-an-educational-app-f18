@@ -20,7 +20,8 @@ Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY
 Mob::Mob(string file, float locationX, float locationY, float rad, b2World &world, b2BodyType type)
     : position(locationX, locationY),
       world(&world),
-      radius(rad)
+      radius(rad),
+      size(2.25 * rad, 2.25 * rad)
 {
     createSprite(file);
     //pass in 1 for a circle
@@ -83,24 +84,6 @@ void Mob::createSprite(string file)
     auto bounds = sprite.getLocalBounds();
     sprite.setOrigin(Vector2f(bounds.width/2, bounds.height/2));
     sprite.setPosition(position);
-
-
-
-
-
-//    sf::VertexArray triangle(sf::Triangles, 3);
-
-//    // define the position of the triangle's points
-//    triangle[0].position = sf::Vector2f(10.f, 10.f);
-//    triangle[1].position = sf::Vector2f(100.f, 10.f);
-//    triangle[2].position = sf::Vector2f(100.f, 100.f);
-
-//    // define the color of the triangle's points
-//    triangle[0].color = sf::Color::Red;
-//    triangle[1].color = sf::Color::Blue;
-//    triangle[2].color = sf::Color::Green;
-    //sprite.setTexture();
-
 }
 
 void Mob::createBody(b2World &world, b2BodyType type)
