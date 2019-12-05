@@ -7,7 +7,7 @@ MeteorSlide1::MeteorSlide1(QWidget *parent) :
     ui(new Ui::MeteorSlide1)
 {
     ui->setupUi(this);
-    //ui->setStyleSheet("background-image: /home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/OceanImpactBackdrop.png");
+    ui->TextLabel->setStyleSheet("QLabel { color : white; }");
     QString string1 = "Welcome to the ocean impact page. Press 'Next' to continue!";
     QString string2 = "The ocean impact, like, seriously messed the dinos up.";
     QString string3 = "Well, the ocean didn't impact anything. . .";
