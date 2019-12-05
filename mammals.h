@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QCloseEvent>
+#include <QTimer>
 
 #include <simulation.h>
 #include <creaturecollisionhandler.h>

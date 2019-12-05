@@ -1,6 +1,5 @@
 #include "mammals.h"
 #include "ui_mammals.h"
-#include <QTimer>
 
 auto plantFunctor = [] (float a) -> float {return a==0 ? 0 : 1;};
 auto mammalFunctor = [] (float a) -> float {return sqrt(max(0.0f,30 - (5*21)/(4+a)));};
@@ -63,6 +62,7 @@ void Mammals::mousePressEvent(QMouseEvent *event)
 {
     // QT coordinates need to be converted to box2D coordinates
     //simulation.createSingularity(event->x(), event->y());
+    simulation.createSingularity(1, 1);
 }
 
 void Mammals::paintEvent(QPaintEvent*)
