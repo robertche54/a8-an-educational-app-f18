@@ -44,16 +44,6 @@ private:
     QTimer* worldTimer;
     Simulation* sim;
     map<string,Mob*> dinos;
-
-    // Involmenet
-    bool dino2Active = false;
-    bool pterActive = false;
-    bool rockActive = false;
-    bool screamingDinoActive = false;
-    bool spikeyActive = false;
-    bool treeActive = false;
-    bool TRexActive = false;
-
     vector<QString> infoVec{ "Welcome to the ground impact page. Press 'Next' to continue!",
                            "The ground impact, like, seriously messed the dinos up.",
                            "Well, the ground didn't impact anything. . .",

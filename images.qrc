@@ -8,5 +8,8 @@
         <file>landDinos/spikey.png</file>
         <file>landDinos/tree.png</file>
         <file>landDinos/TRex.png</file>
+        <file>earth.jpg</file>
+        <file>dinoBackground.jpg</file>
+        <file>landDinos/Earth.jpg</file>
     </qresource>
 </RCC>
