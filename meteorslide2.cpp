@@ -85,9 +85,9 @@ void MeteorSlide2::addElements(){
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim.step()));
 
     //Dino mobs
-    sim.createMob("../A9/TRex.png",-3,-5,2,2);
-    sim.createMob("../A9/screamingDino.png", -8, -4, 3, 3);
-    sim.createMob("../A9/pteranodon.png",4, 6, 2, 2);
+    sim.createMob("../A9/TRex.png",-3,-5,2,2, b2_dynamicBody);
+    sim.createMob("../A9/screamingDino.png", -8, -4, 3, 3, b2_dynamicBody);
+    sim.createMob("../A9/pteranodon.png",4, 6, 2, 2, b2_dynamicBody);
 }
 
 

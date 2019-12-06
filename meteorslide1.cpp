@@ -37,11 +37,11 @@ MeteorSlide1::MeteorSlide1(QWidget *parent) :
 
     wave->body->SetLinearVelocity(b2Vec2(250.0f, 0.0f));
     wave->body->SetFixedRotation(true);
-    simulation.createMob("../A9/coelacanth.png", 2,5,3,3);
-    simulation.createMob("../A9/mosasaurus.png", -3,2,10,6);
-    simulation.createMob("../A9/coelacanth.png", 4,2,4,3);
-    simulation.createMob("../A9/seaweed.png", 8,-5,4,12);
-    simulation.createMob("../A9/seaweed.png", -9,-2,4,9);
+    simulation.createMob("../A9/coelacanth.png", 2,5,3,3, b2_dynamicBody);
+    simulation.createMob("../A9/mosasaurus.png", -3,2,10,6, b2_dynamicBody);
+    simulation.createMob("../A9/coelacanth.png", 4,2,4,3, b2_dynamicBody);
+    simulation.createMob("../A9/seaweed.png", 8,-5,4,12, b2_dynamicBody);
+    simulation.createMob("../A9/seaweed.png", -9,-2,4,9, b2_dynamicBody);
 
 
 
