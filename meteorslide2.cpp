@@ -67,7 +67,7 @@ void MeteorSlide2::addWorldDefinitions(){
     b2FixtureDef myFixtureDef;
 
     myBodyDef.type = b2_staticBody; //change body type
-    myBodyDef.position.Set(0,-10); //middle, bottom
+    myBodyDef.position.Set(0,-13); //middle, bottom
 
     b2EdgeShape edgeShape;
     edgeShape.Set(b2Vec2(-100,0), b2Vec2(100,0));
@@ -78,7 +78,7 @@ void MeteorSlide2::addWorldDefinitions(){
     // Bouncy ground for collision
     b2BodyDef tramp;
     tramp.type = b2_dynamicBody;
-    tramp.position.Set(0,-8);
+    tramp.position.Set(0,-12);
 
     b2FixtureDef trampFixDef;
     trampFixDef.restitution = 2.0f;
@@ -114,6 +114,7 @@ void MeteorSlide2::changeBackground(){
             break;
         default:
             backGroundTimer->stop();
+            sim->createMob("../A9/landDinos/smoke.png",0,25,40,10,"smoke",b2_dynamicBody);
             break;
     }
 }
@@ -134,6 +135,10 @@ void MeteorSlide2::on_startButton_clicked(){
     Mob* meteor = sim->namedMobs.at("meteor");
     sim->applyImpulse(meteor,265,300);
 
+    for(uint i=0; i<128; i++){
+        sim->createMob("../A9/Lava.png", i-64, -11, 1, 1);
+    }
+
     // Steping timer to call update
     worldTimer = new QTimer(this);
     connect(worldTimer, &QTimer::timeout, this, &MeteorSlide2::update);
@@ -141,7 +146,7 @@ void MeteorSlide2::on_startButton_clicked(){
 
     backGroundTimer = new QTimer();
     connect(backGroundTimer, &QTimer::timeout, this, &MeteorSlide2::changeBackground);
-    backGroundTimer->start(400);
+    backGroundTimer->start(600);
 }
 
 
@@ -156,6 +161,7 @@ void MeteorSlide2::on_reset_clicked(){
     addWorldDefinitions();
     ui->backLabel->setPixmap(QPixmap("../A9/dinoscene0.jpg"));
     backgroundIndex=0;
+    ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }
 
 

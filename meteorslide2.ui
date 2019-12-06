@@ -34,7 +34,7 @@ color: white;
   <widget class="QPushButton" name="NextButton">
    <property name="geometry">
     <rect>
-     <x>301</x>
+     <x>290</x>
      <y>490</y>
      <width>89</width>
      <height>30</height>
@@ -48,7 +48,7 @@ color: white;
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:white; color: black;</string>
+    <string notr="true">background-color:rgba(200,200,200,0.7) ;color: black;</string>
    </property>
    <property name="text">
     <string>Next &gt;</string>
@@ -124,7 +124,7 @@ color: white;
   <widget class="QPushButton" name="BackButton">
    <property name="geometry">
     <rect>
-     <x>171</x>
+     <x>180</x>
      <y>490</y>
      <width>89</width>
      <height>30</height>
@@ -138,7 +138,7 @@ color: white;
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:white; color: black;</string>
+    <string notr="true">background-color:rgba(200,200,200,0.7) ;color: black;</string>
    </property>
    <property name="text">
     <string>&lt; Back</string>
@@ -214,7 +214,7 @@ Exctinction</string>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:white; color: black;</string>
+    <string notr="true">background-color:rgba(200,200,200,0.7) ;color: black;</string>
    </property>
    <property name="text">
     <string>Reset</string>
@@ -469,7 +469,7 @@ background-repeat: none;
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:rgba(200,200,200,0.6)</string>
+    <string notr="true">background-color:rgba(200,200,200,0.7) ;color: black;</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::Box</enum>
