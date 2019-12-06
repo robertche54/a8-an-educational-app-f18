@@ -171,33 +171,36 @@ color: white;
   <widget class="QPushButton" name="startButton">
    <property name="geometry">
     <rect>
-     <x>1000</x>
+     <x>990</x>
      <y>610</y>
-     <width>131</width>
-     <height>25</height>
+     <width>140</width>
+     <height>101</height>
     </rect>
    </property>
    <property name="font">
     <font>
      <family>Norasi</family>
-     <pointsize>11</pointsize>
+     <pointsize>18</pointsize>
      <weight>75</weight>
      <bold>true</bold>
+     <underline>false</underline>
+     <strikeout>false</strikeout>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color:white; color: black;</string>
+    <string notr="true">background-color:rgba(170,0,0,1); color: white;</string>
    </property>
    <property name="text">
-    <string>Start Exctinction</string>
+    <string>Start
+Exctinction</string>
    </property>
   </widget>
   <widget class="QPushButton" name="reset">
    <property name="geometry">
     <rect>
-     <x>1000</x>
-     <y>660</y>
-     <width>131</width>
+     <x>990</x>
+     <y>720</y>
+     <width>140</width>
      <height>25</height>
     </rect>
    </property>
@@ -390,7 +393,7 @@ background-repeat: none;
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color:white;</string>
+    <string notr="true">background-color:rgba(200,200,200,0.7) ;color: black;</string>
    </property>
    <property name="frameShape">
     <enum>QFrame::Box</enum>

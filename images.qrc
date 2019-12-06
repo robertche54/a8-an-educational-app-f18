@@ -11,5 +11,7 @@
         <file>earth.jpg</file>
         <file>dinoBackground.jpg</file>
         <file>landDinos/Earth.jpg</file>
+        <file>theJungle.png</file>
+        <file>theWaves.png</file>
     </qresource>
 </RCC>
