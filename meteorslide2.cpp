@@ -9,7 +9,7 @@ MeteorSlide2::MeteorSlide2(QWidget *parent) :
     sim = new Simulation();
     ui->setupUi(this);
     ui->TextLabel->setText(infoVec.front());
-    ui->backLabel->setPixmap(QPixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/dinoscene0.jpg"));
+    ui->backLabel->setPixmap(QPixmap("../A9/dinoscene0.jpg"));
 
     addWorldDefinitions();
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
@@ -101,16 +101,16 @@ void MeteorSlide2::addWorldDefinitions(){
 void MeteorSlide2::changeBackground(){
     switch(++backgroundIndex){
         case 1:
-            ui->backLabel->setPixmap(QPixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/dinoscene1.jpg"));
+            ui->backLabel->setPixmap(QPixmap("../A9/dinoscene1.jpg"));
             break;
         case 2:
-            ui->backLabel->setPixmap(QPixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/dinoscene2.jpg"));
+            ui->backLabel->setPixmap(QPixmap("../A9/dinoscene2.jpg"));
             break;
         case 3:
-            ui->backLabel->setPixmap(QPixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/dinoscene3.jpg"));
+            ui->backLabel->setPixmap(QPixmap("../A9/dinoscene3.jpg"));
             break;
         case 4:
-            ui->backLabel->setPixmap(QPixmap("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/dinoscene4.jpg"));
+            ui->backLabel->setPixmap(QPixmap("../A9/dinoscene4.jpg"));
             break;
         default:
             backGroundTimer->stop();

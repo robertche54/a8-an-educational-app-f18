@@ -87,6 +87,7 @@ background-image: url(:OceanPics/OceanImpactBackdrop.jpg);}</string>
    <property name="font">
     <font>
      <family>Norasi</family>
+     <pointsize>20</pointsize>
      <weight>75</weight>
      <bold>true</bold>
     </font>

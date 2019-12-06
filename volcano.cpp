@@ -192,15 +192,15 @@ void Volcano::initializeSimulation() {
 
     simulation.setGravity(0.0f, -1000.0f);
     simulation.tf.setWindowSize(200, 200);
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/bricks.jpg", 20.0f, -37.0f, 3.0f, 3.0f, "brick", b2_dynamicBody);
+    simulation.createMob("../A9/bricks.jpg", 20.0f, -37.0f, 3.0f, 3.0f, "brick", b2_dynamicBody);
 
     for(float x = 10; x < 30; x += 1.0f) {
         for(float y = -34; y < -24; y += 1.0f) {
-            simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/otherimage.png", x, y, 1.0f, 1.0f);
+            simulation.createMob("../A9/otherimage.png", x, y, 1.0f, 1.0f);
         }
     }
     //creation of volcano test
-    simulation.createMob("/home/spencer/CS3505/A9/a8-an-educational-app-f18-LandonRoundy/otherimage.png", -10, 10, 2.0f, b2_dynamicBody);
+    simulation.createMob("../A9/otherimage.png", -10, 10, 2.0f, b2_dynamicBody);
     vector<b2Vec2> vert;
     b2Vec2 vert1(-1, -1);
     vert.push_back(vert1);
