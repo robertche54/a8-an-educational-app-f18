@@ -8,6 +8,9 @@
         <file>landDinos/spikey.png</file>
         <file>landDinos/tree.png</file>
         <file>landDinos/TRex.png</file>
+    </qresource>
+    <qresource prefix="/OceanPics">
+        <file>TsunamiButton.png</file>
         <file>OceanImpactBackdrop.jpg</file>
     </qresource>
 </RCC>

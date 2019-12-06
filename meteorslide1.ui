@@ -25,7 +25,7 @@
   <property name="styleSheet">
    <string notr="true">#MeteorSlide1{
 	font: 11pt &quot;Purisa&quot;;
-background-image: url(:/items/OceanImpactBackdrop.jpg);}</string>
+background-image: url(:OceanPics/OceanImpactBackdrop.jpg);}</string>
   </property>
   <widget class="QPushButton" name="NextButton">
    <property name="geometry">
@@ -72,7 +72,7 @@ background-image: url(:/items/OceanImpactBackdrop.jpg);}</string>
     <number>3</number>
    </property>
    <property name="text">
-    <string>Ocean Impact animation goes here</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="TextLabel">
@@ -136,7 +136,7 @@ background-image: url(:/items/OceanImpactBackdrop.jpg);}</string>
      <x>600</x>
      <y>520</y>
      <width>121</width>
-     <height>25</height>
+     <height>31</height>
     </rect>
    </property>
    <property name="font">
@@ -146,8 +146,17 @@ background-image: url(:/items/OceanImpactBackdrop.jpg);}</string>
      <bold>true</bold>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">#Start{
+background-color: transparent;
+border-image: url(:/OceanPics/TsunamiButton.png);
+background : none;
+border: none;
+background-repeat: none;
+}</string>
+   </property>
    <property name="text">
-    <string>Tsunami!</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label">
@@ -160,7 +169,7 @@ background-image: url(:/items/OceanImpactBackdrop.jpg);}</string>
     </rect>
    </property>
    <property name="text">
-    <string>TextLabel</string>
+    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
