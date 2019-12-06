@@ -133,7 +133,7 @@ void Simulation::createExplosion(b2Vec2 position, float blastPower, int numRays)
     vector<b2Body*> rays;
 
     // Cleans up rays after they run out of momentum (after 5 seconds)
-    QTimer::singleShot(5000, this, SLOT(removeRays()));
+    QTimer::singleShot(1000, this, SLOT(removeRays()));
 
     // Simulates the effect of an explosion by creating a number of
     // particle rays that emit off a point

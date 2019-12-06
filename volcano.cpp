@@ -20,7 +20,7 @@ Volcano::Volcano(QWidget *parent) :
 //    ui->explodeButton->setIconSize(QSize(ui->explodeButton->size()));
 
     QPixmap pixmap("../A9/volcanoSky.jpeg");
-    pixmap = pixmap.scaled(this->size(), Qt::IgnoreAspectRatio);
+    pixmap = pixmap.scaled(ui->backgroundLabel->size(), Qt::IgnoreAspectRatio);
     ui->backgroundLabel->setPixmap(pixmap);
 
     QPixmap volcanoCover("../A9/volcano.jpeg");
@@ -96,7 +96,7 @@ void Volcano::initializeSimulation() {
     simulation.createMob("../A9/lava2.png", 0.0f, -19.0f, 1.0f, 1.0f, "brick", b2_dynamicBody);
 
     for(float x = -8; x < 8; x += .8f) {
-        for(float y = -14; y < 0; y += .8f) {
+        for(float y = -18; y < -7; y += .8f) {
             simulation.createMob("../A9/Lava.png", x, y, .5f, b2_dynamicBody);
         }
     }

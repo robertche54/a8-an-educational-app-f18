@@ -22,8 +22,8 @@
   <widget class="QLabel" name="simulationLabel">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>20</y>
+     <x>585</x>
+     <y>15</y>
      <width>600</width>
      <height>500</height>
     </rect>
@@ -44,21 +44,21 @@
   <widget class="QPushButton" name="explodeButton">
    <property name="geometry">
     <rect>
-     <x>980</x>
-     <y>340</y>
+     <x>930</x>
+     <y>650</y>
      <width>89</width>
      <height>25</height>
     </rect>
    </property>
    <property name="text">
-    <string/>
+    <string>EXPLODE!</string>
    </property>
   </widget>
   <widget class="QComboBox" name="powerSelector">
    <property name="geometry">
     <rect>
-     <x>990</x>
-     <y>180</y>
+     <x>1010</x>
+     <y>580</y>
      <width>121</width>
      <height>25</height>
     </rect>
@@ -67,8 +67,8 @@
   <widget class="QSpinBox" name="customPower">
    <property name="geometry">
     <rect>
-     <x>1010</x>
-     <y>70</y>
+     <x>760</x>
+     <y>650</y>
      <width>81</width>
      <height>26</height>
     </rect>
@@ -80,8 +80,8 @@
   <widget class="QCheckBox" name="customCheck">
    <property name="geometry">
     <rect>
-     <x>940</x>
-     <y>310</y>
+     <x>890</x>
+     <y>620</y>
      <width>161</width>
      <height>23</height>
     </rect>
@@ -93,8 +93,8 @@
   <widget class="QLabel" name="historicLabel">
    <property name="geometry">
     <rect>
-     <x>1000</x>
-     <y>150</y>
+     <x>1020</x>
+     <y>550</y>
      <width>101</width>
      <height>17</height>
     </rect>
@@ -106,8 +106,8 @@
   <widget class="QLabel" name="customLabel">
    <property name="geometry">
     <rect>
-     <x>1000</x>
-     <y>40</y>
+     <x>750</x>
+     <y>620</y>
      <width>101</width>
      <height>17</height>
     </rect>
@@ -119,8 +119,8 @@
   <widget class="QLabel" name="backgroundLabel">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>20</y>
+     <x>585</x>
+     <y>15</y>
      <width>600</width>
      <height>500</height>
     </rect>
@@ -141,8 +141,8 @@
   <widget class="QPushButton" name="resetButton">
    <property name="geometry">
     <rect>
-     <x>980</x>
-     <y>470</y>
+     <x>1090</x>
+     <y>640</y>
      <width>89</width>
      <height>25</height>
     </rect>
@@ -154,8 +154,8 @@
   <widget class="QLabel" name="volcanoLabel">
    <property name="geometry">
     <rect>
-     <x>425</x>
-     <y>355</y>
+     <x>810</x>
+     <y>350</y>
      <width>150</width>
      <height>165</height>
     </rect>
