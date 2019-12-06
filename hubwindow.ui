@@ -23,50 +23,77 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QPushButton" name="metoriteButton">
+   <widget class="QPushButton" name="meteoriteButton">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>640</y>
-      <width>89</width>
-      <height>25</height>
+      <x>380</x>
+      <y>540</y>
+      <width>130</width>
+      <height>150</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">#meteoriteButton{
+background-color: transparent;
+border-image: url(:HubWindow/hubComet.png);
+background : none;
+border: none;
+background-repeat: none;
+}</string>
+    </property>
     <property name="text">
-     <string>Meteorite</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="volcanoButton">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>640</y>
-      <width>89</width>
-      <height>25</height>
+      <x>550</x>
+      <y>540</y>
+      <width>130</width>
+      <height>150</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">#volcanoButton{
+background-color: transparent;
+border-image: url(:HubWindow/hubVolcano.png);
+background : none;
+border: none;
+background-repeat: none;
+}</string>
+    </property>
     <property name="text">
-     <string>Volcano</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="mammalButton">
     <property name="geometry">
      <rect>
-      <x>710</x>
-      <y>640</y>
-      <width>89</width>
-      <height>25</height>
+      <x>720</x>
+      <y>540</y>
+      <width>130</width>
+      <height>150</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">#mammalButton{
+background-color: transparent;
+border-image: url(:HubWindow/hubEgg.png);
+background : none;
+border: none;
+background-repeat: none;
+}</string>
+    </property>
     <property name="text">
-     <string>Mammals</string>
+     <string/>
     </property>
    </widget>
    <widget class="QLabel" name="titleLabel">
     <property name="geometry">
      <rect>
       <x>310</x>
-      <y>0</y>
+      <y>-70</y>
       <width>600</width>
       <height>500</height>
      </rect>
@@ -87,8 +114,8 @@
    <widget class="QPushButton" name="physicsButton">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>680</y>
+      <x>430</x>
+      <y>720</y>
       <width>381</width>
       <height>25</height>
      </rect>
@@ -97,6 +124,131 @@
      <string>Toggle Physics</string>
     </property>
    </widget>
+   <widget class="QLabel" name="meteoriteLabel">
+    <property name="geometry">
+     <rect>
+      <x>380</x>
+      <y>490</y>
+      <width>130</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Norasi</family>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgba(90,90,90,.90);color:white</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
+    </property>
+    <property name="midLineWidth">
+     <number>2</number>
+    </property>
+    <property name="text">
+     <string>Meteorite</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="volcanoLabel">
+    <property name="geometry">
+     <rect>
+      <x>550</x>
+      <y>490</y>
+      <width>130</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Norasi</family>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgba(90,90,90,.90);color:white</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
+    </property>
+    <property name="midLineWidth">
+     <number>2</number>
+    </property>
+    <property name="text">
+     <string>Volcano</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="mammalLabel">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>490</y>
+      <width>130</width>
+      <height>200</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Norasi</family>
+      <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color:rgba(90,90,90,.90);color:white</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
+    </property>
+    <property name="midLineWidth">
+     <number>2</number>
+    </property>
+    <property name="text">
+     <string>Mammals</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignHCenter|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <zorder>mammalLabel</zorder>
+   <zorder>meteoriteLabel</zorder>
+   <zorder>volcanoLabel</zorder>
+   <zorder>meteoriteButton</zorder>
+   <zorder>volcanoButton</zorder>
+   <zorder>mammalButton</zorder>
+   <zorder>titleLabel</zorder>
+   <zorder>physicsButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

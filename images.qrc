@@ -9,9 +9,17 @@
         <file>landDinos/tree.png</file>
         <file>landDinos/TRex.png</file>
         <file>earth.jpg</file>
-        <file>dinoBackground.jpg</file>
         <file>landDinos/Earth.jpg</file>
         <file>theJungle.png</file>
         <file>theWaves.png</file>
+    </qresource>
+    <qresource prefix="/OceanPics">
+        <file>TsunamiButton.png</file>
+        <file>OceanImpactBackdrop.jpg</file>
+    </qresource>
+    <qresource prefix="/HubWindow">
+        <file>hubEgg.png</file>
+        <file>hubVolcano.png</file>
+        <file>hubComet.png</file>
     </qresource>
 </RCC>

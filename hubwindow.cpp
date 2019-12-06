@@ -29,7 +29,7 @@ HubWindow::HubWindow(QWidget *parent)
     simulation.createMob("../A9/title2-01.png", 0, 10, 20, 10, "title", b2_dynamicBody);
 
     // connecting ui buttons to open popups and toggle if physics is active
-    connect(ui->metoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);
+    connect(ui->meteoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);
     connect(ui->volcanoButton, &QPushButton::pressed, this, &HubWindow::volcanoClicked);
     connect(ui->mammalButton, &QPushButton::pressed, this, &HubWindow::mammalsClicked);
 //    connect(ui->physicsButton, &QPushButton::pressed, this, &HubWindow::togglePhysics);

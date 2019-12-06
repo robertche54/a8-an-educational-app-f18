@@ -27,6 +27,8 @@ private slots:
 
 private:
     Ui::Meteorite *ui;
+    MeteorSlide1 slide1Popup;
+    MeteorSlide2 slide2Popup;
     void closeEvent(QCloseEvent*);
 };
 

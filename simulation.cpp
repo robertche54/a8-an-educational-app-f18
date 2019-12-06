@@ -62,16 +62,16 @@ void Simulation::createMob(string filePath, float posX, float posY, float radius
  * polygon with Name
  */
 void Simulation::createMob(string filePath, float posX, float posY, vector<b2Vec2> vertices, string name, b2BodyType type) {
-    //Mob* newMob = new Mob(filePath, posX, posY, radius, world, type);
-    //namedMobs.insert(pair<string, Mob*>(name, newMob));
+    Mob* newMob = new Mob(filePath, posX, posY, vertices, world, type);
+    namedMobs.insert(pair<string, Mob*>(name, newMob));
 }
 
 /*
  * polygon generic
  */
 void Simulation::createMob(string filePath, float posX, float posY, vector<b2Vec2> vertices, b2BodyType type) {
-    //Mob* newMob = new Mob(filePath, posX, posY, radius, world, type);
-    //namedMobs.insert(pair<string, Mob*>(name, newMob));
+    Mob* newMob = new Mob(filePath, posX, posY, vertices, world, type);
+    genericMobs.push_back(newMob);
 }
 
 

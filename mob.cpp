@@ -27,11 +27,15 @@ Mob::Mob(string file, float locationX, float locationY, float rad, b2World &worl
     createBody(world, type, 1);
 }
 
-//new Mob(filePath, posX, posY, radius, world, type);
-//string filePath, float posX, float posY, float radius, string name, b2BodyType type//specific circle
-//(string filePath, float posX, float posY, float radius, b2BodyType type)// generic circle
-//(string filePath, float posX, float posY, vector<b2Vec2> vertices, string name, b2BodyType type)//named polygon
-//(string filePath, float posX, float posY, vector<b2Vec2> vertices, b2BodyType type) // generic polygon
+Mob::Mob(string file, float locationX, float locationY, vector<b2Vec2> ver, b2World &world, b2BodyType type)
+    : position(locationX, locationY),
+      world(&world)
+{
+    vertices = ver;
+    createSprite(file);
+    //pass in 2 for a polygon
+    createBody(world, type, 2);
+}
 
 bool Mob::Update(windowTransform transform)
 {
@@ -87,10 +91,14 @@ void Mob::createBody(b2World &world, b2BodyType type, int shape)
         circleShape.m_radius = radius; //radius
         fixtureDef.shape = &circleShape;
     }
-    //currently sets as box, but need to change
-    else{
+    else{//else it's a polygon
+        b2Vec2 polygonVertices[vertices.size()];
+        for(unsigned long i = 0; i < vertices.size(); i++){
+            polygonVertices[i].Set(vertices[i].x, vertices[i].x);
+        }
+
         b2PolygonShape polygonShape;
-        polygonShape.SetAsBox(size.x, size.y);
+        polygonShape.Set(polygonVertices, vertices.size());
         fixtureDef.shape = &polygonShape;
     }
 
