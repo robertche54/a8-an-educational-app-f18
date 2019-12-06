@@ -164,6 +164,45 @@
     <string>TextLabel</string>
    </property>
   </widget>
+  <widget class="QLabel" name="infoLabel">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>10</y>
+     <width>400</width>
+     <height>500</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="previousButton">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>550</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Previous</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="nextButton">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>550</y>
+     <width>89</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Next</string>
+   </property>
+  </widget>
   <zorder>backgroundLabel</zorder>
   <zorder>simulationLabel</zorder>
   <zorder>explodeButton</zorder>
@@ -174,6 +213,9 @@
   <zorder>customLabel</zorder>
   <zorder>resetButton</zorder>
   <zorder>volcanoLabel</zorder>
+  <zorder>infoLabel</zorder>
+  <zorder>previousButton</zorder>
+  <zorder>nextButton</zorder>
  </widget>
  <resources/>
  <connections/>

@@ -13,6 +13,14 @@ Volcano::Volcano(QWidget *parent) :
                                <<"3: Nevado del Ruiz (1985)"<<"4: Laki (1783)"<<"5: St. Helens (1980)"
                                <<"6: Krakatoa (1883)"<<"7: Tambora (1815)"<<"8: Yellowstone (630,000 BC)");
 
+    QString part1 = "this is a basic test of displaying strings";
+    QString part2 = "this is a test of the text change buttons";
+    QString part3 = "part3";
+    QString part4 = "Jeez this is getting long winded";
+    infoVec.push_back(part1);
+    infoVec.push_back(part2);
+    infoVec.push_back(part3);
+    infoVec.push_back(part4);
 
     ui->powerSelector->addItems(volcanoList);
 
@@ -29,6 +37,8 @@ Volcano::Volcano(QWidget *parent) :
 
     connect(ui->explodeButton, &QPushButton::pressed, this, &Volcano::explodeClicked);
     connect(ui->resetButton, &QPushButton::pressed, this, &Volcano::clearSimulation);
+    connect(ui->nextButton, &QPushButton::pressed, this, &Volcano::nextSlide);
+    connect(ui->previousButton, &QPushButton::pressed, this, &Volcano::previousSlide);
 }
 
 Volcano::~Volcano()
@@ -43,6 +53,7 @@ void Volcano::showEvent(QShowEvent *) {
 void Volcano::closeEvent(QCloseEvent*) {
     simulation.clearSimulation();
     simulation.world.DestroyBody(groundBody);
+    infoIndex = 0;
     emit returnFocus();
 }
 
@@ -74,8 +85,23 @@ void Volcano::clearSimulation() {
     initializeSimulation();
 }
 
+void Volcano::nextSlide() {
+    if (infoIndex < infoVec.size() - 1) {
+        ++infoIndex;
+        ui->infoLabel->setText(infoVec.at(infoIndex));
+    }
+}
+
+void Volcano::previousSlide() {
+    if (infoIndex > 0) {
+        --infoIndex;
+        ui->infoLabel->setText(infoVec.at(infoIndex));
+    }
+}
+
 void Volcano::initializeSimulation() {
-    simulation.isRunning = true;
+   simulation.isRunning = true;
+   ui->infoLabel->setText(infoVec.at(infoIndex));
 
    b2BodyDef groundBodyDef;
 
