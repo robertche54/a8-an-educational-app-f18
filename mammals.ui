@@ -143,9 +143,23 @@
     </item>
    </layout>
   </widget>
+  <widget class="QPushButton" name="mammalPhysicsButton">
+   <property name="geometry">
+    <rect>
+     <x>140</x>
+     <y>720</y>
+     <width>259</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Toggle Physics</string>
+   </property>
+  </widget>
   <zorder>bg</zorder>
   <zorder>simulationLabel</zorder>
   <zorder>verticalLayoutWidget</zorder>
+  <zorder>mammalPhysicsButton</zorder>
  </widget>
  <resources/>
  <connections/>
