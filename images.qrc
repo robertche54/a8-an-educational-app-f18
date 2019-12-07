@@ -21,5 +21,7 @@
         <file>hubEgg.png</file>
         <file>hubVolcano.png</file>
         <file>hubComet.png</file>
+        <file>dinoBackground.jpg</file>
+        <file>DinoTitle.png</file>
     </qresource>
 </RCC>

@@ -8,7 +8,7 @@ HubWindow::HubWindow(QWidget *parent)
 
     ui->setupUi(this);
 
-    QPixmap background ("../A9/dinoBackground.jpg");
+    QPixmap background (":HubWindow/dinoBackground.jpg");
     background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette pal;
     pal.setBrush(QPalette::Background,background);

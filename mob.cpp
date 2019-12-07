@@ -1,5 +1,5 @@
 #include "mob.h"
-
+#include <QResource>
 Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world)
     : position(locationX, locationY),
       size(sizeX,sizeY),

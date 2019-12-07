@@ -1,6 +1,5 @@
 #include "meteorslide1.h"
 #include "ui_meteorslide1.h"
-#include <iostream>
 
 MeteorSlide1::MeteorSlide1(QWidget *parent) :
     QDialog(parent),
@@ -72,6 +71,10 @@ MeteorSlide1::~MeteorSlide1()
     delete ui;
 }
 
+/**
+ * Progesses the info slides to the next slide
+ * @brief MeteorSlide1::on_NextButton_clicked
+ */
 void MeteorSlide1::on_NextButton_clicked()
 {
     if(infoIndex < infoVec.size() - 1)
@@ -81,12 +84,22 @@ void MeteorSlide1::on_NextButton_clicked()
     }
 }
 
+
+/**
+ * Steps the simulation and updates the ui
+ * @brief MeteorSlide1::runAnimation
+ */
 void MeteorSlide1::runAnimation(){
 
     QImage newImage = simulation.step();
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(newImage));
 }
 
+
+/**
+ * Moves the slides to the previous slide
+ * @brief MeteorSlide1::on_BackButton_clicked
+ */
 void MeteorSlide1::on_BackButton_clicked()
 {
     if(infoIndex > 0)
@@ -96,6 +109,11 @@ void MeteorSlide1::on_BackButton_clicked()
     }
 }
 
+
+/**
+ * Begins the timers for the animation.
+ * @brief MeteorSlide1::on_Start_clicked
+ */
 void MeteorSlide1::on_Start_clicked()
 {
     timer = new QTimer(this);

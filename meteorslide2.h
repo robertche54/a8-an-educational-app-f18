@@ -4,6 +4,9 @@
 #include <QDialog>
 #include <vector>
 #include "simulation.h"
+#include "ui_meteorslide2.h"
+#include "Box2D/Box2D.h"
+
 #include <QTimer>
 
 using namespace std;

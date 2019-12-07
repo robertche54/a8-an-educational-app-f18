@@ -1,7 +1,10 @@
 #include "meteorslide2.h"
-#include "ui_meteorslide2.h"
-#include "Box2D/Box2D.h"
 
+/**
+ * Creates a window with a meteorite impact event
+ * @brief MeteorSlide2::MeteorSlide2
+ * @param parent
+ */
 MeteorSlide2::MeteorSlide2(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::MeteorSlide2)
@@ -15,6 +18,10 @@ MeteorSlide2::MeteorSlide2(QWidget *parent) :
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }
 
+/**
+ * Destructor
+ * @brief MeteorSlide2::~MeteorSlide2
+ */
 MeteorSlide2::~MeteorSlide2()
 {
     delete ui;
@@ -47,6 +54,7 @@ void MeteorSlide2::on_BackButton_clicked()
         ui->TextLabel->setText(infoVec.at(static_cast<ulong>(infoIndex)));
     }
 }
+
 
 /**
  * Steps the simulation updating the postions of the elements in the simulation.
@@ -209,7 +217,7 @@ void MeteorSlide2::on_pteranButton_clicked()
  */
 void MeteorSlide2::on_rockButton_clicked()
 {
-    dinos.insert(pair<string,Mob*>("rock",new Mob("../A9/landDinos/rock.png",2,-7,4,4, sim->world)));
+    dinos.insert(pair<string,Mob*>("rock",new Mob("../A9/landDinos/rock.png",0,-8,4,4, sim->world)));
     sim->addMob(dinos["rock"]);
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(sim->step()));
 }
