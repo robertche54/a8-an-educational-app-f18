@@ -38,7 +38,7 @@ MeteorSlide1::MeteorSlide1(QWidget *parent) :
     staticBody->CreateFixture(&myFixtureDef);
 
     ui->TextLabel->setText(infoVec.front());
-    QPixmap pixmap("../A9/underwater.jpg");
+    QPixmap pixmap("../a8-an-educational-app-f18-LandonRoundy/underwater.jpg");
     ui->label->setPixmap(pixmap);
     simulation.setGravity(0,-10);
 
@@ -46,22 +46,22 @@ MeteorSlide1::MeteorSlide1(QWidget *parent) :
     {
         for(int j = 0; j < 15; j++)
         {
-            simulation.createMob("../A9/WaterDroplet.png",-200.0 + i,-5 + j,1.0,1.0,"Wave" + to_string(i) + to_string(j), b2_dynamicBody);
+            simulation.createMob("../a8-an-educational-app-f18-LandonRoundy/WaterDroplet.png",-200.0 + i,-5 + j,1.0,1.0,"Wave" + to_string(i) + to_string(j), b2_dynamicBody);
             Mob *wave = simulation.namedMobs.at("Wave" + to_string(i) + to_string(j));
             wave->body->SetLinearVelocity(b2Vec2(500.0f, 0.0f));
             wave->body->SetAngularVelocity(100);
         }
     }
 
-    simulation.createMob("../A9/coelacanth.png", 2,7,2,2,b2_dynamicBody);
-    simulation.createMob("../A9/mosasaurus.png", -5,3,9,5, "mosasaur", b2_dynamicBody);
+    simulation.createMob("../a8-an-educational-app-f18-LandonRoundy/coelacanth.png", 2,7,2,2,b2_dynamicBody);
+    simulation.createMob("../a8-an-educational-app-f18-LandonRoundy/mosasaurus.png", -5,3,9,5, "mosasaur", b2_dynamicBody);
     Mob *mosasaur = simulation.namedMobs.at("mosasaur");
     mosasaur->body->SetLinearVelocity(b2Vec2(10.0f, 0.0f));
-    simulation.createMob("../A9/coelacanth.png", 4,3,3,2, "fish", b2_dynamicBody);
+    simulation.createMob("../a8-an-educational-app-f18-LandonRoundy/coelacanth.png", 4,3,3,2, "fish", b2_dynamicBody);
     Mob *fish = simulation.namedMobs.at("fish");
     fish->body->SetLinearVelocity(b2Vec2(10.0f, 0.0f));
-    simulation.createMob("../A9/seaweed.png", 8,-5,3,11,b2_dynamicBody);
-    simulation.createMob("../A9/seaweed.png", -9,-7,3,8,b2_dynamicBody);
+    simulation.createMob("../a8-an-educational-app-f18-LandonRoundy/seaweed.png", 8,-5,3,11,b2_dynamicBody);
+    simulation.createMob("../a8-an-educational-app-f18-LandonRoundy/seaweed.png", -9,-7,3,8,b2_dynamicBody);
 
     ui->AnimationLabel->setPixmap(QPixmap::fromImage(simulation.step()));
 }

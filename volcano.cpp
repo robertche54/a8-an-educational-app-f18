@@ -24,11 +24,11 @@ Volcano::Volcano(QWidget *parent) :
 
     ui->powerSelector->addItems(volcanoList);
 
-    QPixmap pixmap("../A9/volcanoSky.jpeg");
+    QPixmap pixmap("../a8-an-educational-app-f18-LandonRoundy/volcanoSky.jpeg");
     pixmap = pixmap.scaled(ui->backgroundLabel->size(), Qt::IgnoreAspectRatio);
     ui->backgroundLabel->setPixmap(pixmap);
 
-    QPixmap volcanoCover("../A9/volcano.jpeg");
+    QPixmap volcanoCover("../a8-an-educational-app-f18-LandonRoundy/volcano.jpeg");
     volcanoCover = volcanoCover.scaled(ui->volcanoLabel->size(), Qt::IgnoreAspectRatio);
     ui->volcanoLabel->setPixmap(volcanoCover);
 
@@ -137,12 +137,12 @@ void Volcano::initializeSimulation() {
     simulation.setGravity(0.0f, -1000.0f);
     simulation.tf.setWindowSize(600, 500);
     simulation.tf.setBox2dWindow(b2Vec2(-20,20),b2Vec2(20, -20));
-    simulation.createMob("../A9/lava2.png", 0.0f, -19.0f, 1.0f, 1.0f, "brick", b2_dynamicBody);
+    simulation.createMob("../a8-an-educational-app-f18-LandonRoundy/lava2.png", 0.0f, -19.0f, 1.0f, 1.0f, "brick", b2_dynamicBody);
 
     //set up the lava inside the volcano
     for(float x = -8; x < 8; x += .8f) {
         for(float y = -18; y < -7; y += .8f) {
-            simulation.createMob("../A9/Lava.png", x, y, .5f, b2_dynamicBody);
+            simulation.createMob("../a8-an-educational-app-f18-LandonRoundy/Lava.png", x, y, .5f, b2_dynamicBody);
         }
     }
 
@@ -164,6 +164,6 @@ void Volcano::initializeSimulation() {
     b2Vec2 cert3(10, -10);
     rightVolcano.push_back(cert3);
 
-    simulation.createMob("../A9/volcanoleft.png", -16, -12, leftVolcano, b2_staticBody);
-    simulation.createMob("../A9/volcanoright.png", 16, -12, rightVolcano, b2_staticBody);
+    simulation.createMob("../a8-an-educational-app-f18-LandonRoundy/volcanoleft.png", -16, -12, leftVolcano, b2_staticBody);
+    simulation.createMob("../a8-an-educational-app-f18-LandonRoundy/volcanoright.png", 16, -12, rightVolcano, b2_staticBody);
 }

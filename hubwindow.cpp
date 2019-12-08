@@ -26,7 +26,7 @@ HubWindow::HubWindow(QWidget *parent)
     b2Body* staticBody = simulation.world.CreateBody(&myBodyDef);
     staticBody->CreateFixture(&myFixtureDef); //add a fixture to the body
 
-    simulation.createMob("../A9/title2-01.png", 0, 10, 20, 10, "title", b2_dynamicBody);
+    simulation.createMob("../a8-an-educational-app-f18-LandonRoundy/title2-01.png", 0, 10, 20, 10, "title", b2_dynamicBody);
 
     // connecting ui buttons to open popups and toggle if physics is active
     connect(ui->meteoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);

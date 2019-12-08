@@ -20,7 +20,7 @@ Mammals::Mammals(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QPixmap map("../A9/forest.jpg");
+    QPixmap map("../a8-an-educational-app-f18-LandonRoundy/forest.jpg");
     ui->bg->setPixmap(map);
 
     simulation.toggleRunning();
@@ -61,13 +61,13 @@ void Mammals::clearWorld() {
     }
 }
 void Mammals::addMammal(float x, float y) {
-    simulation.addMob(new Creature("../A9/mammal.png", x, y, max(1.0f,float(random()%4+2)/3.0f), simulation.world, &mammalFunctor));
+    simulation.addMob(new Creature("../a8-an-educational-app-f18-LandonRoundy/mammal.png", x, y, max(1.0f,float(random()%4+2)/3.0f), simulation.world, &mammalFunctor));
 }
 void Mammals::addDino(float x, float y) {
-    simulation.addMob(new Creature("../A9/dinoCreature.png", x, y, max(1.0f,float(random()%8+1)/3.0f), simulation.world, &dinoFunctor));
+    simulation.addMob(new Creature("../a8-an-educational-app-f18-LandonRoundy/dinoCreature.png", x, y, max(1.0f,float(random()%8+1)/3.0f), simulation.world, &dinoFunctor));
 }
 void Mammals::addPlant(float x, float y) {
-    simulation.addMob(new Creature("../A9/cabbage.png", x, y, max(1.0f,float(random()%3+2)/3.0f), simulation.world, &plantFunctor));
+    simulation.addMob(new Creature("../a8-an-educational-app-f18-LandonRoundy/cabbage.png", x, y, max(1.0f,float(random()%3+2)/3.0f), simulation.world, &plantFunctor));
 }
 
 
