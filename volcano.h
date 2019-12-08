@@ -20,6 +20,8 @@ public:
 public slots:
     void explodeClicked();
     void clearSimulation();
+    void nextSlide();
+    void previousSlide();
 
 signals :
     void returnFocus();
@@ -33,6 +35,8 @@ private:
     bool earthQuake = true;
     int windowH = 200;
     int windowW = 200;
+    unsigned int infoIndex = 0;
+    vector<QString> infoVec;
 
     void showEvent(QShowEvent *);
     void closeEvent(QCloseEvent*);

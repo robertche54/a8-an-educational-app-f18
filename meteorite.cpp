@@ -6,8 +6,7 @@ Meteorite::Meteorite(QWidget *parent) :
     ui(new Ui::Meteorite)
 {
     ui->setupUi(this);
-
-    QPixmap background ("../A9/Earth.jpg");
+    QPixmap background (":items/earth.jpg");
     background = background.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette pal;
     pal.setBrush(QPalette::Background,background);

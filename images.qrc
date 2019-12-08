@@ -1,0 +1,30 @@
+<RCC>
+    <qresource prefix="/items">
+        <file>landDinos/dino2.png</file>
+        <file>landDinos/pteranodon.png</file>
+        <file>landDinos/rock.png</file>
+        <file>landDinos/screamingDino.png</file>
+        <file>landDinos/smoke.png</file>
+        <file>landDinos/spikey.png</file>
+        <file>landDinos/tree.png</file>
+        <file>landDinos/TRex.png</file>
+        <file>earth.jpg</file>
+        <file>landDinos/Earth.jpg</file>
+        <file>theJungle.png</file>
+        <file>theWaves.png</file>
+    </qresource>
+    <qresource prefix="/OceanPics">
+        <file>TsunamiButton.png</file>
+        <file>OceanImpactBackdrop.jpg</file>
+    </qresource>
+    <qresource prefix="/HubWindow">
+        <file>hubEgg.png</file>
+        <file>hubVolcano.png</file>
+        <file>hubComet.png</file>
+        <file>dinoBackground.jpg</file>
+        <file>DinoTitle.png</file>
+    </qresource>
+    <qresource prefix="/VolcanoPics">
+        <file>backVolcano.jpg</file>
+    </qresource>
+</RCC>

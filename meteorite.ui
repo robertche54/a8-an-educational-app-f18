@@ -19,60 +19,181 @@
   <property name="windowTitle">
    <string>Meteorite</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#Meteorite{
+background-image: url(:/items/earth.jpg);
+}</string>
+  </property>
   <widget class="QPushButton" name="OceanButton">
    <property name="geometry">
     <rect>
-     <x>330</x>
-     <y>330</y>
-     <width>131</width>
-     <height>25</height>
+     <x>669</x>
+     <y>470</y>
+     <width>281</width>
+     <height>291</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">#OceanButton{
+background-color: transparent;
+border-image: url(:items/theWaves.png);
+background : none;
+border: none;
+background-repeat: none;
+}</string>
+   </property>
    <property name="text">
-    <string>Ocean Impact</string>
+    <string/>
    </property>
   </widget>
   <widget class="QPushButton" name="GroundButton">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>330</y>
-     <width>131</width>
-     <height>25</height>
+     <x>260</x>
+     <y>470</y>
+     <width>300</width>
+     <height>300</height>
     </rect>
    </property>
+   <property name="styleSheet">
+    <string notr="true">#GroundButton{
+background-color: transparent;
+border-image: url(:items/theJungle.png);
+background : none;
+border: none;
+background-repeat: none;
+}</string>
+   </property>
    <property name="text">
-    <string>Ground Impact</string>
+    <string/>
+   </property>
+   <property name="flat">
+    <bool>false</bool>
    </property>
   </widget>
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>30</x>
-     <y>0</y>
-     <width>441</width>
-     <height>171</height>
+     <x>180</x>
+     <y>30</y>
+     <width>871</width>
+     <height>341</height>
     </rect>
    </property>
    <property name="font">
     <font>
+     <family>Norasi</family>
      <weight>75</weight>
      <bold>true</bold>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: white; </string>
+    <string notr="true">color:white; background-color:rgba(100,100,100,0.8)</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
    </property>
    <property name="lineWidth">
-    <number>1</number>
+    <number>6</number>
+   </property>
+   <property name="midLineWidth">
+    <number>3</number>
    </property>
    <property name="text">
-    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;Welcome to the meteorite extinction event home page!&lt;/p&gt;&lt;p align=&quot;center&quot;&gt;From here you can select either Ground Impact or Ocean Impact. &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;These will give information about and simulate the type of &lt;/p&gt;&lt;p align=&quot;center&quot;&gt;meteorite impact you selected!&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;span style=&quot; font-size:48pt;&quot;&gt;Welcome to the meteorite extinction event home page!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
    <property name="wordWrap">
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QLabel" name="groundLabel">
+   <property name="geometry">
+    <rect>
+     <x>260</x>
+     <y>430</y>
+     <width>300</width>
+     <height>340</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Norasi</family>
+     <pointsize>20</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:white; background-color:rgba(100,100,100,0.8)</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <property name="lineWidth">
+    <number>3</number>
+   </property>
+   <property name="midLineWidth">
+    <number>1</number>
+   </property>
+   <property name="text">
+    <string>Ground Impact</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignHCenter|Qt::AlignTop</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="oceanLabel">
+   <property name="geometry">
+    <rect>
+     <x>660</x>
+     <y>430</y>
+     <width>300</width>
+     <height>340</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Norasi</family>
+     <pointsize>20</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+     <underline>true</underline>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color:white; background-color:rgba(100,100,100,0.8)</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <property name="lineWidth">
+    <number>3</number>
+   </property>
+   <property name="midLineWidth">
+    <number>1</number>
+   </property>
+   <property name="text">
+    <string>Ocean Impact</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignHCenter|Qt::AlignTop</set>
+   </property>
+  </widget>
+  <zorder>oceanLabel</zorder>
+  <zorder>groundLabel</zorder>
+  <zorder>OceanButton</zorder>
+  <zorder>GroundButton</zorder>
+  <zorder>label</zorder>
  </widget>
  <resources/>
  <connections/>

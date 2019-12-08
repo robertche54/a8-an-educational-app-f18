@@ -1,5 +1,5 @@
 #include "mob.h"
-
+#include <QResource>
 Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world)
     : position(locationX, locationY),
       size(sizeX,sizeY),
@@ -9,6 +9,9 @@ Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY
     createBody(world);
 }
 
+/*
+ * Constructor for general Box mob
+ */
 Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY, b2World &world, b2BodyType type)
     : position(locationX, locationY),
       size(sizeX,sizeY)
@@ -17,16 +20,23 @@ Mob::Mob(string file, float locationX, float locationY, float sizeX, float sizeY
     createBody(world, type);
 }
 
+/*
+ * Constructor for circle created Mob
+ */
 Mob::Mob(string file, float locationX, float locationY, float rad, b2World &world, b2BodyType type)
     : position(locationX, locationY),
       world(&world),
-      radius(rad)
+      radius(rad),
+      size(2.25 * rad, 2.25 * rad)
 {
     createSprite(file);
     //pass in 1 for a circle
     createBody(world, type, 1);
 }
 
+/*
+ * Constructor for a polygon created Mob
+ */
 Mob::Mob(string file, float locationX, float locationY, vector<b2Vec2> ver, b2World &world, b2BodyType type)
     :position(locationX, locationY),
      world(&world)
@@ -38,6 +48,9 @@ Mob::Mob(string file, float locationX, float locationY, vector<b2Vec2> ver, b2Wo
     createBody(world, type, 2);
 }
 
+/*
+ * Helper method to get the size of a polygon body
+ */
 void Mob::getSize(){
     float minX = vertices[0].x;
     float maxX = vertices[0].x;
@@ -63,6 +76,9 @@ void Mob::getSize(){
 
 }
 
+/*
+ * updates the SFML sprite according to the Box2D world we wish to display
+ */
 bool Mob::Update(windowTransform transform)
 {
     // Updates SFML sprite with b2Body position and rotation
@@ -75,6 +91,9 @@ bool Mob::Update(windowTransform transform)
     return true;
 }
 
+/*
+ * creates the sprite for the SFML display
+ */
 void Mob::createSprite(string file)
 {
     sprite_image.loadFromFile(file);
@@ -83,26 +102,11 @@ void Mob::createSprite(string file)
     auto bounds = sprite.getLocalBounds();
     sprite.setOrigin(Vector2f(bounds.width/2, bounds.height/2));
     sprite.setPosition(position);
-
-
-
-
-
-//    sf::VertexArray triangle(sf::Triangles, 3);
-
-//    // define the position of the triangle's points
-//    triangle[0].position = sf::Vector2f(10.f, 10.f);
-//    triangle[1].position = sf::Vector2f(100.f, 10.f);
-//    triangle[2].position = sf::Vector2f(100.f, 100.f);
-
-//    // define the color of the triangle's points
-//    triangle[0].color = sf::Color::Red;
-//    triangle[1].color = sf::Color::Blue;
-//    triangle[2].color = sf::Color::Green;
-    //sprite.setTexture();
-
 }
 
+/*
+ * creates the body for a mob that is box shaped
+ */
 void Mob::createBody(b2World &world, b2BodyType type)
 {
     // Uses the b2World factory to create a new body
@@ -122,6 +126,9 @@ void Mob::createBody(b2World &world, b2BodyType type)
     body->CreateFixture(&fixtureDef);
 }
 
+/*
+ * Creates the mob for a circle and polygon seperate from a box shaped Mob
+ */
 void Mob::createBody(b2World &world, b2BodyType type, int shape)
 {
     // Uses the b2World factory to create a new body
@@ -153,10 +160,16 @@ void Mob::createBody(b2World &world, b2BodyType type, int shape)
     body->CreateFixture(&fixtureDef);
 }
 
+/*
+ * Destroys the body of the mob to prevent memory leaks
+ */
 Mob::~Mob() {
     body->GetWorld()->DestroyBody(body);
 }
 
+/*
+ * Returns the Sprite for the SFML
+ */
 Sprite& Mob::getSprite() {
     return sprite;
 }

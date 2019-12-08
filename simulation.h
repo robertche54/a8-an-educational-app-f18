@@ -20,12 +20,12 @@ private:
     b2Vec2 gravity = b2Vec2(0.0, -9.81f);
     queue<vector<b2Body*>> rayQueue;
     b2Vec2 singularity = b2Vec2(0, 0);
+    vector<Mob*> genericMobs;
 
     const float degreeToRad = float(M_PI/180);
 
 public:
     bool isRunning = true;
-    vector<Mob*> genericMobs;
     map<string, Mob*> namedMobs;
     b2World world = b2World(gravity);
     windowTransform tf;
@@ -44,6 +44,7 @@ public:
     void createMob(string, float, float, float, float);
     void createMob(string filePath, float posX, float posY, float sizeX, float sizeY, b2BodyType type);
     void createMob(string, float, float, float, float, string, b2BodyType);
+
     void createMob(string, float, float, float, string, b2BodyType);
     void createMob(string, float, float, float, b2BodyType);
     void createMob(string, float, float, vector<b2Vec2>, string, b2BodyType);
