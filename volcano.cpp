@@ -43,10 +43,16 @@ Volcano::~Volcano()
     delete ui;
 }
 
+/*
+ * Starts the simulation of the Volcano UI
+ */
 void Volcano::showEvent(QShowEvent *) {
     initializeSimulation();
 }
 
+/*
+ * Closes the Volcano and clears out the data in order to start fresh when selecting the voclano in the future
+ */
 void Volcano::closeEvent(QCloseEvent*) {
     simulation.clearSimulation();
     simulation.world.DestroyBody(groundBody);
@@ -54,12 +60,18 @@ void Volcano::closeEvent(QCloseEvent*) {
     emit returnFocus();
 }
 
+/*
+ * Paints the SFML simulation for the volcano explosion
+ */
 void Volcano::paintEvent(QPaintEvent*)
 {
     QImage newImage = simulation.step();
     ui->simulationLabel->setPixmap(QPixmap::fromImage(newImage));
 }
 
+/*
+ * Button that controls the Explosion
+ */
 void Volcano::explodeClicked() {
     Mob* brick = simulation.namedMobs.at("brick");
     float powerselected;
@@ -82,6 +94,9 @@ void Volcano::clearSimulation() {
     initializeSimulation();
 }
 
+/*
+ * Used to go to the next slide
+ */
 void Volcano::nextSlide() {
     if (infoIndex < infoVec.size() - 1) {
         ++infoIndex;
@@ -89,6 +104,9 @@ void Volcano::nextSlide() {
     }
 }
 
+/*
+ * Helper method to go to the previous method
+ */
 void Volcano::previousSlide() {
     if (infoIndex > 0) {
         --infoIndex;
@@ -96,6 +114,9 @@ void Volcano::previousSlide() {
     }
 }
 
+/*
+ * Sets up the world to start the simulation, along with the volcano and lava in the world
+ */
 void Volcano::initializeSimulation() {
    simulation.isRunning = true;
    ui->infoLabel->setText(infoVec.at(infoIndex));
@@ -118,12 +139,14 @@ void Volcano::initializeSimulation() {
     simulation.tf.setBox2dWindow(b2Vec2(-20,20),b2Vec2(20, -20));
     simulation.createMob("../A9/lava2.png", 0.0f, -19.0f, 1.0f, 1.0f, "brick", b2_dynamicBody);
 
+    //set up the lava inside the volcano
     for(float x = -8; x < 8; x += .8f) {
         for(float y = -18; y < -7; y += .8f) {
             simulation.createMob("../A9/Lava.png", x, y, .5f, b2_dynamicBody);
         }
     }
 
+    //set up the volcano polygon mob
     vector<b2Vec2> leftVolcano;
     vector<b2Vec2> rightVolcano;
 

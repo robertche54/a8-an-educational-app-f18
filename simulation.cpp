@@ -46,7 +46,7 @@ void Simulation::createMob(string filePath, float posX, float posY, float sizeX,
 }
 
 /*
- * Circle with Name
+ * Creates the new mob for a specific named circle Mob
  */
 void Simulation::createMob(string filePath, float posX, float posY, float radius, string name, b2BodyType type) {
     Mob* newMob = new Mob(filePath, posX, posY, radius, world, type);
@@ -54,7 +54,7 @@ void Simulation::createMob(string filePath, float posX, float posY, float radius
 }
 
 /*
- * Circle generic
+ *  Creates the new mob for a specific named generic Mob
  */
 void Simulation::createMob(string filePath, float posX, float posY, float radius, b2BodyType type) {
     Mob* newMob = new Mob(filePath, posX, posY, radius, world, type);
@@ -62,7 +62,7 @@ void Simulation::createMob(string filePath, float posX, float posY, float radius
 }
 
 /*
- * polygon with Name
+ * Creates a specific ploygon Mob with a name
  */
 void Simulation::createMob(string filePath, float posX, float posY, vector<b2Vec2> vertices, string name, b2BodyType type) {
     Mob* newMob = new Mob(filePath, posX, posY, vertices, world, type);
@@ -70,7 +70,7 @@ void Simulation::createMob(string filePath, float posX, float posY, vector<b2Vec
 }
 
 /*
- * polygon generic
+ * creates a generic mob with a polygon
  */
 void Simulation::createMob(string filePath, float posX, float posY, vector<b2Vec2> vertices, b2BodyType type) {
     Mob* newMob = new Mob(filePath, posX, posY, vertices, world, type);
