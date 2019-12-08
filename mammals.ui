@@ -91,7 +91,10 @@
        <set>Qt::AlignHCenter|Qt::AlignTop</set>
       </property>
       <item row="0" column="0">
-       <widget class="QSlider" name="Plants">
+       <widget class="QSlider" name="PlantsSlider">
+        <property name="maximum">
+         <number>100</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -105,7 +108,10 @@
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QSlider" name="Plants_2">
+       <widget class="QSlider" name="MammalsSlider">
+        <property name="maximum">
+         <number>20</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -119,7 +125,10 @@
        </widget>
       </item>
       <item row="2" column="0">
-       <widget class="QSlider" name="Plants_3">
+       <widget class="QSlider" name="DinosaursSlider">
+        <property name="maximum">
+         <number>20</number>
+        </property>
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>

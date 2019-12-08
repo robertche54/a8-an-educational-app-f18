@@ -8,7 +8,7 @@ Creature::Creature(string file, float locationX, float locationY, float score, b
     score(score),
     scoreToRadiusFunction(f)
 {
-    SetRadius(radius);
+    SetRadius(this->radius);
 }
 bool Creature::Update(windowTransform tf) {
     if (fabs(newRadius - radius) > numeric_limits<float>::min()) {
@@ -26,6 +26,8 @@ bool Creature::Update(windowTransform tf) {
         } else {
             impulse.y = sqrt(impulse.y);
         }
+        impulse.x *= this->radius/15;
+        impulse.y *= this->radius/15;
         this->body->ApplyLinearImpulse(impulse,this->body->GetWorldCenter(),true);
     }
     this->Mob::Update(tf);
@@ -35,28 +37,31 @@ bool Creature::Update(windowTransform tf) {
     return true;
 }
 
-void Creature::SetRadius(float radius) {
-    this->radius = radius;
-    this->size.x = radius*2;
-    this->size.y = radius*2;
+void Creature::SetRadius(float rad) {
+    if (rad > 31 || rad < 0)
+        rad = 0;
+    this->radius = rad;
+    this->size.x = rad*2;
+    this->size.y = rad*2;
     b2BodyDef myBodyDef;
     myBodyDef.type = b2_dynamicBody;
-    myBodyDef.position.Set(body->GetPosition().x, body->GetPosition().y);
-    myBodyDef.linearVelocity.Set(body->GetLinearVelocity().x, body->GetLinearVelocity().y);
-    myBodyDef.angle = body->GetAngle();
-    myBodyDef.angularVelocity = body->GetAngularVelocity();
+    if (body->GetPosition().IsValid()) {
+        myBodyDef.position.Set(body->GetPosition().x, body->GetPosition().y);
+        myBodyDef.linearVelocity.Set(body->GetLinearVelocity().x, body->GetLinearVelocity().y);
+        myBodyDef.angle = body->GetAngle();
+        myBodyDef.angularVelocity = body->GetAngularVelocity();
+    }
 
     b2Body* newBody = this->world->CreateBody(&myBodyDef);
 
     b2CircleShape circleShape;
     circleShape.m_p.Set(0, 0);
-    circleShape.m_radius = max(radius,0.1f);
+    circleShape.m_radius = max(this->radius,0.1f);
 
     this->fixtureDef.shape = &circleShape;
 
     newBody->CreateFixture(&(this->fixtureDef));
     newBody->SetUserData(this);
-
     world->DestroyBody(body);
     body = newBody;
 }

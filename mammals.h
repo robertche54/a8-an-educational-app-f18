@@ -27,6 +27,7 @@ private:
     Simulation simulation;
 
     void populateWorld(float xRange, float yRange, int plants, int mammals, int dinos);
+    void clearWorld();
     void addMammal(float x, float y);
     void addDino(float x, float y);
     void addPlant(float x, float y);
@@ -36,6 +37,7 @@ private:
 
 public slots:
     void physicsUpdate();
+    void runSimulation();
 
     void closeEvent(QCloseEvent *);
 };

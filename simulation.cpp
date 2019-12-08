@@ -107,10 +107,6 @@ QImage Simulation::step() {
     // Updates our named Mobs first because they can cause other Mobs to move
     // PLEASE keep this out of the isRunning block so that if simulation is paused,
     // the sprites are still being rendered.
-    for(pair<string, Mob*> namedMob : namedMobs) {
-        namedMob.second->Update(tf);
-        canvas.draw(namedMob.second->getSprite());
-    }
     map<string, Mob*>::iterator mapit;
     for ( mapit = namedMobs.begin(); mapit != namedMobs.end(); ) {
         auto pair = *mapit;
