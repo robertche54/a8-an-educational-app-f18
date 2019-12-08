@@ -1,11 +1,0 @@
---2019-12-07 19:01:45--  https://www.bing.com/images/search?view=detailV2
-Resolving www.bing.com (www.bing.com)... 13.107.21.200, 204.79.197.200, 2620:1ec:c11::200
-Connecting to www.bing.com (www.bing.com)|13.107.21.200|:443... connected.
-HTTP request sent, awaiting response... 200 OK
-Length: 490309 (479K) [text/html]
-Saving to: ‘search?view=detailV2’
-
-search?view=detailV   0%[                    ]       0  --.-KB/s               search?view=detailV 100%[===================>] 478.82K  --.-KB/s    in 0.08s   
-
-2019-12-07 19:01:45 (5.70 MB/s) - ‘search?view=detailV2’ saved [490309/490309]
-
