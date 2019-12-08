@@ -111,19 +111,6 @@ background-repeat: none;
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="physicsButton">
-    <property name="geometry">
-     <rect>
-      <x>430</x>
-      <y>720</y>
-      <width>381</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Toggle Physics</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="meteoriteLabel">
     <property name="geometry">
      <rect>
@@ -248,7 +235,6 @@ background-repeat: none;
    <zorder>volcanoButton</zorder>
    <zorder>mammalButton</zorder>
    <zorder>titleLabel</zorder>
-   <zorder>physicsButton</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

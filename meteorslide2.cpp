@@ -98,6 +98,7 @@ void MeteorSlide2::addWorldDefinitions(){
 
     b2Body* trampoline = sim->world.CreateBody(&tramp);
     trampoline->CreateFixture(&trampFixDef);
+
 }
 
 
@@ -144,7 +145,7 @@ void MeteorSlide2::on_startButton_clicked(){
     sim->applyImpulse(meteor,265,300);
 
     for(uint i=0; i<128; i++){
-        sim->createMob("../A9/Lava.png", i-64, -11, 1, 1);
+        sim->createMob("../A9/Lava.png", i-64, -11, 1, 1,b2_dynamicBody);
     }
 
     // Steping timer to call update

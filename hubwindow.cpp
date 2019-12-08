@@ -32,7 +32,6 @@ HubWindow::HubWindow(QWidget *parent)
     connect(ui->meteoriteButton, &QPushButton::pressed, this, &HubWindow::metoriteClicked);
     connect(ui->volcanoButton, &QPushButton::pressed, this, &HubWindow::volcanoClicked);
     connect(ui->mammalButton, &QPushButton::pressed, this, &HubWindow::mammalsClicked);
-//    connect(ui->physicsButton, &QPushButton::pressed, this, &HubWindow::togglePhysics);
 
     // hubWindow enables physics when a popup has closed
     connect(&meteoritePopup, &Meteorite::returnFocus, this, &HubWindow::recieveFocus);
