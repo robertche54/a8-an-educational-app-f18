@@ -22,8 +22,8 @@
   <widget class="QLabel" name="simulationLabel">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>30</y>
+     <x>590</x>
+     <y>20</y>
      <width>600</width>
      <height>500</height>
     </rect>
@@ -44,8 +44,8 @@
   <widget class="QLabel" name="bg">
    <property name="geometry">
     <rect>
-     <x>200</x>
-     <y>30</y>
+     <x>590</x>
+     <y>20</y>
      <width>600</width>
      <height>500</height>
     </rect>
@@ -72,10 +72,10 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>140</x>
-     <y>590</y>
-     <width>261</width>
-     <height>121</height>
+     <x>630</x>
+     <y>560</y>
+     <width>251</width>
+     <height>91</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -152,9 +152,48 @@
     </item>
    </layout>
   </widget>
+  <widget class="QPushButton" name="mammalPhysicsButton">
+   <property name="geometry">
+    <rect>
+     <x>630</x>
+     <y>660</y>
+     <width>251</width>
+     <height>25</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Toggle Physics</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>30</y>
+     <width>481</width>
+     <height>491</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>18</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>One theory on the extinction of dinosaurs believes that mammals out-competed dinosaurs driving them to extinction. Mammals may be smaller overall, but they grow to their adult size quite rapidly. This extinction theory believes that mammals were able to outcompete the dinosaurs in their early stages of life as they were generally better at competing throughout the many size brackets in their life cycle. This event would have led to a slow decay of dinosaurs unless it was spurred by another cataclysmic event.</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+   </property>
+   <property name="wordWrap">
+    <bool>true</bool>
+   </property>
+  </widget>
   <zorder>bg</zorder>
   <zorder>simulationLabel</zorder>
   <zorder>verticalLayoutWidget</zorder>
+  <zorder>mammalPhysicsButton</zorder>
+  <zorder>label_4</zorder>
  </widget>
  <resources/>
  <connections/>

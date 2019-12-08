@@ -23,6 +23,7 @@ Mammals::Mammals(QWidget *parent) :
     QPixmap map("../A9/forest.jpg");
     ui->bg->setPixmap(map);
 
+    simulation.toggleRunning();
     simulation.setGravity(0,0);
     handler = new CreatureCollisionHandler();
     simulation.setContactListener(handler);
@@ -32,6 +33,8 @@ Mammals::Mammals(QWidget *parent) :
     connect(timer, &QTimer::timeout, this, &Mammals::physicsUpdate);
     timer->start(1000/60);
     connect(ui->pushButton, &QPushButton::pressed, this, &Mammals::runSimulation);
+
+    connect(ui->mammalPhysicsButton, &QPushButton::pressed, this, [=](){ this->simulation.toggleRunning(); });
 }
 void Mammals::populateWorld(float xRange, float yRange, int plants, int mammals, int dinos) {
     srand(unsigned(int(time(nullptr))));
