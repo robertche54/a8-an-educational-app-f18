@@ -15,10 +15,10 @@ void CreatureCollisionHandler::BeginContact(b2Contact* contact) {
         Creature* cA = reinterpret_cast<Creature*>(bodyAUserData);
         Creature* cB = reinterpret_cast<Creature*>(bodyBUserData);
         if (cA->GetRadius() > 0 && cB->GetRadius() > 0) {
-            if (cA->GetRadius() > cB->GetRadius()*1.3f) {
+            if (cA->GetRadius() > cB->GetRadius()*1.15f) {
                 cA->SetScore(cA->GetScore() + cB->GetScore());
                 cB->ScheduleRadiusChange(0);
-            } else if (cB->GetRadius() > cA->GetRadius()*1.3f) {
+            } else if (cB->GetRadius() > cA->GetRadius()*1.15f) {
                 cB->SetScore(cA->GetScore() + cB->GetScore());
                 cA->ScheduleRadiusChange(0);
             }

@@ -15,17 +15,16 @@ class Simulation : QObject
 {
     Q_OBJECT
 
-private:
+protected   :
     sf::RenderTexture canvas;
     b2Vec2 gravity = b2Vec2(0.0, -9.81f);
     queue<vector<b2Body*>> rayQueue;
     b2Vec2 singularity = b2Vec2(0, 0);
-    vector<Mob*> genericMobs;
-
     const float degreeToRad = float(M_PI/180);
 
 public:
     bool isRunning = true;
+    vector<Mob*> genericMobs;
     map<string, Mob*> namedMobs;
     b2World world = b2World(gravity);
     windowTransform tf;
@@ -39,6 +38,7 @@ public:
 
     void toggleRunning() { isRunning = !isRunning; }
     void createSingularity(float x, float y) { singularity.Set(x, y); }
+    void createSingularity(b2Vec2 pos) { singularity = pos; }
 
     void createMob(string, float, float, float, float);
     void createMob(string filePath, float posX, float posY, float sizeX, float sizeY, b2BodyType type);

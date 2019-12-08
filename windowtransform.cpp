@@ -47,3 +47,9 @@ int windowTransform::transformHeight(float height) {
 float windowTransform::transformAngle(float angle) {
     return -angle * 180 / float(M_PI);
 }
+b2Vec2 windowTransform::windowToWorldCoordinates(int x, int y) {
+    return b2Vec2(
+        trueTopLeftCorner.x + (trueBottomRightCorner.x- trueTopLeftCorner.x)*(x / windowWidth),
+        trueTopLeftCorner.y + (trueBottomRightCorner.y- trueTopLeftCorner.y)*(y / windowHeight)
+    );
+}
