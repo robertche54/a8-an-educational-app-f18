@@ -19,6 +19,12 @@
   <property name="windowTitle">
    <string>Mammals</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">#Mammals{
+background-image:url(:MammalPic/jungle.jpg);
+color: white;
+}</string>
+  </property>
   <widget class="QLabel" name="simulationLabel">
    <property name="geometry">
     <rect>
@@ -44,10 +50,10 @@
   <widget class="QLabel" name="bg">
    <property name="geometry">
     <rect>
-     <x>590</x>
-     <y>20</y>
-     <width>600</width>
-     <height>500</height>
+     <x>589</x>
+     <y>21</y>
+     <width>602</width>
+     <height>502</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -58,6 +64,18 @@
    </property>
    <property name="cursor">
     <cursorShape>PointingHandCursor</cursorShape>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <property name="lineWidth">
+    <number>3</number>
+   </property>
+   <property name="midLineWidth">
+    <number>1</number>
    </property>
    <property name="text">
     <string/>
@@ -75,7 +93,7 @@
      <x>630</x>
      <y>560</y>
      <width>251</width>
-     <height>91</height>
+     <height>104</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
@@ -102,6 +120,12 @@
       </item>
       <item row="0" column="1">
        <widget class="QLabel" name="label">
+        <property name="styleSheet">
+         <string notr="true">background-color:rgba(90,90,90,.90);color:white</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
         <property name="text">
          <string>Plants</string>
         </property>
@@ -119,6 +143,12 @@
       </item>
       <item row="1" column="1">
        <widget class="QLabel" name="label_2">
+        <property name="styleSheet">
+         <string notr="true">background-color:rgba(90,90,90,.90);color:white</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
         <property name="text">
          <string>Mammals</string>
         </property>
@@ -136,6 +166,12 @@
       </item>
       <item row="2" column="1">
        <widget class="QLabel" name="label_3">
+        <property name="styleSheet">
+         <string notr="true">background-color:rgba(90,90,90,.90);color:white</string>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::Box</enum>
+        </property>
         <property name="text">
          <string>Dinosaurs</string>
         </property>
@@ -178,6 +214,21 @@
     <font>
      <pointsize>18</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color:rgba(90,90,90,.90);color:white</string>
+   </property>
+   <property name="frameShape">
+    <enum>QFrame::Box</enum>
+   </property>
+   <property name="frameShadow">
+    <enum>QFrame::Raised</enum>
+   </property>
+   <property name="lineWidth">
+    <number>3</number>
+   </property>
+   <property name="midLineWidth">
+    <number>1</number>
    </property>
    <property name="text">
     <string>One theory on the extinction of dinosaurs believes that mammals out-competed dinosaurs driving them to extinction. Mammals may be smaller overall, but they grow to their adult size quite rapidly. This extinction theory believes that mammals were able to outcompete the dinosaurs in their early stages of life as they were generally better at competing throughout the many size brackets in their life cycle. This event would have led to a slow decay of dinosaurs unless it was spurred by another cataclysmic event.</string>

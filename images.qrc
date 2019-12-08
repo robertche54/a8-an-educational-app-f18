@@ -27,4 +27,7 @@
     <qresource prefix="/VolcanoPics">
         <file>backVolcano.jpg</file>
     </qresource>
+    <qresource prefix="/MammalPic">
+        <file>jungle.jpg</file>
+    </qresource>
 </RCC>
