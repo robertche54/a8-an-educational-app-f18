@@ -24,4 +24,7 @@
         <file>dinoBackground.jpg</file>
         <file>DinoTitle.png</file>
     </qresource>
+    <qresource prefix="/VolcanoPics">
+        <file>backVolcano.jpg</file>
+    </qresource>
 </RCC>
